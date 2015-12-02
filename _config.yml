@@ -7,8 +7,9 @@ title: Think And Code
 subtitle: Salvation lies within
 description: my blog, blog about Java, Python, Redis, ElasticSearch, Swift.
 author: nkcoder
-language: 
+language: zh-CN
 timezone:
+keywords: 服务端, 前端, iOS开发, web开发, Java, redis, elasticsearch, mongodb, swift
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
