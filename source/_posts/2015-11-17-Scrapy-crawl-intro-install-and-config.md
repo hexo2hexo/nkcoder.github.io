@@ -1,4 +1,4 @@
-title: Scrapy爬虫入门（二）--环境搭建
+title: 搭建Scrapy爬虫的开发环境
 categories: Backend
 date: 2015-11-17 21:33:22
 tags: Scrapy
