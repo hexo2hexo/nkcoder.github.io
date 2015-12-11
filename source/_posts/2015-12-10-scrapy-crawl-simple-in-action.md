@@ -185,5 +185,4 @@ ok，这篇入门实例的重点就这么多，项目的源码在github上，[�
 - [Scrapy 1.0 documentation](http://doc.scrapy.org/en/latest/index.html)
 - [XPath 1.0 Tutorial](http://zvon.org/comp/r/tut-XPath_1.html#intro)
 - [How can I use different pipelines for different spiders in a single Scrapy project](http://stackoverflow.com/questions/8372703/how-can-i-use-different-pipelines-for-different-spiders-in-a-single-scrapy-proje)
-- 
 

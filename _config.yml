@@ -4,7 +4,7 @@
 
 # Site
 title: Think And Code
-subtitle: Salvation lies within
+subtitle: Salvation lies within!
 description: my blog, blog about Java, Python, Redis, ElasticSearch, Swift.
 author: nkcoder
 language: zh-CN
@@ -64,7 +64,8 @@ pagination_dir: page
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: hhttp://www.example3.com/ttp://hexo.io/themes/
-theme: maupassant
+# theme: maupassant
+theme: yilia 
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
@@ -89,3 +90,4 @@ marked:
   breaks: true
   smartLists: true
   smartypants: true
+
