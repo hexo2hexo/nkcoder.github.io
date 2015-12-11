@@ -16,6 +16,8 @@ categories: Backend
 
 在pom的xml里添加*Hibernate*相关的依赖，如：
 
+<!-- more -->
+
 	<dependency>
 		<groupId>org.hibernate</groupId>
 		<artifactId>hibernate-core</artifactId>

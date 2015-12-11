@@ -17,6 +17,8 @@ categories: Backend
 
 我建议的做法是：将war包或解压后的目录放在webapps目录下，或者将xml描述文件放在webapps目录下，将war包或目录放在单独的目录里。
 
+<!-- more -->
+
 ## 2. 配置context path
 
 默认，jetty将webapps目录下的工程名作为context path，如果工程名称为ROOT，则context path为/；比如，将rank.war（或rank目录）放在webapps目录下，则context path为/rank，如果将rank.war重命名为ROOT.war，则context path为/；

@@ -12,6 +12,8 @@ categories: Backend
 + 与**terms query**相似，提供的查询词之间默认是or的关系，可以通过`operator`属性指定；
 + **match query**有两种形式，一种是简单形式，一种是bool形式；
 
+<!-- more -->
+
 ## 2. REST API
 
 	# curl -XGET 'localhost:9200/video/video_info/_search?pretty' -d @match_query.json

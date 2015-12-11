@@ -12,7 +12,7 @@ Redis 3.0.0 RC1在10月9日发布，这个版本具有重要的意义，说明Re
 
 我们来简单梳理一下RC1中的重要更新。
 
-<!--more-->
+<!-- more -->
 
 ## 1. Redis 3.0.0 RC1的[release notes](https://raw.githubusercontent.com/antirez/redis/3.0/00-RELEASENOTES)
 

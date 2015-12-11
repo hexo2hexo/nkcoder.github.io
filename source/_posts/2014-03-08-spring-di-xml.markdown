@@ -8,6 +8,8 @@ categories: Backend
 
 > 因为项目中一直要用到Spring相关的知识，所以最近在看[Spring实战](http://www.amazon.cn/Spring%E5%AE%9E%E6%88%98-%E6%B2%83%E5%B0%94%E6%96%AF/dp/B00CY6UD2I/ref=sr_1_1?ie=UTF8&qid=1394286577&sr=8-1&keywords=spring%E5%AE%9E%E6%88%98)这本书，希望对Spring有一个整理的了解和把握。不得不说，这是一本好书，中文译本也不错。这个系列，记录自己关于Spring的笔记和理解，一是加深理解，同时也希望对别人有所帮助。
 
+<!-- more -->
+
 ## 1. 通过构造方法和xml配置注入
 
 > 定义带参数的构造函数，使依赖对象作为构造函数的参数：

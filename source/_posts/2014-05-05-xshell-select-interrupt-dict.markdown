@@ -6,9 +6,11 @@ tags: xshell
 categories: Backend
 ---
 
-## 问题：
+## Xshell选中文字复制时中断
 
 > 在Xshell中设置了“自动将选中的文字复制到粘贴板”，之前一直没有问题，最近发现，只要选中屏幕上的文字，复制上了，但shell终端立即被中断了，即向终端发送了CTRL-C；
+
+<!-- more -->
 
 ## 原因：
 

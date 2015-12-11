@@ -10,6 +10,8 @@ xMemcached是memcached的一个java客户端，基于java nio，支持memcached�
 
 ## xMemcached的主要方法示例
 
+<!-- more -->
+
 	/**
 	 * XMemcachedClientBuilder是MemcachedClientBuilder的一个实现类，XMemcachedClient是MemcachedClient的一个实现类；
 	 * 在实际使用中，应该使用接口，利用多态特性，这里直接使用实现类，是为了方便查看实现类的源码。

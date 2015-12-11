@@ -10,6 +10,8 @@ categories: Backend
 
 > 初衷：其实，前不久才购买的域名和主机，使用wordpress搭建的博客，但是wordpress功能完善地有些笨拙，再加上购买的主机速度慢地难以忍受，连写博客的欲望都没有了。后来发现github pages和Octopress可以组合搭建静态博客，托管在github上，既稳定又方便，我只要关注博客就行了。所以这两天都在折腾。
 
+<!-- more -->
+
 ## 1. 环境准备
 
 ### 1.1 下载软件：`RubyInstaller`，`Devkit`，`git`

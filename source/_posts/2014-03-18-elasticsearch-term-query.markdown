@@ -12,6 +12,8 @@ categories: Backend
 + 提供的查询词是不分词的(not analyzed)，即只有完全包含才算匹配；
 + 支持boost属性，boost可以提高field和document的相关性；
 
+<!-- more -->
+
 ## 2. REST API
 
 	$ curl -XGET 'localhost:9200/video/video_info/_search?pretty' -d @term_query.json

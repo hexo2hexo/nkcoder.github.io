@@ -24,6 +24,7 @@ categories: Backend
 - ElasticSearch用于存储最终的数据，并提供搜索功能；
 - Kibana提供一个简单、丰富的web界面，数据来自于ElasticSearch，支持各种查询、统计和展示；
 
+<!-- more -->
 
 ### 2. 搭建部署
 

@@ -11,6 +11,8 @@ categories: Backend
 
 Linux下，如何从命令行删除符号链接(软链接)？
 
+<!-- more -->
+
 ## 2. 命令：
 
 删除符号链接，使用`rm`命令或者`unlink`命令，后接文件名或目录名，如果是目录，注意目录后，不要加/。
@@ -33,6 +35,6 @@ Linux下，如何从命令行删除符号链接(软链接)？
 	lrwxrwxrwx 1 nkcoder nkcoder 16 Jul 16 10:28 jetty.bak -> /usr/local/jetty/
 	nkcoder@ubuntu:~$ rm jetty.bak
 
-#### 参考
+### 参考
 
 - [Linux Delete Symbolic Link ( Softlink )](http://www.cyberciti.biz/faq/linux-remove-delete-symbolic-softlink-command/)

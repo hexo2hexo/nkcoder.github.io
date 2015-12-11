@@ -7,7 +7,7 @@ tags: quartz
 categories: Backend
 ---
 
-### Quartz API
+## Quartz API
 
 Quartz API核心接口有：
 
@@ -56,7 +56,7 @@ SchedulerBuilder接口的各种实现类，可以定义不同类型的调度计�
 
 DateBuilder类包含很多方法，可以很方便地构造表示不同时间点的java.util.Date实例（如定义下一个小时为偶数的时间点，如果当前时间为9:43:27，则定义的时间为10:00:00）。
 
-### Job和Trigger
+## Job和Trigger
 
 一个job就是一个实现了Job接口的类，该接口只有一个方法：
 
@@ -82,7 +82,7 @@ SimpleTrigger主要用于“一次性”(one-shot)执行的Job（只在某个特
 
 例如，Job被创建后，可以保存在Scheduler中，与Trigger是独立的，同一个Job可以有多个Trigger；这种松耦合的另一个好处是，当与Scheduler中的Job关联的trigger都过期了时，可以配置Job稍后被重新调度，而不用重新定义Job；还有，可以修改或者替换Trigger，而不用重新定义与之关联的Job。
 
-### Key
+## Key
 
 将Job和Trigger注册到Scheduler时，可以为它们设置key，配置其身份属性。Job和Trigger的key（JobKey和TriggerKey）可以用于将Job和Trigger放到不同的分组（group）里，然后基于分组进行操作。同一个分组下的Job或Trigger的名称必须唯一，即一个Job或Trigger的key由名称（name）和分组（group）组成。
 

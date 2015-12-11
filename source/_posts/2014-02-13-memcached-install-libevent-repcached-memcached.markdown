@@ -12,6 +12,7 @@ categories: Backend
 	2. 给memcached打上repcached补丁，支持主从结构，实现高可用；
 	3. 安装memcached，启用replication；
 
+<!-- more -->
 
 ## 1. libevent
 

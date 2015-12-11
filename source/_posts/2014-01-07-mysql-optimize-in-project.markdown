@@ -22,8 +22,9 @@ categories: Backend
 	AND ( vts.TV_S_TYPE < 2 OR vts.TV_S_TYPE IS NULL)
 	AND vp.TV_CATEGORY_ID = ?  GROUP BY inc.tv_vid ORDER BY showCount DESC LIMIT 100
 
-> 如果是日榜，查询时间大约在8s左右，还可以接受。如果是周榜，大概需要1min，如果是月榜，耗时约2~3分钟。周榜和月榜的时间是令人难以接受的。
+<!-- more -->
 
+> 如果是日榜，查询时间大约在8s左右，还可以接受。如果是周榜，大概需要1min，如果是月榜，耗时约2~3分钟。周榜和月榜的时间是令人难以接受的。
 
 ## 2. 优化方案
 

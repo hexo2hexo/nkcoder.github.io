@@ -12,6 +12,8 @@ categories: Backend
 + 功能与：**bool query**通过对多个term进行`should`操作的功能是一致的，是更简单的一种语法形式；
 + 提供的查询词也是不分词的，只有完全包含才算匹配；可以通过`minimum_should_match`属性指定最少匹配的个数；
 
+<!-- more -->
+
 ## 2. REST API
 
 **terms query**的REST API示例如下：

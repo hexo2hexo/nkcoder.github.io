@@ -19,6 +19,8 @@ categories: Backend
 		throw new IllegalArgumentException("negative value: " + value);
 	}
 
+<!-- more -->
+
 - 在使用com.google.common时，应尽量避免使用Objects.requireNonNull(Object)，推荐使用checkNotNull(Object)或者Verify.verifyNotNull(Object)，而且它们支持%s的格式化信息；
 
 - checkNotNull(Object) 含义明确，不易混淆，而且参数合法时返回原值，可以用于‘检查并赋值‘的场合，如：this.field = checkNotNull(field)；

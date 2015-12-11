@@ -16,6 +16,8 @@ MyBatis是一个优秀的轻量级持久化框架，本文主要介绍MyBatis与
 
 在pom.xml文件里添加mybatis-spring和mybatis的依赖：
 
+<!-- more -->
+
 	<dependency>
 		<groupId>org.mybatis</groupId>
 		<artifactId>mybatis-spring</artifactId>

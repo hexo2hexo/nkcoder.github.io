@@ -11,6 +11,8 @@ categories: Algorithm
 
 > 返回链表中倒数第k个节点。
 
+<!-- more -->
+
 ## 2. 思路：
 
 > 思路：

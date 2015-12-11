@@ -14,11 +14,13 @@ categories: Backend
 
 在上一篇文章[使用ElasticSearch+LogStash+Kibana+Redis搭建日志管理服务](http://nkcoder.github.io/blog/20141031/elkr-log-platform-deploy/)中介绍了日志服务的整体框架以及各组件的搭建部署，本篇文章主要讨论一下日志服务框架的高可用方案，主要从以下三个方面考虑：
 
-<!--more-->
+<!-- more -->
 
 + 作为broker的Redis，可以使用redis cluster或者主备结构代替单实例，提高broker组件的可用性；
 + 作为indexer的LogStash，可以部署多个LogStash实例，协作处理日志信息，提高indexer组件的可用性；
 + 作为search&storage的ElasticSearch，采用ElasticSearch Cluster，提高search&storage组件的性能和可用性；
+
+<!-- more -->
 
 日志服务的高可用方案的示意图为：
 

@@ -12,6 +12,7 @@ categories: Backend
 
 > 两种安装方式，一种是根据发行版，通过ElasticSearch提供的repositories安装，参考[官方指南](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/setup-repositories.html); 另一种是利用压缩包安装；由于第二种方式，在配置上更加灵活，这里主要介绍第二种方式的安装和配置。
 
+<!-- more -->
 
 从[ElasticSearch网站](http://www.elasticsearch.org/overview/elkdownloads/)下载压缩包：`elasticsearch-1.0.0.tar.gz`，解压到指定目录：
 

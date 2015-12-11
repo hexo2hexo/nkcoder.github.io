@@ -12,6 +12,8 @@ categories: Backend
 
 > 备注：String的底层是通过字符数组实现的，而且是常量，所以我们不能修改String类型的变量的值。
 
+<!-- more -->
+
 ## 2. 构造函数
 
 > String的构造函数有很多：不带参数，参数可以为String, char[], byte[], StringBuffer, StringBuilder等。

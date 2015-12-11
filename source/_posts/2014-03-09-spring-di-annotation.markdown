@@ -15,6 +15,8 @@ categories: Backend
 启用自动扫描注解，在xml配置文件里添加：
 
 	<context:component-scan base-package="org.yousharp.base"/>
+	
+<!-- more -->
 
 > 二者的区别：
 自动装配表示通过@Autowired, @Inject, @Resource等实现对属性或构造函数的自动注入；仍然需要在配置文件里定义bean，只是通过自动装配省去了`property`和`constructor-arg`的配置。

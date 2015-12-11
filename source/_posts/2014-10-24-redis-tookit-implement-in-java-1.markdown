@@ -9,6 +9,8 @@ categories: Backend
 
 redis作者提供了redis-trib.rb工具，用来与redis cluster进行交互，该工具使用ruby实现；对该工具提供的主要功能，我在redis的java客户端jedis的基础上进行了对应的实现，希望给同样使用java与redis交互的朋友一些参考。
 
+<!--more-->
+
 ## 1. 创建集群
 
 使用作者在[cluster-tutorial](http://redis.io/topics/cluster-tutorial)上的示例，即在localhost的7000、7001、7002、7003、7004、7005启动6个redis实例，且都启用cluster模式，使用redis-trib创建集群的命令为：

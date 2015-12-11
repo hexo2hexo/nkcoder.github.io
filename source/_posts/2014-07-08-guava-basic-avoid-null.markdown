@@ -17,6 +17,8 @@ categories: Backend
 
 - 如果打算在map中存放key对应的value为null的entry，不要这么做，宁愿另外用一个Set保存value非null的key（或value为null的key），分开操作，在你的上下文中，value为null的key应该具有明确的含义；
 
+<!-- more -->
+
 ## 2. Optional<T>
 
 - Optional是一个引用，如果其中有值，则为'present'，如果没有值，则为'absent'，但不会“包含null”；Optional可以看做是对null的友好的包装，在设置或取值时，会提醒你判断它的引用状态，而null很容易让人忘记检查其合法性；

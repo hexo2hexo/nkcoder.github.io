@@ -14,6 +14,8 @@ categories: Backend
 
 常用参数
 
+<!-- more -->
+
 	-p <num> 监听的TCP端口号，默认是11211；（port）
 	-l <addr> 监听的主机地址，默认是INADDR_ANY，即所有地址，<addr>可以是host:port的形式，如果没有指定port，则使用-p或者-U的值；可以指定多个地址，以逗号分隔或者多次使用-l参数；尽量不要使用默认值，有安全隐患。(listen)
 	-d 以守护进程运行 (daemon)

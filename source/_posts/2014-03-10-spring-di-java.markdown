@@ -16,6 +16,8 @@ categories: Backend
 
 >该配置不仅扫描构造型注解(@Controller, @Service, @Repository, @Component)，也会扫描@Configuration注解。
 
+<!-- more -->
+
 ## 2. 定义dao类和service类
 
 dao类是service类的一个属性，是需要注入的对象。

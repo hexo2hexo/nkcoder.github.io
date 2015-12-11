@@ -5,13 +5,14 @@ date: 2014-10-27 21:00:54 +0800
 comments: true
 tags: gradle
 categories: Backend
-
 ---
+
 
 ### 1. 为什么选择Gradle？
 
 ![为什么应该使用Gradle](/images/post/why-should-choose-gradle.jpg)
 
+<!--more-->
 
 ### 2. 简单入门
 
