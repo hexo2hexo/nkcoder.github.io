@@ -10,7 +10,7 @@ tags: Scrapy
 
 <!-- more -->
 
-### 1. 定义item
+## 1. 定义item
 
 我们需要保存标题、帖子详情、帖子详情的url、图片列表，所以定义item如下：
 
@@ -23,7 +23,7 @@ tags: Scrapy
 	    url = scrapy.Field()            # 详情的url
 	    pic_list = scrapy.Field()       # 图片列表
 
-### 2. 使用FormRequest模拟登录
+## 2. 使用FormRequest模拟登录
 
 首先我们需要分析页面，找到登录的form，以及需要提交的数据（用Fiddler或Firebug分析请求即可），然后使用Scrapy提供`FormRequest.from_response()`模拟页面的登录过程，主要代码如下：
 
@@ -40,9 +40,9 @@ tags: Scrapy
 
 如果请求的页面需要登录，则通过xpath定位到对应的form，将登录需要的数据作为参数，提交登录，在callback对应的回调方法里，处理登录成功后的爬取逻辑。
 
-### 3. 使用XPath提取页面数据
+## 3. 使用XPath提取页面数据
 
-Scrapy使用XPath或CSS表达式分析页面结构，由基于lxml的Selector提取数据。关于XPath，请参考[zvon-XPath 1.0 Tutorial](http://zvon.org/comp/r/tut-XPath_1.html)，示例丰富且易懂，看完这个入门教程，常见的爬取需求基本都能满足。我这里简单解释一下几个重要的点：
+Scrapy使用XPath或CSS表达式分析页面结构，由基于lxml的Selector提取数据。XPath或者CSS都可以，另外[BeautifulSoup](http://www.crummy.com/software/BeautifulSoup/bs4/doc/)分析HTML/XML文件非常方便，这里采用XPath分析页面，请参考[zvon-XPath 1.0 Tutorial](http://zvon.org/comp/r/tut-XPath_1.html)，示例丰富且易懂，看完这个入门教程，常见的爬取需求基本都能满足。我这里简单解释一下几个重要的点：
 
 - /表示绝对路径，即匹配从根节点开始，./表示当前路径，//表示匹配任意开始节点；
 
@@ -55,10 +55,10 @@ Scrapy使用XPath或CSS表达式分析页面结构，由基于lxml的Selector提
 
 	<div>Welcome to <strong>Chengdu</strong></div>
 
-	sel.xpath('div/text()') 	// Welcome to 
+	sel.xpath('div/text()') 	// Welcome to
 	sel.xpath('div').xpath('string(.)')		// Welcome to Chengdu
 
-### 4. 不同的spider使用不同的pipeline
+## 4. 不同的spider使用不同的pipeline
 
 我们可能有很多的spider，不同的spider爬取的数据的结构不一样，对应的存储格式也不尽相同，因此我们会定义多个pipeline，让不同的spider使用不同的pipeline。
 
@@ -88,8 +88,8 @@ Scrapy使用XPath或CSS表达式分析页面结构，由基于lxml的Selector提
 
 然后，我们还需要在所有pipeline类的回调方法`process_item()`上添加该decrator注解：
 
-   @check_spider_pipeline
-   def process_item(self, item, spider):
+	@check_spider_pipeline
+	def process_item(self, item, spider):
 
 最后，在spider类中添加一个数组属性`pipeline`，里面是所有与该spider对应的pipeline，比如：
 
@@ -98,7 +98,7 @@ Scrapy使用XPath或CSS表达式分析页面结构，由基于lxml的Selector提
         pipelines.RentMySQLPipeline,
     ])
 
-### 5. 将爬取的数据保存到mysql
+## 5. 将爬取的数据保存到mysql
 
 数据存储的逻辑在pipeline中实现，可以使用`twisted adbapi`以线程池的方式与数据库交互。首先从setttings中加载mysql配置：
 
@@ -135,7 +135,7 @@ Scrapy使用XPath或CSS表达式分析页面结构，由基于lxml的Selector提
         time.sleep(10)
         return deferred
 
-### 6. 将图片保存到七牛云
+## 6. 将图片保存到七牛云
 
 查看七牛的python接口即可，这里要说明的是，上传图片的时候，不要使用BucketManager的`bucket.fetch()`接口，因为经常上传失败，建议使用`put_data()`接口，比如：
 
@@ -153,9 +153,8 @@ Scrapy使用XPath或CSS表达式分析页面结构，由基于lxml的Selector提
             logging.error('upload data to qiniu error, key: {0}'.format(key))
             return False
 
-ok，这篇入门实例的重点就这么多，项目的源码在github上，[戳这里]。
 
-### 7. 项目部署
+## 7. 项目部署
 
 部署可以使用[scrapyd](http://scrapyd.readthedocs.org/en/latest/api.html)和[scrapyd-client](https://github.com/scrapy/scrapyd-client/tree/master/scrapyd-client)。
 首先安装：
@@ -170,7 +169,7 @@ ok，这篇入门实例的重点就这么多，项目的源码在github上，[�
 修改部署的配置文件scrapy.cfg:
 
 	[settings]
-	default = timediff_crawler.settings
+	default = scrapy_start.settings
 
 	[deploy:dev]
 	url = http://localhost:6800/
@@ -180,9 +179,10 @@ ok，这篇入门实例的重点就这么多，项目的源码在github上，[�
 
 	$ scrapyd-deploy dev -p scrapy_start
 
+ok，这篇入门实例的重点就这么多，项目的源码在github上，[戳这里](https://github.com/nkcoder/scrapy_in_practice)。
+
 ### 参考
 
 - [Scrapy 1.0 documentation](http://doc.scrapy.org/en/latest/index.html)
 - [XPath 1.0 Tutorial](http://zvon.org/comp/r/tut-XPath_1.html#intro)
 - [How can I use different pipelines for different spiders in a single Scrapy project](http://stackoverflow.com/questions/8372703/how-can-i-use-different-pipelines-for-different-spiders-in-a-single-scrapy-proje)
-

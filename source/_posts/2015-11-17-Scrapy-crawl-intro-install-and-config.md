@@ -17,7 +17,7 @@ tags: Scrapy
 
 <!-- more -->
 
-### 1. 安装python 2.7
+## 1. 安装python 2.7
 
 目前Scrapy 1.x仅支持python2.x（官方说以后会支持python 3.x，但目前不支持）。一般系统都预装了python，可以通过`-V`命令查看版本：
 
@@ -59,7 +59,7 @@ virtualenv也可以指定python解释器，默认使用PATH定义的python解释
 
 - 参考：[VirtualEnv Installation](https://virtualenv.readthedocs.org/en/latest/installation.html)
 
-### 2. 安装pip
+## 2. 安装pip
 
 通过virtualenv安装的python，默认已经安装了对应版本的pip，查看pip版本：
 
@@ -75,7 +75,7 @@ virtualenv也可以指定python解释器，默认使用PATH定义的python解释
 
 - 参考：[Pip Installation](http://pip.readthedocs.org/en/stable/installing/)
 
-### 3. 安装lxml
+## 3. 安装lxml
 
 通过`pip`安装lxml：
 
@@ -106,14 +106,14 @@ virtualenv也可以指定python解释器，默认使用PATH定义的python解释
 
 - 参考：[how-to-install-lxml-on-ubuntu](http://stackoverflow.com/questions/6504810/how-to-install-lxml-on-ubuntu)
 
-### 4. 安装openssl
+## 4. 安装openssl
 
 系统一般都预装有openssl：
 
 	$ openssl version
 	OpenSSL 0.9.8zg 14 July 2015
 
-### 5. 安装Scrapy
+## 5. 安装Scrapy
 
 通过pip安装Scrapy：
 
@@ -136,4 +136,3 @@ virtualenv也可以指定python解释器，默认使用PATH定义的python解释
 	$ sudo apt-get install libssl-dev
 
 - 参考：[How to fix “fatal error: openssl/aes.h: No such file or directory”](http://ask.xmodulo.com/fix-fatal-error-openssl.html)
-
