@@ -93,3 +93,5 @@ marked:
 
 sitemap:
     path: sitemap.xml
+
+disqus_shortname: nkcoder
