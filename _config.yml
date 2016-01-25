@@ -5,9 +5,9 @@
 # Site
 title: Think And Code
 subtitle: Salvation lies within!
-description: my blog, blog about Java, Python, Redis, ElasticSearch, Swift.
+description: programming notes
 author: nkcoder
-language: zh-CN
+language: en
 timezone:
 keywords: 服务端, 前端, iOS开发, web开发, Java, redis, elasticsearch, mongodb, swift
 
@@ -65,7 +65,7 @@ pagination_dir: page
 ## Plugins: http://hexo.io/plugins/
 ## Themes: hhttp://www.example3.com/ttp://hexo.io/themes/
 # theme: maupassant
-theme: yilia 
+theme: next
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
@@ -78,7 +78,7 @@ deploy:
 feed:
   type: atom
   path: atom.xml
-  limit: 20
+  limit: 10
   hub:
 
 # marked

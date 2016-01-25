@@ -1,4 +1,4 @@
-title: 'python tips 2: string模块与reserved关键字'
+title: 'python tips 2: string模块与reversed关键字'
 categories: Backend
 date: 2016-01-12 19:56:14
 tags: python

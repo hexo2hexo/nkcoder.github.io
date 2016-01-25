@@ -4,7 +4,7 @@ date: 2016-01-16 18:03:04
 tags: java
 ---
 
-> 本文是在学习[Java SE 8 for the Really Impatient](http://www.amazon.cn/Java-SE8-for-the-Really-Impatient-A-Short-Course-on-the-Basics-Horstmann-Cay-S/dp/0321927761/ref=sr_1_2)过程中整理而来的，顺便推荐一下这本书！
+> 本文是在学习[Java SE 8 for the Really Impatient](http://www.amazon.cn/Java-SE8-for-the-Really-Impatient-A-Short-Course-on-the-Basics-Horstmann-Cay-S/dp/0321927761/ref=sr_1_2)过程中整理而来的，谢谢作者，同时推荐这本书！
 
 ## 1.1 为什么使用Lambda表达式
 
@@ -117,13 +117,13 @@ lambda表达式的返回值的类型是自动推断的，因此不需要指明�
 	   } catch (InterruptedException e) {
 		   // catch exception
 	   }
-   };
+    };
 
-   Callable<String> c = () -> {
-	   System.out.println("--------");
-	   Thread.sleep(10);
-	   return "";
-   };
+    Callable<String> c = () -> {
+	    System.out.println("--------");
+	    Thread.sleep(10);
+	    return "";
+    };
 
 ## 1.4 Method Reference
 
