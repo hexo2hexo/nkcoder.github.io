@@ -74,7 +74,8 @@ python的内置函数`reversed()`就是用来反转一个列表的（list和stri
     for x in num_list[::-1]:
         print(x)
 
-### 参考
+## 参考
+
 - [Built-in Functions¶](https://docs.python.org/3/library/functions.html)
 - [Traverse a list in reverse order in Python](http://stackoverflow.com/questions/529424/traverse-a-list-in-reverse-order-in-python)
 

@@ -4,8 +4,6 @@ date: 2016-01-24 20:45:15
 tags: java
 ---
 
-> 本文是在学习[Java SE 8 for the Really Impatient](http://www.amazon.cn/Java-SE8-for-the-Really-Impatient-A-Short-Course-on-the-Basics-Horstmann-Cay-S/dp/0321927761/ref=sr_1_2)过程中整理而来的，谢谢作者，同时推荐这本书！
-
 Stream是Java 8 提供的高效操作集合类（Collection）数据的API。
 
 ## 1. 从Iterator到Stream
@@ -393,3 +391,7 @@ stream本身是不存储数据的，数据保存在对应的collection中，所�
 	UnaryOperator<T> 		T 			T				A unary operator on the type T
 	BinaryOperator<T> 		T,T 		T				A binary operator on the type T
 
+## 参考
+
+- [Java SE8 for the Really Impatient](http://www.amazon.cn/Java-SE8-for-the-Really-Impatient-A-Short-Course-on-the-Basics-Horstmann-Cay-S/dp/0321927761/ref=sr_1_2)
+- [Stream示例代码](https://gist.github.com/nkcoder/50c115a96c4e67164580#file-java-8-stream-api-java)

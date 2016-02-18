@@ -4,8 +4,6 @@ date: 2016-01-16 18:03:04
 tags: java
 ---
 
-> 本文是在学习[Java SE 8 for the Really Impatient](http://www.amazon.cn/Java-SE8-for-the-Really-Impatient-A-Short-Course-on-the-Basics-Horstmann-Cay-S/dp/0321927761/ref=sr_1_2)过程中整理而来的，谢谢作者，同时推荐这本书！
-
 ## 1.1 为什么使用Lambda表达式
 
 先看几个例子：
@@ -242,5 +240,5 @@ Java 8之前，接口中只能定义`static`变量，Java 8开始，接口中可
 ### 参考
 
 - [Java SE8 for the Really Impatient](http://www.amazon.cn/Java-SE8-for-the-Really-Impatient-A-Short-Course-on-the-Basics-Horstmann-Cay-S/dp/0321927761/ref=sr_1_2)
-- [示例代码](https://gist.github.com/nkcoder/50c115a96c4e67164580#file-lambda-note-java)
+- [Lambda示例代码](https://gist.github.com/nkcoder/50c115a96c4e67164580#file-lambda-note-java)
 
