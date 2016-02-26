@@ -177,8 +177,7 @@ No:
 
     dict ['key'] = list [index]
 
-二元操作符(`==, >, < !=, <>, <=, >=, in, not in, is, is not, and, or, not`)的前后
-各使用一个空格：
+二元操作符(`==, >, < !=, <>, <=, >=, in, not in, is, is not, and, or, not`)的前后各使用一个空格：
 
 Yes:
 
@@ -222,11 +221,9 @@ No:
 
 ## Shebang Line
 
-    大多数的`.py`文件都不需要`#!`行，仅在main文件的第一行使用`#!/usr/bin/python`，版本
-    号2/3后缀是可选的。
+    大多数的`.py`文件都不需要`#!`行，仅在main文件的第一行使用`#!/usr/bin/python`，版本号2/3后缀是可选的。
 
-`#!`行被kernel用于查找Python解释器，但是在import module的时候被忽略，所以仅当文件被直
-接运行的时候才需要。
+`#!`行被kernel用于查找Python解释器，但是在import module的时候被忽略，所以仅当文件被直接运行的时候才需要。
 
 ## Comments
 
@@ -234,8 +231,8 @@ No:
 
 + Doc Strings
 
-对于**doc strings**，建议总是使用三个双引号(`"""`)形式：与`"""`同一行是注释的概述，然后空
-一行，与`"""`缩进相同的位置开始是注释的详细说明。
+对于**doc strings**，建议总是使用三个双引号(`"""`)形式：与`"""`同一行是注释的概述，然后空一行，与`"""`缩进
+相同的位置开始是注释的详细说明。
 
 + Modules
 
@@ -245,16 +242,14 @@ No:
 
 function必须包含docstring，除非：1. 不被外部使用；2. 非常短；3. 非常明显；
 
-docstring中应该包含调用function的足够的信息，而不需要阅读function的代码。docstring应该描
-述调用函数的语法，而不是函数的实现。
+docstring中应该包含调用function的足够的信息，而不需要阅读function的代码。docstring应该描述调用函数的语法，
+而不是函数的实现。
 
-function的docstring分为不同的section：`Args`, `Returns`, `Raises`，section名后面使用
-冒号，section描述缩进显示。
+function的docstring分为不同的section：`Args`, `Returns`, `Raises`，section名后面使用冒号，section描述
+缩进显示。
 
-`Args`: 依次列出参数名，后跟一个冒号和空格，参数的描述应该包含需要的类型和参数的含义；参数名之
-间缩进对齐。
-`Returns`: （对于generator，是`Yields`），返回值的含义，如果返回None，则该section可以省
-略。
+`Args`: 依次列出参数名，后跟一个冒号和空格，参数的描述应该包含需要的类型和参数的含义；参数名之间缩进对齐。
+`Returns`: （对于generator，是`Yields`），返回值的含义，如果返回None，则该section可以省略。
 `Raises`: 列出所有的异常；
 
     def fetch_bigtable_rows(big_table, keys, other_silly_variable=None):
@@ -313,8 +308,8 @@ docstring应该位于class的定义下面，如果class包含public的属性，�
 
 + Block and Inline Comments
 
-对于复杂的逻辑，注释应该在逻辑的上面单独说明，对于简单但不明显的逻辑，注释放在代码的行末，但是与
-代码至少有2个空格的间距。
+对于复杂的逻辑，注释应该在逻辑的上面单独说明，对于简单但不明显的逻辑，注释放在代码的行末，但是与代码至少有2个空
+格的间距。
 
     # We use a weighted dictionary search to find out where i is in
     # the array.  We extrapolate position based on the largest num
@@ -332,9 +327,9 @@ docstring应该位于class的定义下面，如果class包含public的属性，�
 
     如果class没有继承别的class，则显式继承`object`，嵌套的class也是如此。
 
-继承`object`可以使**properties**正常工作，同时也避免了与Python 3的`new style class`的
-不兼容。而且，继承`object`，预定义了很多默认的属性和method，如`__new__, __init__,
-__delattr__, __getattribute__, __setattr__, __hash__, __repr__, __str__`。
+继承`object`可以使**properties**正常工作，同时也避免了与Python 3的`new style class`的不兼容。而且，继承
+`object`，预定义了很多默认的属性和method，如
+`__new__, __init__, __delattr__, __getattribute__, __setattr__, __hash__, __repr__, __str__`。
 
 Yes:
 
@@ -381,9 +376,8 @@ No:
     x = imperative + ', ' + expletive + '!'
     x = 'name: ' + name + '; score: ' + str(n)
 
-不要使用`+`和`+=`在循环中拼接字符串。因为字符串是不可变的，这样会创建很多不必要的临时对象，导
-致运行时间是平方级的，而不是线性的。更好地做法应该是，循环将各个字串放到list中，循环结束后通过
-`''.join()`连接：
+不要使用`+`和`+=`在循环中拼接字符串。因为字符串是不可变的，这样会创建很多不必要的临时对象，导致运行时间是乘方
+级的，而不是线性的。更好地做法应该是，循环将各个字串放到list中，循环结束后通过`''.join()`连接：
 
 Yes:
 
@@ -400,8 +394,8 @@ No:
         employee_table += '<tr><td>%s, %s</td></tr>' % (last_name, first_name)
     employee_table += '</table>'
 
-在同一个文件中，对于字符串引号的使用要保持一致。使用`''`或`""`都可以，保持一致即可。
-两者可以同时使用，避免通过`\`转义。
+在同一个文件中，对于字符串引号的使用要保持一致。使用`''`或`""`都可以，保持一致即可。两者可以同时使用，避免通
+过`\`转义。
 
 Yes:
 
@@ -463,8 +457,8 @@ No:
 
     `TODO`注释用于临时的、短期的或不够优化的解决方法。
 
-`TODO`的格式：TODO大写，后跟的小括号内是用户名/邮箱等，表示应该关注该TODO的人，接下来的冒号
-是可选的，后面的注释表示TODO的内容。
+`TODO`的格式：TODO大写，后跟的小括号内是用户名/邮箱等，表示应该关注该TODO的人，接下来的冒号是可选的，后面的注
+释表示TODO的内容。
 TODO的用户并不一定是fix这个问题的人，所以这里的用户几乎都是自己。
 
     # TODO(kl@gmail.com): Use a "*" here for string repetition.
@@ -536,20 +530,33 @@ No:
 
 命名规范：
 - **Internal**表示module内部的，或者class的`private`或`protected`。
-- 以`_`开头表示module内部的变量或函数(不包含在`import * from`)，使用`__`开头表示class的
-private变量或函数。
-- 将相关的class和顶层的function放在一个module里。与Java不同的是，一个module中可以包
-含多个class。
-- class使用首字母大写(CapWord)的命名方式，而module名使用小写和下划线
-(lower_with_uder.py)形式。
+- 以`_`开头表示module内部的变量或函数(不包含在`import * from`)，使用`__`开头表示class的private变量或函数。
+- 将相关的class和顶层的function放在一个module里。与Java不同的是，一个module中可以包含多个class。
+- class使用首字母大写(CapWord)的命名方式，而module名使用小写和下划线(lower_with_uder.py)形式。
+
+Python之父Guido推荐的命名规范：
+
+| Type | Public | Internal |
+| :---:  |  :---: |  :---: |
+| Packages | lower_with_under |
+| Modules | lower_with_under | _lower_with_under |
+| Classes | CapWords | _CapWords |
+| Exceptions | CapWords |
+| Functions | lower_with_under() | _lower_with_under() |
+| Global/Class Constants | CAPS_WITH_UNDER | _CAPS_WITH_UNDER |
+| Global/Class Variables | lower_with_under | _lower_with_under |
+| Instance Variables | lower_with_under | _lower_with_under (protected) or __lower_with_under (private) |
+| Method Names | lower_with_under() | _lower_with_under() (protected) or __lower_with_under() (private) |
+| Function/Method Parameters | lower_with_under |
+| Local Variables | lower_with_under |
 
 ## Main
 
     即使是脚本文件，也应该是可以被其它文件import的，因此在import时，不要产生副作用，即
     不要执行脚本的主功能。主功能应该被放在`main()`函数里。
 
-`pydoc`和单元测试都需要import文件，所以文件中应该总是添加`if __name__ ==
- '__main__'`确保当module被import的时候，不会执行其主功能。
+`pydoc`和单元测试都需要import文件，所以文件中应该总是添加`if __name__ == '__main__'`确保当module被import
+的时候，不会执行其主功能。
 
     def main():
         ...
@@ -566,8 +573,8 @@ private变量或函数。
 
     使用`pylint`检查代码的bug和编码规范等问题。
 
-`pylint`可以检测一些常见的错误，比如拼写错误、用`var`声明变量等，但是`pylint`并不完全准确，
-经常会有一些误报的warning，这些warning可以忽略。
+`pylint`可以检测一些常见的错误，比如拼写错误、用`var`声明变量等，但是`pylint`并不完全准确，经常会有一些误报的
+warning，这些warning可以忽略。
 
 ## Imports
 
@@ -604,9 +611,8 @@ private变量或函数。
 
 使用Exception，需遵循以下原则：
 
-+ 使用`raise MyException('Error message')`或`raise MyException`，不要使用两个参数
-的形式(`raise MyException, 'Error message'`)，也不要使用过时的String形式
-(`raise 'Error message'`)。
++ 使用`raise MyException('Error message')`或`raise MyException`，不要使用两个参数的形式
+(`raise MyException, 'Error message'`)，也不要使用过时的String形式(`raise 'Error message'`)。
 
 + module或package应该定义自己的exception基类，该基类应该继承`Exception`类，例如：
 
@@ -615,8 +621,8 @@ private变量或函数。
         pass;
 
 + 不要使用捕获所有异常(catch-all)的形式，如`except: `, 或`except Exception: `, 以及
-`except StandardError`等，除非将异常重新抛出，或者当前处于线程的最外层。否则所有的异常
-（比如拼写错误、单元测试错误、Ctrl+C中断等）都会被捕获。
+`except StandardError`等，除非将异常重新抛出，或者当前处于线程的最外层。否则所有的异常（比如拼写错误、
+单元测试错误、Ctrl+C中断等）都会被捕获。
 
 + 尽量简化`try/except`中的代码块，代码越多，发生错误的概率就越大，而真正的错误很可能被忽略了。
 
@@ -645,8 +651,8 @@ private变量或函数。
 
     嵌套定义class和function是允许的
 
-class可以定义在method/function/class中，function可以定义在method/function中。嵌套的函
-数对于上层的变量是只读的；适用于在一个作用域内定义工具类和函数。
+class可以定义在method/function/class中，function可以定义在method/function中。嵌套的函数对于上层的变量是
+只读的；适用于在一个作用域内定义工具类和函数。
 
 ## List Comprehensions
 
@@ -693,8 +699,8 @@ No:
 
     如果类型支持（如list/dictionary/file)，使用默认的iterator和operator。
 
-容器类型，如list/dictionary定义了默认的iterator和成员测试操作符(`in`和`not in`)，使用这
-些默认的iterator和operator，简单高效，没有额外的函数调用开销，例如：
+容器类型，如list/dictionary定义了默认的iterator和成员测试操作符(`in`和`not in`)，使用这些默认的iterator和
+operator，简单高效，没有额外的函数调用开销，例如：
 
 Yes:
 
@@ -722,8 +728,7 @@ No:
 
 Lambda表达式就是匿名函数，一般作为`map()`/`filter()`等高阶函数的回调或操作符；
 如果lambda表达式中的代码比较长（超过60-80字符），最好定义成函数；
-常用的操作，比如乘法运算，推荐使用`operator`模块(`operator.mul`)，而不是lambda函数
-(`lambda x, y: x * y`)。
+常用的操作，比如乘法运算，推荐使用`operator`模块(`operator.mul`)，而不是lambda函数(`lambda x, y: x * y`)。
 
 ## Conditional Expressions
 
@@ -761,10 +766,10 @@ No:
 
 + 使用`if foo:`，而不是`if foo != []`;
 + 不要使用`==`或`!=`去比较`None`，应该用`is`或`is not`；
-+ 不要使用`==`去比较`False`，应该使用`if not x:`; 如果要区分`False`和`None`，
-使用`if not x and x is not None:`；
-+ 对于列表类型(string/list/tuple)，空值表示false，使用`if not seq:`或`if seq:`，比使
-用`if len(seq):`或`if not len(seq):`更好；
++ 不要使用`==`去比较`False`，应该使用`if not x:`; 如果要区分`False`和`None`，使用
+`if not x and x is not None:`；
++ 对于列表类型(string/list/tuple)，空值表示false，使用`if not seq:`或`if seq:`，比使用`if len(seq):`或
+`if not len(seq):`更好；
 + 注意，'0'是true；
 + 对于整数，必须额外小心，不要将`None`当作0处理：
 

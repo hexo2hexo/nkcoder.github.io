@@ -1,5 +1,6 @@
 title: Java 8新的日期和时间API
 categories: Backend
+keywords: Java 8, Date Time API
 date: 2016-01-31 16:23:29
 tags: java
 ---
@@ -77,7 +78,8 @@ tags: java
 1) `ZonedDateTime`表示带时区的日期和时间，支持的操作与`LocalDateTime`非常类似：
 
 	Set<String> zones = ZoneId.getAvailableZoneIds();
-	ZonedDateTime.now(ZoneId.of("Asia/Shanghai")).plusMonths(1).minusHours(3).isBefore(ZonedDateTime.now());
+	ZonedDateTime.now(ZoneId.of("Asia/Shanghai")).plusMonths(1).minusHours(3)
+        .isBefore(ZonedDateTime.now());
 
 2) `ZonedDateTime`与`LocalDateTime`、`Instant`之间可以相互转换：
 
@@ -97,7 +99,8 @@ tags: java
 	// Sun 2016-01-31 15:50:04
 	DateTimeFormatter.ofPattern("E yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
 
-	LocalDateTime.parse("2016-01-31 15:51:00-0400", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ssxx"));
+	LocalDateTime.parse("2016-01-31 15:51:00-0400", 
+        DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ssxx"));
     LocalDate.parse("2016-01-31");
 
 2) 日期和时间格式化的常见格式：

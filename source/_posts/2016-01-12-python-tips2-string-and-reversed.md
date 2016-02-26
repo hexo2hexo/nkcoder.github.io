@@ -16,7 +16,8 @@ tags: python
 
 <!-- more -->
 
-你当然不想写26遍赋值语句，我们知道，内置函数`ord()`和`chr()`可以在unicode字符和值之间进行转换，而对于ASCII字符，unicode编码和ASCII编码的值相同，所以，可以这样来实现：
+你当然不想写26遍赋值语句，我们知道，内置函数`ord()`和`chr()`可以在unicode字符和值之间
+进行转换，而对于ASCII字符，unicode编码和ASCII编码的值相同，所以，可以这样来实现：
 
     ascii_of_A = ord('A')
 
@@ -59,7 +60,8 @@ python的内置函数`reversed()`就是用来反转一个列表的（list和stri
     for i, x in reversed(list(enumerate(num_list))):
         print(i, x)
 
-其实，除了使用`reversed()`函数，也可以使用list和string的**slicing**机制，这里简单介绍一下：
+其实，除了使用`reversed()`函数，也可以使用list和string的**slicing**机制，这里简单介绍
+一下：
 
     a_list[start:end:step]
 
