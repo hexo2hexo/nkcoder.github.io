@@ -11,7 +11,7 @@ Stream是Java 8 提供的高效操作集合类（Collection）数据的API。
 
 有一个字符串的list，要统计其中长度大于7的字符串的数量，用迭代来实现：
 
-	List<String> wordList = Arrays.asList("regular", "expression", "specified", "as", "a", 
+	List<String> wordList = Arrays.asList("regular", "expression", "specified", "as", "a",
         "string", "must");
 
     int countByIterator = 0;
@@ -32,15 +32,13 @@ Stream是Java 8 提供的高效操作集合类（Collection）数据的API。
 	long countByParallelStream = wordList.parallelStream().
         filter(w -> w.length() > 7).count();
 
-stream遵循的原则是：告诉我做什么，不用管我怎么做。比如上例：告诉stream通过多线程统计字符串长度，至于以什么顺序、
-在哪个线程中执行，由stream来负责；而在迭代实现中，由于计算的方式已确定，很难优化了。
+stream遵循的原则是：告诉我做什么，不用管我怎么做。比如上例：告诉stream通过多线程统计字符串长度，至于以什么顺序、在哪个线程中执行，由stream来负责；而在迭代实现中，由于计算的方式已确定，很难优化了。
 
 Stream和Collection的区别主要有：
 
 1. stream本身并不存储数据，数据是存储在对应的collection里，或者在需要的时候才生成的；
 2. stream不会修改数据源，总是返回新的stream；
-3. stream的操作是懒执行(lazy)的：仅当最终的结果需要的时候才会执行，比如上面的例子中，结果仅需要前3个长度大于7
-的字符串，那么在找到前3个长度符合要求的字符串后，`filter()`将停止执行；
+3. stream的操作是懒执行(lazy)的：仅当最终的结果需要的时候才会执行，比如上面的例子中，结果仅需要前3个长度大于7的字符串，那么在找到前3个长度符合要求的字符串后，`filter()`将停止执行；
 
 使用stream的步骤如下：
 
@@ -49,8 +47,7 @@ Stream和Collection的区别主要有：
 3. 通过中止操作(terminal operation)获取结果；该操作触发之前的懒操作的执行，中止操作后，该stream关闭，不能再
 使用了；
 
-在上面的例子中，`wordList.stream()`和`wordList.parallelStream()`是创建stream，`filter()`是中间操作，过
-滤后生成一个新的stream，`count()`是中止操作，获取结果。
+在上面的例子中，`wordList.stream()`和`wordList.parallelStream()`是创建stream，`filter()`是中间操作，过滤后生成一个新的stream，`count()`是中止操作，获取结果。
 
 ## 2. 创建Stream的方式
 
@@ -227,20 +224,18 @@ stream中的元素为x, y, z, ...，则`reduce()`执行的就是`x op y op z ...
 
 4) `toMap()`方法：
 
-`toMap`: 将stream中的元素映射为<key, value>的形式，两个参数分别用于生成对应的key和value的值。比如有一个字符串
-stream，将首字母作为key，字符串值作为value，得到一个map：
+`toMap`: 将stream中的元素映射为<key, value>的形式，两个参数分别用于生成对应的key和value的值。比如有一个字符串stream，将首字母作为key，字符串值作为value，得到一个map：
 
 	Stream<String> introStream = Stream.
     of("Get started with UICollectionView and the photo library".split(" "));
-    Map<String, String> introMap = 
+    Map<String, String> introMap =
         introStream.collect(Collectors.toMap(s -> s.substring(0, 1), s -> s));
 
-如果一个key对应多个value，则会抛出异常，需要使用第三个参数设置如何处理冲突，比如仅使用原来的value、使用新的
-value，或者合并：
+如果一个key对应多个value，则会抛出异常，需要使用第三个参数设置如何处理冲突，比如仅使用原来的value、使用新的value，或者合并：
 
 	Stream<String> introStream = Stream.of("Get started with UICollectionView and the photo library"
         .split(" "));
-	Map<Integer, String> introMap2 = introStream.collect(Collectors.toMap(s -> s.length(), 
+	Map<Integer, String> introMap2 = introStream.collect(Collectors.toMap(s -> s.length(),
         s -> s, (existingValue, newValue) -> existingValue));
 
 如果value是一个集合，即将key对应的所有value放到一个集合中，则需要使用第三个参数，将多个value合并：
@@ -264,13 +259,12 @@ value，或者合并：
 `toMap()`默认返回的是HashMap，如果需要其它类型的map，比如TreeMap，则可以在第四个参数指定构造方法：
 
 	Map<Integer, String> introMap2 = introStream.collect(
-        Collectors.toMap(s -> s.length(), s -> s, (existingValue, newValue) 
+        Collectors.toMap(s -> s.length(), s -> s, (existingValue, newValue)
             -> existingValue, TreeMap::new));
 
 ## 6. Grouping和Partitioning
 
-1)  `groupingBy()`表示根据某一个字段或条件进行分组，返回一个Map，其中key为分组的字段或条件，value默认为
-list，`groupingByConcurrent()`是其并发版本：
+1)  `groupingBy()`表示根据某一个字段或条件进行分组，返回一个Map，其中key为分组的字段或条件，value默认为list，`groupingByConcurrent()`是其并发版本：
 
 	Map<String, List<Locale>> countryToLocaleList = Stream.of(Locale.getAvailableLocales())
         .collect(Collectors.groupingBy(l -> l.getDisplayCountry()));
@@ -306,17 +300,17 @@ list，`groupingByConcurrent()`是其并发版本：
 对value的某一个字段求最大值，注意value是Optional的：
 
 	Map<String, Optional<City>> cityToPopulationMax = Stream.of(cities)
-            .collect(Collectors.groupingBy(City::getName, 
+            .collect(Collectors.groupingBy(City::getName,
                 Collectors.maxBy(Comparator.comparing(City::getPopulation))));
 
 使用mapping对value的字段进行map处理：
 
 	Map<String, Optional<String>> stateToNameMax = Stream.of(cities)
-		.collect(Collectors.groupingBy(City::getState, Collectors.mapping(City::getName, 
+		.collect(Collectors.groupingBy(City::getState, Collectors.mapping(City::getName,
             Collectors.maxBy(Comparator.comparing(String::length)))));
 
 	Map<String, Set<String>> stateToNameSet = Stream.of(cities)
-    .collect(Collectors.groupingBy(City::getState, 
+    .collect(Collectors.groupingBy(City::getState,
         Collectors.mapping(City::getName, Collectors.toSet())));
 
 通过`summarizingXXX`获取统计结果：
@@ -333,7 +327,7 @@ list，`groupingByConcurrent()`是其并发版本：
 比如上例可以通过mapping达到同样的效果：
 
 	Map<String, String> stateToNameJoining2 = Stream.of(cities)
-            .collect(Collectors.groupingBy(City::getState, 
+            .collect(Collectors.groupingBy(City::getState,
                 Collectors.mapping(City::getName, Collectors.joining(", ")
             )));
 
@@ -377,16 +371,14 @@ list，`groupingByConcurrent()`是其并发版本：
 
 	IntStream scoreStream = IntStream.rangeClosed(10, 30).parallel();
 
-要执行的操作必须是可并行执行的，即并行执行的结果和顺序执行的结果是一致的，而且必须保证stream中执行的操作是线程安
-全的：
+要执行的操作必须是可并行执行的，即并行执行的结果和顺序执行的结果是一致的，而且必须保证stream中执行的操作是线程安全的：
 
 	int[] wordLength = new int[12];
 	Stream.of("It", "is", "your", "responsibility").parallel().forEach(s -> {
 		if (s.length() < 12) wordLength[s.length()]++;
 	});
 
-这段程序的问题在于，多线程访问共享数组`wordLength`，是非线程安全的。解决的思路有：1）构造AtomicInteger数组；
-2）使用`groupingBy()`根据length统计；
+这段程序的问题在于，多线程访问共享数组`wordLength`，是非线程安全的。解决的思路有：1）构造AtomicInteger数组；2）使用`groupingBy()`根据length统计；
 
 2) 可以通过并行提高效率的常见场景：
 
@@ -395,15 +387,13 @@ list，`groupingByConcurrent()`是其并发版本：
 	LongStream.rangeClosed(5, 10).unordered().parallel().limit(3);
     IntStream.of(14, 15, 15, 14, 12, 81).unordered().parallel().distinct();
 
-在`groupingBy()`的操作中，map的合并操作是比较重的，可以通过`groupingByConcurrent()`来并行处理，不过前提是
-parallel stream：
+在`groupingBy()`的操作中，map的合并操作是比较重的，可以通过`groupingByConcurrent()`来并行处理，不过前提是parallel stream：
 
     Stream.of(cities).parallel().collect(Collectors.groupingByConcurrent(City::getState));
 
 在执行stream操作时不能修改stream对应的collection；
 
-stream本身是不存储数据的，数据保存在对应的collection中，所以在执行stream操作的同时修改对应的collection，结果
-是未定义的：
+stream本身是不存储数据的，数据保存在对应的collection中，所以在执行stream操作的同时修改对应的collection，结果是未定义的：
 
 	// ok
 	Stream<String> wordStream = wordList.stream();

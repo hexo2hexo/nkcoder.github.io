@@ -9,6 +9,8 @@ Ehcache是目前使用很广泛的Java系的cache，开源。可以把它当作�
 
 Ehcache默认使用**CLASSPATH**根目录下的`ehcache.xml`作为配置文件，如果没找到，则使用Jar包下的`ehcache-failsafe.xml`作为配置文件，该配置文件提供了默认的简单配置：
 
+<!--more-->
+
 	<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../config/ehcache.xsd">
 		<diskStore path="java.io.tmpdir"/>
 		<defaultCache

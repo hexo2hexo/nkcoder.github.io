@@ -231,8 +231,7 @@ No:
 
 + Doc Strings
 
-对于**doc strings**，建议总是使用三个双引号(`"""`)形式：与`"""`同一行是注释的概述，然后空一行，与`"""`缩进
-相同的位置开始是注释的详细说明。
+对于**doc strings**，建议总是使用三个双引号(`"""`)形式：与`"""`同一行是注释的概述，然后空一行，与`"""`缩进相同的位置开始是注释的详细说明。
 
 + Modules
 
@@ -242,11 +241,9 @@ No:
 
 function必须包含docstring，除非：1. 不被外部使用；2. 非常短；3. 非常明显；
 
-docstring中应该包含调用function的足够的信息，而不需要阅读function的代码。docstring应该描述调用函数的语法，
-而不是函数的实现。
+docstring中应该包含调用function的足够的信息，而不需要阅读function的代码。docstring应该描述调用函数的语法，而不是函数的实现。
 
-function的docstring分为不同的section：`Args`, `Returns`, `Raises`，section名后面使用冒号，section描述
-缩进显示。
+function的docstring分为不同的section：`Args`, `Returns`, `Raises`，section名后面使用冒号，section描述缩进显示。
 
 `Args`: 依次列出参数名，后跟一个冒号和空格，参数的描述应该包含需要的类型和参数的含义；参数名之间缩进对齐。
 `Returns`: （对于generator，是`Yields`），返回值的含义，如果返回None，则该section可以省略。
@@ -308,8 +305,7 @@ docstring应该位于class的定义下面，如果class包含public的属性，�
 
 + Block and Inline Comments
 
-对于复杂的逻辑，注释应该在逻辑的上面单独说明，对于简单但不明显的逻辑，注释放在代码的行末，但是与代码至少有2个空
-格的间距。
+对于复杂的逻辑，注释应该在逻辑的上面单独说明，对于简单但不明显的逻辑，注释放在代码的行末，但是与代码至少有2个空格的间距。
 
     # We use a weighted dictionary search to find out where i is in
     # the array.  We extrapolate position based on the largest num
@@ -327,9 +323,7 @@ docstring应该位于class的定义下面，如果class包含public的属性，�
 
     如果class没有继承别的class，则显式继承`object`，嵌套的class也是如此。
 
-继承`object`可以使**properties**正常工作，同时也避免了与Python 3的`new style class`的不兼容。而且，继承
-`object`，预定义了很多默认的属性和method，如
-`__new__, __init__, __delattr__, __getattribute__, __setattr__, __hash__, __repr__, __str__`。
+继承`object`可以使**properties**正常工作，同时也避免了与Python 3的`new style class`的不兼容。而且，继承`object`，预定义了很多默认的属性和method，如`__new__, __init__, __delattr__, __getattribute__, __setattr__, __hash__, __repr__, __str__`。
 
 Yes:
 
@@ -376,8 +370,7 @@ No:
     x = imperative + ', ' + expletive + '!'
     x = 'name: ' + name + '; score: ' + str(n)
 
-不要使用`+`和`+=`在循环中拼接字符串。因为字符串是不可变的，这样会创建很多不必要的临时对象，导致运行时间是乘方
-级的，而不是线性的。更好地做法应该是，循环将各个字串放到list中，循环结束后通过`''.join()`连接：
+不要使用`+`和`+=`在循环中拼接字符串。因为字符串是不可变的，这样会创建很多不必要的临时对象，导致运行时间是乘方级的，而不是线性的。更好地做法应该是，循环将各个字串放到list中，循环结束后通过`''.join()`连接：
 
 Yes:
 
@@ -394,8 +387,7 @@ No:
         employee_table += '<tr><td>%s, %s</td></tr>' % (last_name, first_name)
     employee_table += '</table>'
 
-在同一个文件中，对于字符串引号的使用要保持一致。使用`''`或`""`都可以，保持一致即可。两者可以同时使用，避免通
-过`\`转义。
+在同一个文件中，对于字符串引号的使用要保持一致。使用`''`或`""`都可以，保持一致即可。两者可以同时使用，避免通过`\`转义。
 
 Yes:
 
@@ -430,11 +422,13 @@ No:
     使用完之后，要显式关闭file和socket。
 
 没有合理地关闭file或socket会带来很多问题：
+
 - 会消耗很多系统资源，比如文件描述符。如果这类的对象很多，可能会耗尽系统资源。
 - file处于未关闭状态，可能会导致其它的操作不可用，比如移动或删除。
 - 被共享的file和socket，可能被意外地读写，如果被显式关闭，则读写会立即产生异常。
 
 当file对象被销毁的时候，file和socket会被自动关闭，但是将file对象的存活期与其状态绑定并不是好的实践：
+
 - 无法保证runtime一定会执行file对象的析构函数。
 - 对file对象意外的引用可能会延长其存活期。
 
@@ -482,6 +476,7 @@ No:
 
 import总是位于文件的顶部，在module的注释和docstring的后面，而在module的全局变量和常量的前面。
 import应该根据通用性进行分组：
+
 - import标准库
 - import第三方库
 - import应用特定的库
@@ -524,11 +519,13 @@ No:
     function_parameter_name, local_var_name.
 
 避免使用的命名：
+
 - 除了计数(counter)和迭代(iterator)，不要使用单字符变量名。
 - 不要在package/module名中使用连字符(-)。
 - 不要使用双下划线开头和双下划线结尾的变量(__double_leading_and_trailing__)。
 
 命名规范：
+
 - **Internal**表示module内部的，或者class的`private`或`protected`。
 - 以`_`开头表示module内部的变量或函数(不包含在`import * from`)，使用`__`开头表示class的private变量或函数。
 - 将相关的class和顶层的function放在一个module里。与Java不同的是，一个module中可以包含多个class。
@@ -555,8 +552,7 @@ Python之父Guido推荐的命名规范：
     即使是脚本文件，也应该是可以被其它文件import的，因此在import时，不要产生副作用，即
     不要执行脚本的主功能。主功能应该被放在`main()`函数里。
 
-`pydoc`和单元测试都需要import文件，所以文件中应该总是添加`if __name__ == '__main__'`确保当module被import
-的时候，不会执行其主功能。
+`pydoc`和单元测试都需要import文件，所以文件中应该总是添加`if __name__ == '__main__'`确保当module被import的时候，不会执行其主功能。
 
     def main():
         ...
@@ -566,15 +562,13 @@ Python之父Guido推荐的命名规范：
 
 在module被import的时候，所有顶层(top-level)的代码都会被执行。
 
-
 # Python Language Rules
 
 ## Lint
 
     使用`pylint`检查代码的bug和编码规范等问题。
 
-`pylint`可以检测一些常见的错误，比如拼写错误、用`var`声明变量等，但是`pylint`并不完全准确，经常会有一些误报的
-warning，这些warning可以忽略。
+`pylint`可以检测一些常见的错误，比如拼写错误、用`var`声明变量等，但是`pylint`并不完全准确，经常会有一些误报的warning，这些warning可以忽略。
 
 ## Imports
 
@@ -594,8 +588,7 @@ warning，这些warning可以忽略。
 
     在import一个module的时候，使用module的全路径名。
 
-可以避免module名冲突。
-方便module的查找。
+可以避免module名冲突。方便module的查找。
 
 例如：
 
@@ -611,8 +604,7 @@ warning，这些warning可以忽略。
 
 使用Exception，需遵循以下原则：
 
-+ 使用`raise MyException('Error message')`或`raise MyException`，不要使用两个参数的形式
-(`raise MyException, 'Error message'`)，也不要使用过时的String形式(`raise 'Error message'`)。
++ 使用`raise MyException('Error message')`或`raise MyException`，不要使用两个参数的形式(`raise MyException, 'Error message'`)，也不要使用过时的String形式(`raise 'Error message'`)。
 
 + module或package应该定义自己的exception基类，该基类应该继承`Exception`类，例如：
 
@@ -620,14 +612,9 @@ warning，这些warning可以忽略。
     class Error(Exception):
         pass;
 
-+ 不要使用捕获所有异常(catch-all)的形式，如`except: `, 或`except Exception: `, 以及
-`except StandardError`等，除非将异常重新抛出，或者当前处于线程的最外层。否则所有的异常（比如拼写错误、
-单元测试错误、Ctrl+C中断等）都会被捕获。
-
++ 不要使用捕获所有异常(catch-all)的形式，如`except: `, 或`except Exception: `, 以及`except StandardError`等，除非将异常重新抛出，或者当前处于线程的最外层。否则所有的异常（比如拼写错误、单元测试错误、Ctrl+C中断等）都会被捕获。
 + 尽量简化`try/except`中的代码块，代码越多，发生错误的概率就越大，而真正的错误很可能被忽略了。
-
 + 无论是否发生Exception，使用`finally`执行一些代码，比如关闭文件；
-
 + 当捕获到Exception时，使用`as`而不是逗号，例如：
 
 
@@ -643,6 +630,7 @@ warning，这些warning可以忽略。
 当moduel被import后，module变量（全局变量）可以通过赋值修改。
 
 尽量使用class变量，而不是全局变量。以下是例外情况：
+
 - 脚本的默认选项；
 - module的常量，例如：`PI = 3.14159`;
 - 通过全局变量缓存值；
@@ -651,8 +639,7 @@ warning，这些warning可以忽略。
 
     嵌套定义class和function是允许的
 
-class可以定义在method/function/class中，function可以定义在method/function中。嵌套的函数对于上层的变量是
-只读的；适用于在一个作用域内定义工具类和函数。
+class可以定义在method/function/class中，function可以定义在method/function中。嵌套的函数对于上层的变量是只读的；适用于在一个作用域内定义工具类和函数。
 
 ## List Comprehensions
 
@@ -699,8 +686,7 @@ No:
 
     如果类型支持（如list/dictionary/file)，使用默认的iterator和operator。
 
-容器类型，如list/dictionary定义了默认的iterator和成员测试操作符(`in`和`not in`)，使用这些默认的iterator和
-operator，简单高效，没有额外的函数调用开销，例如：
+容器类型，如list/dictionary定义了默认的iterator和成员测试操作符(`in`和`not in`)，使用这些默认的iterator和operator，简单高效，没有额外的函数调用开销，例如：
 
 Yes:
 
@@ -803,4 +789,5 @@ No:
 使用**Queue**模块中的`Queue`作为线程间交互的数据结构，或者使用**threading**模块。
 
 ## 参考
+
 + [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)
