@@ -5,6 +5,8 @@ date: 2016-01-24 20:45:15
 tags: java
 ---
 
+> 本文链接为：http://nkcoder.github.io/2016/01/24/java-8-stream-api/  ，转载请注明出处，谢谢！
+
 Stream是Java 8 提供的高效操作集合类（Collection）数据的API。
 
 ## 1. 从Iterator到Stream

@@ -5,6 +5,8 @@ date: 2016-01-31 16:23:29
 tags: java
 ---
 
+> 本文链接为：http://nkcoder.github.io/2016/01/31/java-8-date-time-api/  ，转载请注明出处，谢谢！
+
 ## 1. Instant 与 Duration
 
 1) `Instant`表示某一个时间点的时间戳，可以类比于`java.uti.Date`。支持各种运算操作：

@@ -5,6 +5,8 @@ date: 2016-01-16 18:03:04
 tags: java
 ---
 
+> 本文链接为：http://nkcoder.github.io/2016/01/16/java-8-lambda-expression-guide/  ，转载请注明出处，谢谢！
+
 ## 1.1 为什么使用Lambda表达式
 
 先看几个例子：

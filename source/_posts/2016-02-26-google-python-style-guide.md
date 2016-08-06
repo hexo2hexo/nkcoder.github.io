@@ -5,6 +5,8 @@ date: 2016-02-26 14:05:12
 tags: python
 ---
 
+> 本文链接为：http://nkcoder.github.io/2016/02/26/google-python-style-guide/  ，转载请注明出处，谢谢！
+
 # Python Style Rules
 
 ## Semicolons

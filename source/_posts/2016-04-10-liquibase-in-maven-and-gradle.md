@@ -3,6 +3,9 @@ categories: Backend
 date: 2016-04-10 16:06:32
 tags: [LiquiBase, Maven, Gradle]
 ---
+
+> 本文链接为：http://nkcoder.github.io/2016/04/10/liquibase-in-maven-and-gradle/  ，转载请注明出处，谢谢！
+
 [LiquiBase](http://www.liquibase.org/index.html)是一个用于数据库重构和迁移的开源工具，通过日志文件的形式记录数据库的变更，然后执行日志文件中的修改，将数据库更新或回滚到一致的状态。LiquiBase的主要特点有：
 
 - 支持几乎所有主流的数据库，如MySQL, PostgreSQL, Oracle, Sql Server, DB2等；

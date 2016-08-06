@@ -3,7 +3,10 @@ categories: Backend
 date: 2016-04-09 22:23:36
 tags: [Ehcache, MyBatis]
 ---
-Ehcache是目前使用很广泛的Java系的cache，开源。可以把它当作通用的cache，或者作为Hibernate/MyBatis等的二级缓存。本文简要介绍在MyBatis中集成Ehcache，其中Ehcache的版本是**2.10.1**。
+
+> 本文链接为：http://nkcoder.github.io/2016/04/09/ehcache-mybatis/  ，转载请注明出处，谢谢！
+
+Ehcache是目前使用很广泛的Java系的开源cache。可以把它当作通用的cache，或者作为Hibernate/MyBatis等的二级缓存。本文简要介绍在MyBatis中集成Ehcache，其中Ehcache的版本是**2.10.1**。
 
 ## 1. Ehcache的配置
 
