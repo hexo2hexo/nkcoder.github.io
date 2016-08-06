@@ -222,8 +222,7 @@ s命令默认仅替换每一行出现的第1个匹配，如：
     | just because...
 
 如果有多个分组，首先在`old_word`里通过括号()分组，然后在`new_word`里通过数字需要去引号（分组的括号以及引用的数字都需要通过\转义）,
-数字和前面的分组一一对应。
-比如我们要反转每一行的前两个单词：
+数字和前面的分组一一对应。比如我们要反转每一行的前两个单词：
 
     root@a01:~/junk# sed 's/\([0-9a-zA-Z][0-9a-zA-Z]*\) \([0-9a-zA-Z][0-9a-zA-Z]*\)/\2 \1/' annoying.txt
     is this the song that never ends
@@ -233,15 +232,19 @@ s命令默认仅替换每一行出现的第1个匹配，如：
     they and'll continue singing it forever
     because just...
 
-考虑到字符后的改进版：
+## 1.5 插入命令i
 
-    root@a01:~/junk# sed 's/\([^ ][^ ]*\) \([^ ][^ ]*\)/\2 \1/' annoying.txt
-    is this the song that never ends
-    it yes, goes on and on, my friend
-    people some started singing it
-    knowing not what it was
-    they'll and continue singing it forever
-    because... just
+在文件中插入内容也是sed常见用法之一。i命令表示在匹配的行前插入内容，插入的内容作为一行显示，如：
+
+    root@a01:~/junk# sed '/singing/i before every line' annoying.txt
+    this is the song that never ends
+    yes, it goes on and on, my friend
+    before every line
+    some people started singing it
+    not knowing what it was
+    before every line
+    and they'll continue singing it forever
+    just because...
 
 # 2. 中级用法
 
