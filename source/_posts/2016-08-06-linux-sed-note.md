@@ -4,8 +4,7 @@ date: 2016-08-06 14:23:42
 tags: [linux, sed]
 ---
 
-sed用于处理文本，逐行处理，不需交互， 数据源可以是标准输入流，也可以是文件；处理后的内容默认是输出到标准输出流，
-可以重定向，也可以原地修改文件，如果是原地修改文件，支持备份；
+sed是一个面向行的流处理工具，主要用于对文件的增加、删除、替换等操作。
 
 sed命令的语法：
 
@@ -22,7 +21,7 @@ sed命令的语法：
 
 <!-- more -->
 
-# 1. 基本用法
+# 1. 命令及参数含义
 
 ## 1.1 读取文件内容
 
@@ -101,6 +100,11 @@ p命令将读到的内容直接打印出来， 如：
     some people started singing it
     and they'll continue singing it forever
 
+仅打印pattern匹配到的行：
+
+    root@a01:~/junk# sed -n '/this/p' annoying.txt
+    this is the song that never ends
+
 ## 1.3 删除命令d
 
 删除命令d与打印命令p的用法基本类似，只需要将p换成d即可，如：
@@ -142,7 +146,8 @@ p命令将读到的内容直接打印出来， 如：
 
     's/old_word/new_word/'
 
-s是替换命令，/是默认的分隔符，也可以使用其它字符作为分隔符（紧跟s之后），注意末尾的分隔符不能省略，如：
+s是替换命令，/是默认的分隔符，也可以使用其它字符作为分隔符（紧跟s之后），常见的有：|, :, _等，注意末尾的分隔符不能省略。
+old_word为正则表达式，用于匹配，new_word是要替换的字符串。如：
 
     root@a01:~/junk# echo http://www.thegeekstuff.com/2009/09/unix-sed | sed 's_2009/09_2016/07_'
     http://www.thegeekstuff.com/2016/07/unix-sed
@@ -221,8 +226,8 @@ s命令默认仅替换每一行出现的第1个匹配，如：
     | and they'll continue singing it forever
     | just because...
 
-如果有多个分组，首先在`old_word`里通过括号()分组，然后在`new_word`里通过数字需要去引号（分组的括号以及引用的数字都需要通过\转义）,
-数字和前面的分组一一对应。比如我们要反转每一行的前两个单词：
+如果有多个分组，首先在`old_word`里通过括号()分组，然后在`new_word`里通过数字序号去引用（分组的括号以及引用的数字都需要通过\转义）,
+数字和前面的分组一一对应，最多可以使用9个数字。比如我们要反转每一行的前两个单词：
 
     root@a01:~/junk# sed 's/\([0-9a-zA-Z][0-9a-zA-Z]*\) \([0-9a-zA-Z][0-9a-zA-Z]*\)/\2 \1/' annoying.txt
     is this the song that never ends
@@ -232,7 +237,12 @@ s命令默认仅替换每一行出现的第1个匹配，如：
     they and'll continue singing it forever
     because just...
 
-## 1.5 插入命令i
+\1可以用于用在new_word，也可以用在old_word中，如打印具有连续重复词的行：
+
+    root@a01:~/junk# sed -n '/\([a-z][a-z]*\) \1/p' annoying.txt
+    this is the song that never ends
+
+## 1.5 行之前插入命令i
 
 在文件中插入内容也是sed常见用法之一。i命令表示在匹配的行前插入内容，插入的内容作为一行显示，如：
 
@@ -246,9 +256,33 @@ s命令默认仅替换每一行出现的第1个匹配，如：
     and they'll continue singing it forever
     just because...
 
-# 2. 中级用法
+## 1.6 行之后插入命令a
 
-## 2.1 执行多条处理命令：-e选项
+表示在匹配的行之后插入内容：
+
+    root@a01:~/junk# sed '/it/a after it' annoying.txt
+    this is the song that never ends
+    yes, it goes on and on, my friend
+    after it
+    some people started singing it
+    after it
+    not knowing what it was
+    after it
+    and they'll continue singing it forever
+    after it
+    just because...
+
+## 1.7 行修改（替换）命令c
+
+    root@a01:~/junk# sed '/it/c change it' annoying.txt
+    this is the song that never ends
+    change it
+    change it
+    change it
+    change it
+    just because...
+
+## 1.8 执行多条处理命令：-e选项
 
 可以通过管道|，如：
 
@@ -280,7 +314,7 @@ s命令默认仅替换每一行出现的第1个匹配，如：
     & they'll continue singing it forever
     just because...
 
-## 2.2 sed脚本文件：-f选项
+## 1.9 sed脚本文件：-f选项
 
 可以将sed命令放到文件里，然后执行这个脚本文件，语法为：
 
@@ -299,11 +333,11 @@ s命令默认仅替换每一行出现的第1个匹配，如：
     & they'll continue singing it forever
     just because...
 
-## 2.3 范围限制
+## 1.10 pattern
 
-可以通过正则表达式限制处理的范围（即行数范围）。
+命令前面都可以通过pattern去匹配，pattern为正则表达式。
 
-比如仅处理包含singing这个单词的行：
+比如仅处理包含singing这个词的行：
 
     root@a01:~/junk# sed '/singing/s/it/& loudly/' annoying.txt
     this is the song that never ends
@@ -313,6 +347,17 @@ s命令默认仅替换每一行出现的第1个匹配，如：
     and they'll continue singing it loudly forever
     just because...
 
+pattern默认的分隔符也是/，如果第一个字符为\，则使用后面的字符作为分隔符，一般用于匹配本身带有/的值，如：
+
+    root@a01:~/junk# echo http://www.grymoire.com/Unix/sed.html | sed '\_/Unix/sed_s_/sed_/awk_'
+    http://www.grymoire.com/Unix/awk.html
+
+pattern除了直接匹配，还支持范围匹配，语法为：
+
+    sed '/start/,/stop/ s/#.*//'
+
+start表示匹配开始，stop表示匹配结束，可以看作开关；如果是正则表达式，需要使用//，如果只是数字或者^$，则不需要//。
+
 删除从some开头到not开头的中间所有行：
 
     root@a01:~/junk# sed '/^some/,/^not/d' annoying.txt
@@ -321,14 +366,55 @@ s命令默认仅替换每一行出现的第1个匹配，如：
     and they'll continue singing it forever
     just because...
 
+删除第1行到包含yes的那一行：
+
+    root@a01:~/junk# sed '1,/yes/d' annoying.txt
+    some people started singing it
+    not knowing what it was
+    and they'll continue singing it forever
+    just because...
+
+删除包含yes那行到最后一行（命令d前面允许有空格的）：
+
+    root@a01:~/junk# sed '/yes/,$ d' annoying.txt
+    this is the song that never ends
+
 命令前面使用!表示对命令取反，比如对上一条命令取反：
 
     root@a01:~/junk# sed '/^some/,/^not/!d' annoying.txt
     some people started singing it
     not knowing what it was
 
+# 2. 应用示例
+
+## 2.1 保留每一行的第一个单词
+
+    root@a01:~/junk# sed 's/\([a-zA-Z]*\).*/\1/' < annoying.txt > first_word.txt
+    root@a01:~/junk# cat first_word.txt
+    this
+    yes
+    some
+    not
+    and
+    just
+
+## 2.2 `Here is`输入
+
+    root@a01:~/junk# cat sed-here-is.sh
+    #!/bin/sh
+    echo -n "what is the value?\n"
+    read value
+    sed "s/XYZ/$value/" <<EOF
+    The value is XYZ
+    EOF
+    root@a01:~/junk# sh sed-here-is.sh
+    what is the value?
+    test
+    The value is test
+
 ## 参考
 
+- [Sed - An Introduction and Tutorial by Bruce Barnett](http://www.grymoire.com/Unix/sed.html)
 - [The Basics of Using the Sed Stream Editor to Manipulate Text in Linux](https://www.digitalocean.com/community/tutorials/the-basics-of-using-the-sed-stream-editor-to-manipulate-text-in-linux)
 - [Intermediate Sed: Manipulating Streams of Text in a Linux Environment](https://www.digitalocean.com/community/tutorials/intermediate-sed-manipulating-streams-of-text-in-a-linux-environment)
 
