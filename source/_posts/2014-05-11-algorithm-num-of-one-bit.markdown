@@ -3,8 +3,6 @@ layout: post
 title: 算法练习--整数二进制中1的个数
 date: 2014-05-11 23:42:05 +0800
 tags: algorithm
-comments: true
-tags: algorithm
 categories: Algorithm
 ---
 

@@ -3,8 +3,6 @@ layout: post
 title: 算法练习--环中最后的数字
 date: 2014-05-22 00:00:43 +0800
 tags: array
-comments: true
-tags: algorithm
 categories: Algorithm
 ---
 
