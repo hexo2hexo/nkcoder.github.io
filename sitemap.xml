@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://nkcoder.github.io/2017/09/17/junit-tutorial-1/</loc>
+    
+    <lastmod>2017-09-17T10:04:17.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://nkcoder.github.io/2017/06/11/maven-deploy-to-jfrog-artifactory-md/</loc>
     
     <lastmod>2017-09-17T06:06:02.000Z</lastmod>
@@ -9,14 +16,14 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2017/09/17/junit-tutorial-1/</loc>
+    <loc>http://nkcoder.github.io/2014/06/27/quartz-tutorial-03-job-jobdetail/</loc>
     
-    <lastmod>2017-09-17T06:05:37.000Z</lastmod>
+    <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/07/08/guava-basic-preconditions/</loc>
+    <loc>http://nkcoder.github.io/2014/01/07/mysql-optimize-in-project/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
@@ -30,13 +37,6 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/01/05/vim-basic-usage/</loc>
-    
-    <lastmod>2017-09-17T03:02:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://nkcoder.github.io/2014/02/13/memcached-install-libevent-repcached-memcached/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
@@ -44,14 +44,14 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/02/16/xmemcached-usage-with-spring/</loc>
+    <loc>http://nkcoder.github.io/2014/02/15/memcached-usage-parameters-commands/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/02/15/memcached-usage-parameters-commands/</loc>
+    <loc>http://nkcoder.github.io/2014/02/16/xmemcached-usage-with-spring/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
@@ -93,14 +93,14 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/03/18/elasticsearch-term-query/</loc>
+    <loc>http://nkcoder.github.io/2014/03/16/spring-jdbc/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/03/16/spring-jdbc/</loc>
+    <loc>http://nkcoder.github.io/2014/03/18/elasticsearch-term-query/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
@@ -142,13 +142,6 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/05/06/algorithm-calculate-pow/</loc>
-    
-    <lastmod>2017-09-17T03:02:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://nkcoder.github.io/2014/05/04/algorithm-practice-addbybit/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
@@ -163,7 +156,7 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/05/08/algorithm-find-continue-sum/</loc>
+    <loc>http://nkcoder.github.io/2014/05/06/algorithm-calculate-pow/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
@@ -177,7 +170,7 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/05/11/algorithm-num-of-one-bit/</loc>
+    <loc>http://nkcoder.github.io/2014/05/08/algorithm-find-continue-sum/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
@@ -192,6 +185,13 @@
   
   <url>
     <loc>http://nkcoder.github.io/2014/05/09/algorithm-odd-before-even/</loc>
+    
+    <lastmod>2017-09-17T03:02:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://nkcoder.github.io/2014/05/11/algorithm-num-of-one-bit/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
@@ -247,6 +247,13 @@
   </url>
   
   <url>
+    <loc>http://nkcoder.github.io/2014/05/22/jetty-avoid-repeat-deploy/</loc>
+    
+    <lastmod>2017-09-17T03:02:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://nkcoder.github.io/2014/05/25/algorithm-merge-two-sorted-list/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
@@ -261,7 +268,7 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/05/22/jetty-avoid-repeat-deploy/</loc>
+    <loc>http://nkcoder.github.io/2014/06/18/jetty-deploy-help/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
@@ -275,13 +282,6 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/06/18/jetty-deploy-help/</loc>
-    
-    <lastmod>2017-09-17T03:02:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://nkcoder.github.io/2014/06/23/quartz-tutorial-01-using-quartz/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
@@ -289,14 +289,14 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/06/27/quartz-tutorial-03-job-jobdetail/</loc>
+    <loc>http://nkcoder.github.io/2014/06/24/quartz-tutorial-02-api-job-trigger/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/01/07/mysql-optimize-in-project/</loc>
+    <loc>http://nkcoder.github.io/2014/01/05/vim-basic-usage/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
@@ -310,7 +310,7 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/06/24/quartz-tutorial-02-api-job-trigger/</loc>
+    <loc>http://nkcoder.github.io/2014/07/08/guava-basic-preconditions/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
@@ -373,14 +373,14 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/09/05/blockqueue-arrayblockingqueue/</loc>
+    <loc>http://nkcoder.github.io/2014/08/24/quartz-tutorial-08-scheduler-listener/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/08/24/quartz-tutorial-08-scheduler-listener/</loc>
+    <loc>http://nkcoder.github.io/2014/09/05/blockqueue-arrayblockingqueue/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
@@ -394,14 +394,14 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/10/27/why-should-choose-gradle/</loc>
+    <loc>http://nkcoder.github.io/2014/10/24/redis-tookit-implement-in-java-1/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/10/24/redis-tookit-implement-in-java-1/</loc>
+    <loc>http://nkcoder.github.io/2014/10/27/why-should-choose-gradle/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
@@ -492,14 +492,14 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2016/01/31/java-8-date-time-api/</loc>
+    <loc>http://nkcoder.github.io/2016/01/24/java-8-stream-api/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2016/01/24/java-8-stream-api/</loc>
+    <loc>http://nkcoder.github.io/2016/01/31/java-8-date-time-api/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
