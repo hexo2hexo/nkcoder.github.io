@@ -3,13 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Think And Code
-subtitle: Salvation lies within!
-description: programming notes
-author: nkcoder
-language: zh-Hans
-timezone:
-keywords: 服务端, 前端, iOS开发, web开发, Java, redis, elasticsearch, mongodb, swift
+title: Daniel's Blog
+subtitle: Salvation lies within！
+description: 个人博客，写点技术总结，专注后端
+author: Daniel
+email: nkcoder@icloud.com
+keywords: "服务端开发, Java, AKKA, redis, Spring, SpringBoot, 微服务, 并发"
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -49,6 +48,14 @@ default_category: uncategorized
 category_map:
 tag_map:
 
+# Archives
+## 2: Enable pagination
+## 1: Disable pagination
+## 0: Fully Disable
+archive: 1
+category: 1
+tag: 1
+
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
 ## You can customize the date format as defined in
@@ -58,14 +65,14 @@ time_format: HH:mm:ss
 
 # Pagination
 ## Set per_page to 0 to disable pagination
-per_page: 5
+per_page: 3
 pagination_dir: page
 
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: hhttp://www.example3.com/ttp://hexo.io/themes/
 # theme: maupassant
-theme: next
+theme: yilia
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
@@ -78,7 +85,7 @@ deploy:
 feed:
   type: atom
   path: atom.xml
-  limit: 10
+  limit: 50
   hub:
 
 # marked
@@ -95,3 +102,22 @@ sitemap:
     path: sitemap.xml
 
 disqus_shortname: nkcoder
+
+jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: false
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true

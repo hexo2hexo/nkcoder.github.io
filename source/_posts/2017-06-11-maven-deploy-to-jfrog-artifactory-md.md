@@ -1,10 +1,7 @@
 title: maven将jar包deploy到Jfrog Artifactory
 categories: Backend
 date: 2017-06-11 23:08:30
-tags: 
-    - Maven
-    - Jenkins
-    - Jfrog
+tags: [Maven, Jenkins, Jfrog]
 ---
 
 可以采取两种方式，第一种是通过maven的deploy命令，第二种是通过jenkins的`Artifactory`插件。
@@ -12,8 +9,6 @@ tags:
 ## 1. maven的deploy命令
 
 在`settings.xml`中配置servers和profiles：
-
-<!-- more -->
 
     <?xml version="1.0" encoding="UTF-8"?>
     <settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0"
@@ -85,6 +80,8 @@ tags:
         <activeProfile>artifactory</activeProfile>
       </activeProfiles>
     </settings>
+
+<!--more-->
 
 然后，在`pom.xml`中增加`distributionManagement`节点配置：
 
