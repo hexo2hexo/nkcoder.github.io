@@ -1,4 +1,4 @@
-title: 单元测试简易教程（一）
+title: Junit入门指南
 categories: Backend
 date: 2017-09-17 10:43:09
 tags: [Unit Test, Junit]
@@ -10,10 +10,10 @@ tags: [Unit Test, Junit]
 
 添加gradle依赖：
 
-    compile("junit:junit:4.12") {
+    testCompile("junit:junit:4.12") {
         exclude group: 'org.hamcrest'
     }
-    compile "org.hamcrest:hamcrest-library:1.3"
+    testCompile "org.hamcrest:hamcrest-library:1.3"
 
 ## 1. 基本注解
 
