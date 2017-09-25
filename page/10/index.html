@@ -298,7 +298,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nkcoder.github.io/2014/07/26/java-pass-by-value/">
+    <link itemprop="mainEntityOfPage" href="http://nkcoder.github.io/2014/05/16/algorithm-print-matrix-diagonally/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Daniel">
@@ -317,7 +317,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2014/07/26/java-pass-by-value/" itemprop="url">Java的值传递</a></h2>
+                <a class="post-title-link" href="/2014/05/16/algorithm-print-matrix-diagonally/" itemprop="url">算法练习--根据对角线打印矩阵</a></h2>
         
 
         <div class="post-meta">
@@ -329,8 +329,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-07-26T23:53:27+08:00">
-                2014-07-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-05-16T23:41:54+08:00">
+                2014-05-16
               </time>
             
 
@@ -364,8 +364,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Backend/" itemprop="url" rel="index">
-                    <span itemprop="name">Backend</span>
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
                   </a>
                 </span>
 
@@ -402,10 +402,21 @@
 
       
         
-          <p><code>java pass by value or reference</code>，我用这句话向google求助，第一条结果就是我想要的，StackOverflow上早有大神解决了我等菜鸟的困惑。<a href="http://stackoverflow.com/questions/40480/is-java-pass-by-reference-or-pass-by-value" target="_blank" rel="external">排名第一的回答</a>虽简短，但精辟，两个小例子非常准确地说明了问题的本质。我想，如果再配两幅小图，那就完美了，故作图如下。</p>
+          <h2 id="1-问题描述："><a href="#1-问题描述：" class="headerlink" title="1. 问题描述："></a>1. 问题描述：</h2><blockquote>
+<p>输入一个矩阵，从右上角开始按照斜对角线打印矩阵的值，如矩阵为：</p>
+</blockquote>
+<pre><code>1, 2,  3,  4
+5, 6,  7,  8
+9, 10, 11, 12
+13,14, 15, 16
+</code></pre><blockquote>
+<p>输出：</p>
+</blockquote>
+<pre><code>4, 3, 8, 2, 7, 12, 1, 6, 11, 16, 5, 10, 15, 9, 14, 13
+</code></pre>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2014/07/26/java-pass-by-value/#more" rel="contents">
+            <a class="btn" href="/2014/05/16/algorithm-print-matrix-diagonally/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -456,7 +467,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nkcoder.github.io/2014/07/23/quartz-tutorial-05-simple-trigger-intro/">
+    <link itemprop="mainEntityOfPage" href="http://nkcoder.github.io/2014/05/16/algorithm-del-one-node-from-linklist/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Daniel">
@@ -475,7 +486,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2014/07/23/quartz-tutorial-05-simple-trigger-intro/" itemprop="url">Quartz教程五--SimpleTrigger</a></h2>
+                <a class="post-title-link" href="/2014/05/16/algorithm-del-one-node-from-linklist/" itemprop="url">算法练习--从链表中删除一个节点</a></h2>
         
 
         <div class="post-meta">
@@ -487,8 +498,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-07-23T08:08:19+08:00">
-                2014-07-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-05-16T22:31:03+08:00">
+                2014-05-16
               </time>
             
 
@@ -522,8 +533,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Backend/" itemprop="url" rel="index">
-                    <span itemprop="name">Backend</span>
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
                   </a>
                 </span>
 
@@ -560,11 +571,12 @@
 
       
         
-          <p><em>SimpleTrigger</em>可以满足的调度需求是：在具体的时间点执行一次，或者在具体的时间点执行，并且以指定的间隔重复执行若干次。比如，你有一个trigger，你可以设置它在2015年1月13日的上午11:23:54准时触发，或者在这个时间点触发，并且每隔2秒触发一次，一共重复5次。</p>
-<p>根据描述，你可能已经发现了，<em>SimpleTrigger</em>的属性包括：开始时间、结束时间、重复次数以及重复的间隔。这些属性的含义与你所期望的是一致的，只是关于结束时间有一些地方需要注意。</p>
+          <h2 id="1-问题描述："><a href="#1-问题描述：" class="headerlink" title="1. 问题描述："></a>1. 问题描述：</h2><blockquote>
+<p>给定一个链表和其中一个节点，删除该节点；</p>
+</blockquote>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2014/07/23/quartz-tutorial-05-simple-trigger-intro/#more" rel="contents">
+            <a class="btn" href="/2014/05/16/algorithm-del-one-node-from-linklist/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -615,7 +627,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nkcoder.github.io/2014/07/16/quartz-tutorial-04-trigger/">
+    <link itemprop="mainEntityOfPage" href="http://nkcoder.github.io/2014/05/14/algorithm-search-sort-two-dim-array/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Daniel">
@@ -634,7 +646,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2014/07/16/quartz-tutorial-04-trigger/" itemprop="url">Quartz教程四--Trigger介绍</a></h2>
+                <a class="post-title-link" href="/2014/05/14/algorithm-search-sort-two-dim-array/" itemprop="url">算法练习--二维数组中查找元素</a></h2>
         
 
         <div class="post-meta">
@@ -646,8 +658,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-07-16T20:51:37+08:00">
-                2014-07-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-05-14T21:57:12+08:00">
+                2014-05-14
               </time>
             
 
@@ -681,8 +693,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Backend/" itemprop="url" rel="index">
-                    <span itemprop="name">Backend</span>
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
                   </a>
                 </span>
 
@@ -719,11 +731,348 @@
 
       
         
-          <p>与job一样，trigger也很容易使用，但是还有一些扩展选项需要理解，以便更好地使用quartz。trigger也有很多类型，可以根据实际需要来选择。</p>
-<p>最常用的两种trigger会分别在<a href="">教程五：SimpleTriggers</a>和<a href="">教程六：CronTrigger</a>中讲到；</p>
+          <h2 id="1-问题描述："><a href="#1-问题描述：" class="headerlink" title="1. 问题描述："></a>1. 问题描述：</h2><blockquote>
+<p>给定一个二维数组：每一行的元素从左到右递增，每一列的元素从上到下递增；输入一个整数，求该整数是否在该二位数组中。比如，输入的二位数组为：</p>
+</blockquote>
+<pre><code>2   5   7   9   10
+3   8   9   11  13
+5   9   12  15  20
+9   11  32  40  50
+</code></pre><blockquote>
+<p>如果输入的整数为12，则输出true，输入23，则输出false；</p>
+</blockquote>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2014/07/16/quartz-tutorial-04-trigger/#more" rel="contents">
+            <a class="btn" href="/2014/05/14/algorithm-search-sort-two-dim-array/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nkcoder.github.io/2014/05/14/algorithm-print-num-to-max/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Daniel">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/my-avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Daniel's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/05/14/algorithm-print-num-to-max/" itemprop="url">算法练习--打印从1到最大的n位数</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-05-14T00:19:34+08:00">
+                2014-05-14
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-17T11:02:20+08:00">
+                2017-09-17
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="1-问题描述："><a href="#1-问题描述：" class="headerlink" title="1. 问题描述："></a>1. 问题描述：</h2><blockquote>
+<p>输入整数n，打印从1到最大的n位数，比如n为4，输出1，2，3一直到最大的4位数，即9999；</p>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/05/14/algorithm-print-num-to-max/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nkcoder.github.io/2014/05/12/algorithm-print-matrix-clockwise/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Daniel">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/my-avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Daniel's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/05/12/algorithm-print-matrix-clockwise/" itemprop="url">算法练习--顺时针打印矩阵</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-05-12T22:41:10+08:00">
+                2014-05-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-17T11:02:20+08:00">
+                2017-09-17
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="1-问题描述："><a href="#1-问题描述：" class="headerlink" title="1. 问题描述："></a>1. 问题描述：</h2><blockquote>
+<p>输入一个矩阵（二维数组），按照顺时针的方向打印矩阵中的元素；比如，输入：</p>
+</blockquote>
+<pre><code>1   2   3   4   5
+6   7   8   9   10
+11  12  13  14  15
+16  17  18  19  20
+</code></pre><blockquote>
+<p>输出：</p>
+</blockquote>
+<pre><code>1 2 3 4 5 10 15 20 19 18 17 16 11 6 7 8 9 14 13 12
+</code></pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/05/12/algorithm-print-matrix-clockwise/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -765,7 +1114,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 

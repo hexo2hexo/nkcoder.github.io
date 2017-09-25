@@ -298,7 +298,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nkcoder.github.io/2014/06/18/jetty-deploy-help/">
+    <link itemprop="mainEntityOfPage" href="http://nkcoder.github.io/2014/03/13/spring-aop-example/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Daniel">
@@ -317,7 +317,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2014/06/18/jetty-deploy-help/" itemprop="url">Jetty9部署指南</a></h2>
+                <a class="post-title-link" href="/2014/03/13/spring-aop-example/" itemprop="url">Spring AOP之入门实例</a></h2>
         
 
         <div class="post-meta">
@@ -329,8 +329,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-06-18T00:18:15+08:00">
-                2014-06-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-03-13T22:58:06+08:00">
+                2014-03-13
               </time>
             
 
@@ -402,15 +402,13 @@
 
       
         
-          <h2 id="1-简单有效的方式"><a href="#1-简单有效的方式" class="headerlink" title="1. 简单有效的方式"></a>1. 简单有效的方式</h2><p>把要部署的工程（war包、工程目录或者xml描述文件）放到${JETTY_HOME}的webapps目录下即可；</p>
-<p>需要注意的是：</p>
-<blockquote>
-<p>jetty会对webapps目录下的几乎所有war包、目录、xml文件（有一些例外，如隐藏文件和.d结尾的目录等会被忽略）进行自动部署。<br>如果war包、目录和xml文件<strong>同名</strong>，则部署的顺序为xml文件 &gt; war包 &gt; 目录 。比如，webapps目录下有：rank.war，rank目录以及rank.xml，其中rank目录为rank.war解压后的目录，rank.xml中引用的是rank.war包或者rank目录，则此时，仅有xml文件被部署，这里成立的前提是<strong>同名</strong>，如果不同名，但它们是同一个工程，则会导致工程被重复部署，切记！（关于重复部署，参考前一篇博文：<a href="http://nkcoder.github.io/blog/20140522/jetty-avoid-repeat-deploy/">Jetty9避免重复部署</a>）</p>
-</blockquote>
-<p>我建议的做法是：将war包或解压后的目录放在webapps目录下，或者将xml描述文件放在webapps目录下，将war包或目录放在单独的目录里。</p>
+          
+          依赖注入（DI）有助于应用对象之间的解耦，而面向切面编程（AOP）有助于横切关注点与所影响的对象之间的解耦。所谓横切关注点，即影响应用多处的功能，这些功能各个应用模块都需要，但又不是其主要关注点，常见的横切关注点有日志、事务和安全等。
+将横切关注点抽离形成独立的类，即形成了切面。切面主要由切点和通知
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2014/06/18/jetty-deploy-help/#more" rel="contents">
+            <a class="btn" href="/2014/03/13/spring-aop-example/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -461,7 +459,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nkcoder.github.io/2014/06/04/algorithm-straight-poker/">
+    <link itemprop="mainEntityOfPage" href="http://nkcoder.github.io/2014/03/10/spring-di-java/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Daniel">
@@ -480,7 +478,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2014/06/04/algorithm-straight-poker/" itemprop="url">算法练习--扑克牌构成顺子</a></h2>
+                <a class="post-title-link" href="/2014/03/10/spring-di-java/" itemprop="url">Spring依赖注入之Java注解</a></h2>
         
 
         <div class="post-meta">
@@ -492,8 +490,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-06-04T23:20:29+08:00">
-                2014-06-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-03-10T23:29:44+08:00">
+                2014-03-10
               </time>
             
 
@@ -527,8 +525,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
+                  <a href="/categories/Backend/" itemprop="url" rel="index">
+                    <span itemprop="name">Backend</span>
                   </a>
                 </span>
 
@@ -565,12 +563,17 @@
 
       
         
-          <h2 id="1-问题描述："><a href="#1-问题描述：" class="headerlink" title="1. 问题描述："></a>1. 问题描述：</h2><blockquote>
-<p>从扑克牌里抽出任意5张牌，其中J, Q, K分表表示11, 12, 13，A表示1，大小王可以表示任意点数。求该5张牌是否可以构成顺子。</p>
+          <blockquote>
+<p>基于Java的注解，是在类级别上定义beans，在方法级别上定义bean。和自动注解一样，可以减少xml的配置。</p>
+</blockquote>
+<h2 id="1-xml配置"><a href="#1-xml配置" class="headerlink" title="1. xml配置"></a>1. xml配置</h2><p>在xml配置文件中添加自动扫描的配置：</p>
+<pre><code>&lt;context:component-scan base-package=&quot;org.yousharp&quot;/&gt;
+</code></pre><blockquote>
+<p>该配置不仅扫描构造型注解(@Controller, @Service, @Repository, @Component)，也会扫描@Configuration注解。</p>
 </blockquote>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2014/06/04/algorithm-straight-poker/#more" rel="contents">
+            <a class="btn" href="/2014/03/10/spring-di-java/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -621,7 +624,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nkcoder.github.io/2014/05/25/algorithm-merge-two-sorted-list/">
+    <link itemprop="mainEntityOfPage" href="http://nkcoder.github.io/2014/03/09/spring-di-annotation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Daniel">
@@ -640,7 +643,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2014/05/25/algorithm-merge-two-sorted-list/" itemprop="url">算法练习--合并两个有序单链表</a></h2>
+                <a class="post-title-link" href="/2014/03/09/spring-di-annotation/" itemprop="url">Spring依赖注入之注解注入</a></h2>
         
 
         <div class="post-meta">
@@ -652,8 +655,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-05-25T10:42:57+08:00">
-                2014-05-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-03-09T18:19:11+08:00">
+                2014-03-09
               </time>
             
 
@@ -687,8 +690,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
+                  <a href="/categories/Backend/" itemprop="url" rel="index">
+                    <span itemprop="name">Backend</span>
                   </a>
                 </span>
 
@@ -725,12 +728,334 @@
 
       
         
-          <h2 id="1-问题描述："><a href="#1-问题描述：" class="headerlink" title="1. 问题描述："></a>1. 问题描述：</h2><blockquote>
-<p>给定两个单链表，都是递增有序的，将它们合并，使合并后的链表仍然有序。</p>
+          <h2 id="1-bean的自动装配和自动检测的区别"><a href="#1-bean的自动装配和自动检测的区别" class="headerlink" title="1. bean的自动装配和自动检测的区别"></a>1. bean的自动装配和自动检测的区别</h2><p>启用注解装配，在xml配置文件里添加：</p>
+<pre><code>&lt;context:annotation-config/&gt;
+</code></pre><p>启用自动扫描注解，在xml配置文件里添加：</p>
+<pre><code>&lt;context:component-scan base-package=&quot;org.yousharp.base&quot;/&gt;
+</code></pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/03/09/spring-di-annotation/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nkcoder.github.io/2014/03/08/spring-di-xml/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Daniel">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/my-avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Daniel's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/03/08/spring-di-xml/" itemprop="url">Spring依赖注入之XML配置</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-03-08T21:36:47+08:00">
+                2014-03-08
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-17T11:02:20+08:00">
+                2017-09-17
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Backend/" itemprop="url" rel="index">
+                    <span itemprop="name">Backend</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>因为项目中一直要用到Spring相关的知识，所以最近在看<a href="http://www.amazon.cn/Spring%E5%AE%9E%E6%88%98-%E6%B2%83%E5%B0%94%E6%96%AF/dp/B00CY6UD2I/ref=sr_1_1?ie=UTF8&amp;qid=1394286577&amp;sr=8-1&amp;keywords=spring%E5%AE%9E%E6%88%98" target="_blank" rel="external">Spring实战</a>这本书，希望对Spring有一个整理的了解和把握。不得不说，这是一本好书，中文译本也不错。这个系列，记录自己关于Spring的笔记和理解，一是加深理解，同时也希望对别人有所帮助。</p>
 </blockquote>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2014/05/25/algorithm-merge-two-sorted-list/#more" rel="contents">
+            <a class="btn" href="/2014/03/08/spring-di-xml/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nkcoder.github.io/2014/02/17/elasticsearch-install-config/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Daniel">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/my-avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Daniel's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/02/17/elasticsearch-install-config/" itemprop="url">分布式搜索引擎ElasticSearch安装与配置</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-02-17T22:49:20+08:00">
+                2014-02-17
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-17T11:02:20+08:00">
+                2017-09-17
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Backend/" itemprop="url" rel="index">
+                    <span itemprop="name">Backend</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="1-安装与启动"><a href="#1-安装与启动" class="headerlink" title="1. 安装与启动"></a>1. 安装与启动</h2><h3 id="1-1-安装ElasticSearch"><a href="#1-1-安装ElasticSearch" class="headerlink" title="1.1 安装ElasticSearch"></a>1.1 安装ElasticSearch</h3><blockquote>
+<p>两种安装方式，一种是根据发行版，通过ElasticSearch提供的repositories安装，参考<a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/setup-repositories.html" target="_blank" rel="external">官方指南</a>; 另一种是利用压缩包安装；由于第二种方式，在配置上更加灵活，这里主要介绍第二种方式的安装和配置。</p>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/02/17/elasticsearch-install-config/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -772,7 +1097,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 

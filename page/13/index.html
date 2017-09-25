@@ -298,7 +298,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nkcoder.github.io/2014/06/24/quartz-tutorial-02-api-job-trigger/">
+    <link itemprop="mainEntityOfPage" href="http://nkcoder.github.io/2014/03/23/elasticsearch-match-query/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Daniel">
@@ -317,7 +317,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2014/06/24/quartz-tutorial-02-api-job-trigger/" itemprop="url">Quartz教程二--API、Job与Trigger</a></h2>
+                <a class="post-title-link" href="/2014/03/23/elasticsearch-match-query/" itemprop="url">Elasticsearch查询api--Match Query</a></h2>
         
 
         <div class="post-meta">
@@ -329,8 +329,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-06-24T22:42:53+08:00">
-                2014-06-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-03-23T22:55:03+08:00">
+                2014-03-23
               </time>
             
 
@@ -402,18 +402,14 @@
 
       
         
-          <h2 id="Quartz-API"><a href="#Quartz-API" class="headerlink" title="Quartz API"></a>Quartz API</h2><p>Quartz API核心接口有：</p>
-<ul>
-<li>Scheduler - 与scheduler交互的主要API；</li>
-<li>Job - 你通过scheduler执行任务，你的任务类需要实现的接口；</li>
-<li>JobDetail - 定义Job的实例；</li>
-<li>Trigger - 触发Job的执行；</li>
-<li>JobBuilder - 定义和创建JobDetail实例的接口;</li>
-<li>TriggerBuilder - 定义和创建Trigger实例的接口；</li>
+          <h2 id="1-match-query"><a href="#1-match-query" class="headerlink" title="1. match query"></a>1. match query</h2><ul>
+<li>与<strong>term query</strong>不同，<strong>match query</strong>的查询词是被分词处理的（analyzed），即首先分词，然后构造相应的查询，所以应该确保查询的分词器和索引的分词器是一致的；</li>
+<li>与<strong>terms query</strong>相似，提供的查询词之间默认是or的关系，可以通过<code>operator</code>属性指定；</li>
+<li><strong>match query</strong>有两种形式，一种是简单形式，一种是bool形式；</li>
 </ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2014/06/24/quartz-tutorial-02-api-job-trigger/#more" rel="contents">
+            <a class="btn" href="/2014/03/23/elasticsearch-match-query/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -464,7 +460,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nkcoder.github.io/2014/06/23/quartz-tutorial-01-using-quartz/">
+    <link itemprop="mainEntityOfPage" href="http://nkcoder.github.io/2014/03/22/spring-mybatis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Daniel">
@@ -483,7 +479,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2014/06/23/quartz-tutorial-01-using-quartz/" itemprop="url">Quartz教程一--使用Quartz</a></h2>
+                <a class="post-title-link" href="/2014/03/22/spring-mybatis/" itemprop="url">Spring持久化之MyBatis</a></h2>
         
 
         <div class="post-meta">
@@ -495,8 +491,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-06-23T21:01:32+08:00">
-                2014-06-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-03-22T20:12:52+08:00">
+                2014-03-22
               </time>
             
 
@@ -568,11 +564,11 @@
 
       
         
-          <p>Scheduler在使用之前需要实例化。一般通过SchedulerFactory来创建一个实例。有些用户将factory的实例保存在JNDI中，但直接初始化，然后使用该实例也许更简单（见下面的示例）。</p>
-<p>scheduler实例化后，可以启动(start)、暂停(stand-by)、停止(shutdown)。注意：scheduler被停止后，除非重新实例化，否则不能重新启动；只有当scheduler启动后，即使处于暂停状态也不行，trigger才会被触发（job才会被执行）。</p>
+          <p>MyBatis是一个优秀的轻量级持久化框架，本文主要介绍MyBatis与Spring集成的配置与用法。</p>
+<h2 id="1-Spring-MyBatis配置"><a href="#1-Spring-MyBatis配置" class="headerlink" title="1. Spring MyBatis配置"></a>1. Spring MyBatis配置</h2><h3 id="1-1-添加Maven依赖"><a href="#1-1-添加Maven依赖" class="headerlink" title="1.1 添加Maven依赖"></a>1.1 添加Maven依赖</h3><p>在pom.xml文件里添加mybatis-spring和mybatis的依赖：</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2014/06/23/quartz-tutorial-01-using-quartz/#more" rel="contents">
+            <a class="btn" href="/2014/03/22/spring-mybatis/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -623,7 +619,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nkcoder.github.io/2014/06/22/quartz-tutorial-quickstart/">
+    <link itemprop="mainEntityOfPage" href="http://nkcoder.github.io/2014/03/20/elasticsearch-terms-query/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Daniel">
@@ -642,7 +638,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2014/06/22/quartz-tutorial-quickstart/" itemprop="url">Quartz教程--快速入门</a></h2>
+                <a class="post-title-link" href="/2014/03/20/elasticsearch-terms-query/" itemprop="url">Elasticsearch查询api--Terms Query</a></h2>
         
 
         <div class="post-meta">
@@ -654,8 +650,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-06-22T10:11:23+08:00">
-                2014-06-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-03-20T08:24:42+08:00">
+                2014-03-20
               </time>
             
 
@@ -727,16 +723,339 @@
 
       
         
-          <p>欢迎来到quartz快速入门教程。阅读本教程，你将会了解：</p>
-<ul>
-<li>quartz下载</li>
-<li>quartz安装</li>
-<li>根据你的需要，配置Quartz</li>
-<li>开始一个示例应用</li>
+          <h2 id="1-terms-query查询"><a href="#1-terms-query查询" class="headerlink" title="1. terms query查询"></a>1. terms query查询</h2><ul>
+<li>提供多个查询词，以数组形式出现，查询指定的字段是否包含其中一个或者多个查询词；</li>
+<li>功能与：<strong>bool query</strong>通过对多个term进行<code>should</code>操作的功能是一致的，是更简单的一种语法形式；</li>
+<li>提供的查询词也是不分词的，只有完全包含才算匹配；可以通过<code>minimum_should_match</code>属性指定最少匹配的个数；</li>
 </ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2014/06/22/quartz-tutorial-quickstart/#more" rel="contents">
+            <a class="btn" href="/2014/03/20/elasticsearch-terms-query/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nkcoder.github.io/2014/03/18/elasticsearch-term-query/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Daniel">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/my-avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Daniel's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/03/18/elasticsearch-term-query/" itemprop="url">Elasticsearch查询api--Term Query</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-03-18T20:46:56+08:00">
+                2014-03-18
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-17T11:02:20+08:00">
+                2017-09-17
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Backend/" itemprop="url" rel="index">
+                    <span itemprop="name">Backend</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="1-term-query查询"><a href="#1-term-query查询" class="headerlink" title="1. term query查询"></a>1. term query查询</h2><ul>
+<li>在给定的字段里查询词或者词组；</li>
+<li>提供的查询词是不分词的(not analyzed)，即只有完全包含才算匹配；</li>
+<li>支持boost属性，boost可以提高field和document的相关性；</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/03/18/elasticsearch-term-query/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nkcoder.github.io/2014/03/16/spring-jdbc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Daniel">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/my-avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Daniel's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/03/16/spring-jdbc/" itemprop="url">Spring持久化之JDBC</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-03-16T18:01:26+08:00">
+                2014-03-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-17T11:02:20+08:00">
+                2017-09-17
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Backend/" itemprop="url" rel="index">
+                    <span itemprop="name">Backend</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>这个小系列介绍Spring的持久化策略，主要关注当前应用最广泛的三种方式：Spring JDBC， MyBatis以及Hibernate。<br>使用JDBC的优劣如下：</p>
+<ul>
+<li>优势：相对于持久化框架，使用JDBC，不需要掌握其它框架的查询语言，允许我们在更低的层次上处理数据，能够访问数据库中单独的列，而且能够更好地对数据访问的性能进行调优。</li>
+<li>劣势：随着项目的规模和复杂度的提升，使用JDBC会非常繁琐，同时不易于处理复杂的问题。</li>
+<li>Spring JDBC：提供数据访问模板，简化JDBC编程，同时提供了平台无关的持久化异常体系。</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/03/16/spring-jdbc/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -778,7 +1097,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
