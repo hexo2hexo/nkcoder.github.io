@@ -38,5 +38,5 @@
 {% endblock %}
 
 {% block ads %}
-<%- include '_custom/google_adsense.swig' %>
+<% include '_custom/google_adsense.swig' %>
 {% endblock %}

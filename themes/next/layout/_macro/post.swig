@@ -341,6 +341,8 @@
         </div>
       {% endif %}
 
+      {% include '../_custom/google-adsense.swig' %}
+
       {% if not is_index %}
       {% if theme.rating.enable or (theme.vkontakte_api.enable and theme.vkontakte_api.like) or (theme.facebook_sdk.enable and theme.facebook_sdk.like_button) %}
         <div class="post-widgets">
