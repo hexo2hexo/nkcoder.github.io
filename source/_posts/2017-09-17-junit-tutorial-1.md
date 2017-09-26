@@ -1,10 +1,10 @@
 title: Junit入门指南
 categories: Backend
 date: 2017-09-17 10:43:09
-tags: [Unit Test, Junit]
+tags: [单元测试, Junit]
 ---
 
-    最后更新：Sat Sep 16 23:23:14 CST 2017  Junit版本：4.12
+    Junit版本：4.12
 
 本文简单介绍`Junit`在实际工作中的常见的一些用法和API。
 
