@@ -109,18 +109,18 @@
 
 
 
-<meta name="description" content="express是nodejs的一个流行的web框架。本文主要介绍将express作为服务端对外提供API接口时，需要了解的入门知识。 1. Hello World首先安装node（如果已安装，则略过）： $ brew install node 创建一个项目，然后安装express： $ mkdir express-hello-world &amp;amp;&amp;amp; cd express-hello-wo">
+<meta name="description" content="express是nodejs的一个流行的web框架。本文主要介绍将express作为服务端对外提供API接口时，需要了解的入门知识。 1. Hello World首先安装node（如果已安装，则略过）： 1$ brew install node 创建一个项目，然后安装express： 123$ mkdir express-hello-world &amp;amp;&amp;amp; cd express-hell">
 <meta name="keywords" content="nodejs,express">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Express框架入门：初级篇">
 <meta property="og:url" content="http://nkcoder.github.io/2016/08/20/express-tutorial-basic/index.html">
 <meta property="og:site_name" content="Daniel&#39;s Blog">
-<meta property="og:description" content="express是nodejs的一个流行的web框架。本文主要介绍将express作为服务端对外提供API接口时，需要了解的入门知识。 1. Hello World首先安装node（如果已安装，则略过）： $ brew install node 创建一个项目，然后安装express： $ mkdir express-hello-world &amp;amp;&amp;amp; cd express-hello-wo">
+<meta property="og:description" content="express是nodejs的一个流行的web框架。本文主要介绍将express作为服务端对外提供API接口时，需要了解的入门知识。 1. Hello World首先安装node（如果已安装，则略过）： 1$ brew install node 创建一个项目，然后安装express： 123$ mkdir express-hello-world &amp;amp;&amp;amp; cd express-hell">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-17T03:02:20.000Z">
+<meta property="og:updated_time" content="2017-09-26T00:07:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Express框架入门：初级篇">
-<meta name="twitter:description" content="express是nodejs的一个流行的web框架。本文主要介绍将express作为服务端对外提供API接口时，需要了解的入门知识。 1. Hello World首先安装node（如果已安装，则略过）： $ brew install node 创建一个项目，然后安装express： $ mkdir express-hello-world &amp;amp;&amp;amp; cd express-hello-wo">
+<meta name="twitter:description" content="express是nodejs的一个流行的web框架。本文主要介绍将express作为服务端对外提供API接口时，需要了解的入门知识。 1. Hello World首先安装node（如果已安装，则略过）： 1$ brew install node 创建一个项目，然后安装express： 123$ mkdir express-hello-world &amp;amp;&amp;amp; cd express-hell">
 
 
 
@@ -342,8 +342,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-09-17T11:02:20+08:00">
-                2017-09-17
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-26T08:07:01+08:00">
+                2017-09-26
               </time>
             
           </span>
@@ -405,43 +405,24 @@
       
         <p><a href="http://expressjs.com/" target="_blank" rel="external">express</a>是nodejs的一个流行的web框架。本文主要介绍将express作为服务端对外提供API接口时，需要了解的入门知识。</p>
 <h1 id="1-Hello-World"><a href="#1-Hello-World" class="headerlink" title="1. Hello World"></a>1. Hello World</h1><p>首先安装node（如果已安装，则略过）：</p>
-<pre><code>$ brew install node
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ brew install node</div></pre></td></tr></table></figure>
 </code></pre><p>创建一个项目，然后安装express：</p>
-<pre><code>$ mkdir express-hello-world &amp;&amp; cd express-hello-world
-$ npm init
-$ npm install express --save
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ mkdir express-hello-world &amp;&amp; <span class="built_in">cd</span> express-hello-world</div><div class="line">$ npm init</div><div class="line">$ npm install express --save</div></pre></td></tr></table></figure>
 </code></pre><p><code>npm init</code>会提示输入一些配置信息，回车使用默认值即可，执行完后，当前目录下会自动创建<code>package.json</code>文件。</p>
 <p><code>npm install express --save</code>表示为当前项目安装express依赖，该依赖信息会保存在<code>package.json</code>文件中。</p>
 <a id="more"></a>
 <p>新建文件<code>index.js</code>文件， 输入以下内容：</p>
-<pre><code>var express =  require(&apos;express&apos;);
-var app = express();
-
-app.get(&apos;/&apos;, function(req, res) {
-  res.send(&apos;hello, world!&apos;);
-});
-
-app.listen(3000);
+<pre><code><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express =  <span class="built_in">require</span>(<span class="string">'express'</span>);</div><div class="line"><span class="keyword">var</span> app = express();</div><div class="line"></div><div class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</div><div class="line">  res.send(<span class="string">'hello, world!'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.listen(<span class="number">3000</span>);</div></pre></td></tr></table></figure>
 </code></pre><p>运行：</p>
-<pre><code>$ node index.js
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ node index.js</div></pre></td></tr></table></figure>
 </code></pre><p>浏览器访问：<code>http://localhost:3000/</code>，会输出”hello, world!”。</p>
 <h1 id="2-中间件middleware"><a href="#2-中间件middleware" class="headerlink" title="2. 中间件middleware"></a>2. 中间件middleware</h1><p>在express中，中间件（middleware）函数是一种特殊的函数，它可以访问一个http请求周期中的request对象、response对象，以及表示调用栈中的下一个中间件函数的引用，如：</p>
-<pre><code>function (req, res, next) {
-    next();
-}
+<pre><code><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</div><div class="line">    next();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </code></pre><p>其中，<code>req</code>, <code>res</code>和<code>next</code>三个参数名是约定的，不要使用其它的变量名。中间件函数可以修改request和response，或者提前结束response，也可以调用<code>next()</code>表示将执行传递给调用栈中的下一个中间件函数。</p>
 <p>如果当前中间件函数没有结束HTTP请求，则必须调用<code>next()</code>将执行传递给下一个中间件函数，否则请求会挂起。</p>
 <p>使用<code>app.use()</code>加载中间件函数，中间件函数加载的顺序决定了它的执行顺序，即先加载，先执行。</p>
 <p>在上面hello-world的例子中，我们增加两个简单的中间件函数，分别打印两条日志信息。在<code>var app = express();</code>的后面增加以下代码：</p>
-<pre><code>app.use(function (req, res, next) {
-  console.log(&apos;in middleware one...&apos;);
-  next();
-});
-
-app.use(function (req, res, next) {
-  console.log(&apos;in middleware two...&apos;);
-  next();
-});
+<pre><code><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">app.use(<span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'in middleware one...'</span>);</div><div class="line">  next();</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.use(<span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'in middleware two...'</span>);</div><div class="line">  next();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </code></pre><p>执行后，终端会依次输出两个中间件函数中的日志信息。</p>
 <p>express中的中间件可以分为以下几类：</p>
 <ul>
@@ -453,16 +434,9 @@ app.use(function (req, res, next) {
 </ul>
 <p>这里仅简要介绍一下主要的app级中间件和router级中间件。</p>
 <p>app级中间件，即将中间件函数绑定到<code>app</code>对象（即使用<code>express()</code>得到的对象），通过<code>app.use()</code>或者<code>app.METHOD()</code>方法来加载中间件函数，其中<code>METHOD()</code>表示HTTP请求中的<code>GET/POST/PUT</code>等方法。上面的hello-world示例中就是app级中间件：</p>
-<pre><code>app.get(&apos;/&apos;, function(req, res) {
-  res.send(&apos;hello, world!&apos;);
-});
+<pre><code><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</div><div class="line">  res.send(<span class="string">'hello, world!'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </code></pre><p>router级中间件与app级中间件的用法基本一致，不同的是，它将中间件函数绑定到<code>express.Router()</code>对象，通过<code>router.use()</code>或者<code>router.METHOD()</code>方法来加载。比如上面的app级中间件，用router级中间件的方法改写如下：</p>
-<pre><code>var router = express.Router();
-router.get(&apos;/&apos;, function(req, res) {
-  res.send(&apos;hello, world!&apos;);
-});
-
-app.use(&apos;/&apos;, router);
+<pre><code><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> router = express.Router();</div><div class="line">router.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</div><div class="line">  res.send(<span class="string">'hello, world!'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.use(<span class="string">'/'</span>, router);</div></pre></td></tr></table></figure>
 </code></pre><p>引入router级中间件的好处之一是解耦，通过router去分层，然后app加载router。</p>
 <h1 id="3-HTTP的req对象"><a href="#3-HTTP的req对象" class="headerlink" title="3. HTTP的req对象"></a>3. HTTP的req对象</h1><h2 id="3-1-req-params取路径参数"><a href="#3-1-req-params取路径参数" class="headerlink" title="3.1 req.params取路径参数"></a>3.1 req.params取路径参数</h2><p>express中，路径参数使用命名参数的方式，比如路径是<code>/user/:id</code>，则使用<code>req.params.id</code>取参数<code>:id</code>的值，如：</p>
 <pre><code>/user/:id
@@ -477,35 +451,19 @@ GET /search?user[name]=Ketty&amp;user[age]=30
 req.query.user.name =&gt; Ketty
 req.query.user.age  =&gt; 30
 </code></pre><h2 id="3-3-req-body"><a href="#3-3-req-body" class="headerlink" title="3.3 req.body"></a>3.3 req.body</h2><p>要取HTTP请求中的body内容，使用<code>req.body</code>，但是需要借助第三方module，如<code>body-parser</code>和<code>multer</code>，以下示例来自<a href="http://expressjs.com/en/4x/api.html#req.body" target="_blank" rel="external">express文档</a>：</p>
-<pre><code>var app = require(&apos;express&apos;)();
-var bodyParser = require(&apos;body-parser&apos;);
-var multer = require(&apos;multer&apos;); // v1.0.5
-var upload = multer(); // for parsing multipart/form-data
-
-app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-
-app.post(&apos;/profile&apos;, upload.array(), function (req, res, next) {
-  console.log(req.body);
-  res.json(req.body);
-});
+<pre><code><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app = <span class="built_in">require</span>(<span class="string">'express'</span>)();</div><div class="line"><span class="keyword">var</span> bodyParser = <span class="built_in">require</span>(<span class="string">'body-parser'</span>);</div><div class="line"><span class="keyword">var</span> multer = <span class="built_in">require</span>(<span class="string">'multer'</span>); <span class="comment">// v1.0.5</span></div><div class="line"><span class="keyword">var</span> upload = multer(); <span class="comment">// for parsing multipart/form-data</span></div><div class="line"></div><div class="line">app.use(bodyParser.json()); <span class="comment">// for parsing application/json</span></div><div class="line">app.use(bodyParser.urlencoded(&#123; <span class="attr">extended</span>: <span class="literal">true</span> &#125;)); <span class="comment">// for parsing application/x-www-form-urlencoded</span></div><div class="line"></div><div class="line">app.post(<span class="string">'/profile'</span>, upload.array(), <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(req.body);</div><div class="line">  res.json(req.body);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </code></pre><h2 id="3-4-req-get"><a href="#3-4-req-get" class="headerlink" title="3.4 req.get()"></a>3.4 req.get()</h2><p>提取HTTP header中的信息，其中，key是不区分大小写的，如：</p>
-<pre><code>req.get(&apos;Content-Type&apos;);    // text/html
-req.get(&apos;content-type&apos;);    // text/html
+<pre><code><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">req.get(<span class="string">'Content-Type'</span>);    <span class="comment">// text/html</span></div><div class="line">req.get(<span class="string">'content-type'</span>);    <span class="comment">// text/html</span></div></pre></td></tr></table></figure>
 </code></pre><h1 id="4-HTTP的res对象"><a href="#4-HTTP的res对象" class="headerlink" title="4. HTTP的res对象"></a>4. HTTP的res对象</h1><h2 id="4-1-res-status"><a href="#4-1-res-status" class="headerlink" title="4.1 res.status()"></a>4.1 res.status()</h2><p>该方法仅仅是设置状态码，返回response还需调用<code>send()/end()</code>等方法，如：</p>
-<pre><code>res.status(200).end();
-res.status(401).send(&quot;error: unauthorized!&quot;);
+<pre><code><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">res.status(<span class="number">200</span>).end();</div><div class="line">res.status(<span class="number">401</span>).send(<span class="string">"error: unauthorized!"</span>);</div></pre></td></tr></table></figure>
 </code></pre><h2 id="4-2-res-json"><a href="#4-2-res-json" class="headerlink" title="4.2 res.json()"></a>4.2 res.json()</h2><p>返回json格式的信息，res会自动设置response的<code>Content-Type</code>为<code>application/json</code>，如：</p>
-<pre><code>res.status(401).json({&quot;error&quot;: &quot;unauthorized&quot;});
+<pre><code><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">res.status(<span class="number">401</span>).json(&#123;<span class="string">"error"</span>: <span class="string">"unauthorized"</span>&#125;);</div></pre></td></tr></table></figure>
 </code></pre><h2 id="4-3-res-send"><a href="#4-3-res-send" class="headerlink" title="4.3 res.send()"></a>4.3 res.send()</h2><p>发送HTTP响应信息，参数可以是字符串、数组、Buffer对象等，会根据参数的类型自动设置header的<code>Content-Type</code>，如：</p>
-<pre><code>res.send(new Buffer(&quot;buffer info&quot;));        // Content-Type: application/octet-stream
-res.send(&quot;&lt;small&gt;small text&lt;/small&gt;&quot;);      // Content-Type: text/html
-res.send({message: &quot;Welcome&quot;});             // Content-Type: application/json
+<pre><code><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">res.send(<span class="keyword">new</span> Buffer(<span class="string">"buffer info"</span>));        <span class="comment">// Content-Type: application/octet-stream</span></div><div class="line">res.send(<span class="string">"&lt;small&gt;small text&lt;/small&gt;"</span>);      <span class="comment">// Content-Type: text/html</span></div><div class="line">res.send(&#123;<span class="attr">message</span>: <span class="string">"Welcome"</span>&#125;);             <span class="comment">// Content-Type: application/json</span></div></pre></td></tr></table></figure>
 </code></pre><h2 id="4-4-res-set"><a href="#4-4-res-set" class="headerlink" title="4.4. res.set()"></a>4.4. res.set()</h2><p>设置HTTP的header信息，如：</p>
-<pre><code>res.set(&apos;Content-Type&apos;,&apos;application/pdf&apos;);
-res.setHeader(&apos;Content-Disposition&apos;,&apos;attachment; filename=cnb.pdf&apos;);
+<pre><code><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">res.set(<span class="string">'Content-Type'</span>, <span class="string">'application/pdf'</span>);</div><div class="line">res.setHeader(<span class="string">'Content-Disposition'</span>, <span class="string">'attachment; filename=cnb.pdf'</span>);</div></pre></td></tr></table></figure>
 </code></pre><h2 id="4-5-res-render"><a href="#4-5-res-render" class="headerlink" title="4.5 res.render()"></a>4.5 res.render()</h2><p>使用模板引擎渲染页面，然后作为response返回。如果参数表示的文件名不带后缀，则会根据模板引擎的设置，自动推断后缀；如果文件名带后缀，则会加载该后缀对应的模板引擎模块。如</p>
-<pre><code>res.render(&apos;index&apos;);
+<pre><code><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">res.render(<span class="string">'index'</span>);</div></pre></td></tr></table></figure>
 </code></pre><p>如果默认的模板引擎是jade，则express会从对应的路径下查找index.jade文件并渲染。</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
 <li><a href="http://expressjs.com/en/4x/api.html" target="_blank" rel="external">4.x API</a></li>
@@ -570,8 +528,8 @@ res.setHeader(&apos;Content-Disposition&apos;,&apos;attachment; filename=cnb.pdf
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/06/linux-sed-note/" rel="next" title="Linux命令之sed">
-                <i class="fa fa-chevron-left"></i> Linux命令之sed
+              <a href="/2016/08/06/linux-sed-note/" rel="next" title="Sed命令用法简介">
+                <i class="fa fa-chevron-left"></i> Sed命令用法简介
               </a>
             
           </div>

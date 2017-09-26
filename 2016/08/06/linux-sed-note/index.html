@@ -109,18 +109,18 @@
 
 
 
-<meta name="description" content="sed是一个面向行的流处理工具，主要用于对文件的增加、删除、替换等操作。 sed命令的语法： sed [options] commands [file-to-edit] 下面以annoying.txt文件作为示例数据源， 文件内容为： root@a01:~/junk# echo &amp;quot;this is the song that never ends &amp;gt; yes, it goes on">
+<meta name="description" content="sed是一个面向行的流处理工具，主要用于对文件的增加、删除、替换等操作。 sed命令的语法： 1sed [options] commands [file-to-edit] 下面以annoying.txt文件作为示例数据源， 文件内容为： 123456root@a01:~/junk# echo &quot;this is the song that never ends&amp;gt; yes, it goes on">
 <meta name="keywords" content="linux,sed">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux命令之sed">
+<meta property="og:title" content="Sed命令用法简介">
 <meta property="og:url" content="http://nkcoder.github.io/2016/08/06/linux-sed-note/index.html">
 <meta property="og:site_name" content="Daniel&#39;s Blog">
-<meta property="og:description" content="sed是一个面向行的流处理工具，主要用于对文件的增加、删除、替换等操作。 sed命令的语法： sed [options] commands [file-to-edit] 下面以annoying.txt文件作为示例数据源， 文件内容为： root@a01:~/junk# echo &amp;quot;this is the song that never ends &amp;gt; yes, it goes on">
+<meta property="og:description" content="sed是一个面向行的流处理工具，主要用于对文件的增加、删除、替换等操作。 sed命令的语法： 1sed [options] commands [file-to-edit] 下面以annoying.txt文件作为示例数据源， 文件内容为： 123456root@a01:~/junk# echo &quot;this is the song that never ends&amp;gt; yes, it goes on">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-17T03:02:20.000Z">
+<meta property="og:updated_time" content="2017-09-26T00:16:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux命令之sed">
-<meta name="twitter:description" content="sed是一个面向行的流处理工具，主要用于对文件的增加、删除、替换等操作。 sed命令的语法： sed [options] commands [file-to-edit] 下面以annoying.txt文件作为示例数据源， 文件内容为： root@a01:~/junk# echo &amp;quot;this is the song that never ends &amp;gt; yes, it goes on">
+<meta name="twitter:title" content="Sed命令用法简介">
+<meta name="twitter:description" content="sed是一个面向行的流处理工具，主要用于对文件的增加、删除、替换等操作。 sed命令的语法： 1sed [options] commands [file-to-edit] 下面以annoying.txt文件作为示例数据源， 文件内容为： 123456root@a01:~/junk# echo &quot;this is the song that never ends&amp;gt; yes, it goes on">
 
 
 
@@ -155,7 +155,7 @@
 
 
 
-  <title>Linux命令之sed | Daniel's Blog</title>
+  <title>Sed命令用法简介 | Daniel's Blog</title>
   
 
 
@@ -314,7 +314,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Linux命令之sed</h2>
+          <h2 class="post-title" itemprop="name headline">Sed命令用法简介</h2>
         
 
         <div class="post-meta">
@@ -342,8 +342,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-09-17T11:02:20+08:00">
-                2017-09-17
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-26T08:16:19+08:00">
+                2017-09-26
               </time>
             
           </span>
@@ -405,295 +405,90 @@
       
         <p>sed是一个面向行的流处理工具，主要用于对文件的增加、删除、替换等操作。</p>
 <p>sed命令的语法：</p>
-<pre><code>sed [options] commands [file-to-edit]
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sed [options] commands [file-to-edit]</div></pre></td></tr></table></figure>
 </code></pre><p>下面以annoying.txt文件作为示例数据源， 文件内容为：</p>
-<pre><code>root@a01:~/junk# echo &quot;this is the song that never ends
-&gt; yes, it goes on and on, my friend
-&gt; some people started singing it
-&gt; not knowing what it was
-&gt; and they&apos;ll continue singing it forever
-&gt; just because...&quot; &gt; annoying.txt
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># echo "this is the song that never ends</span></div><div class="line">&gt; yes, it goes on and on, my friend</div><div class="line">&gt; some people started singing it</div><div class="line">&gt; not knowing what it was</div><div class="line">&gt; and they<span class="string">'ll continue singing it forever</span></div><div class="line"><span class="string">&gt; just because..." &gt; annoying.txt</span></div></pre></td></tr></table></figure>
 </code></pre><a id="more"></a>
 <h1 id="1-命令及参数含义"><a href="#1-命令及参数含义" class="headerlink" title="1. 命令及参数含义"></a>1. 命令及参数含义</h1><h2 id="1-1-读取文件内容"><a href="#1-1-读取文件内容" class="headerlink" title="1.1 读取文件内容"></a>1.1 读取文件内容</h2><p>如果<code>commands</code>为空，表示对每一行没有做任何处理，相当于读取文件的内容（因为sed默认会将读到的内容打印出来），如：</p>
-<pre><code>root@a01:~/junk# sed &apos;&apos; annoying.txt
-this is the song that never ends
-yes, it goes on and on, my friend
-some people started singing it
-not knowing what it was
-and they&apos;ll continue singing it forever
-just because...
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed '' annoying.txt</span></div><div class="line">this is the song that never ends</div><div class="line">yes, it goes on and on, my friend</div><div class="line">some people started singing it</div><div class="line">not knowing what it was</div><div class="line">and they<span class="string">'ll continue singing it forever</span></div><div class="line"><span class="string">just because...</span></div></pre></td></tr></table></figure>
 </code></pre><p>这与执行：<code># cat annoying.txt | sed &#39;&#39;</code>的输出是一样的。</p>
 <h2 id="1-2-打印命令p"><a href="#1-2-打印命令p" class="headerlink" title="1.2 打印命令p"></a>1.2 打印命令p</h2><p>p命令将读到的内容直接打印出来， 如：</p>
-<pre><code>root@a01:~/junk# sed &apos;p&apos; annoying.txt
-this is the song that never ends
-this is the song that never ends
-yes, it goes on and on, my friend
-yes, it goes on and on, my friend
-some people started singing it
-some people started singing it
-not knowing what it was
-not knowing what it was
-and they&apos;ll continue singing it forever
-and they&apos;ll continue singing it forever
-just because...
-just because...
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed 'p' annoying.txt</span></div><div class="line">this is the song that never ends</div><div class="line">this is the song that never ends</div><div class="line">yes, it goes on and on, my friend</div><div class="line">yes, it goes on and on, my friend</div><div class="line">some people started singing it</div><div class="line">some people started singing it</div><div class="line">not knowing what it was</div><div class="line">not knowing what it was</div><div class="line">and they<span class="string">'ll continue singing it forever</span></div><div class="line"><span class="string">and they'</span>ll <span class="built_in">continue</span> singing it forever</div><div class="line">just because...</div><div class="line">just because...</div></pre></td></tr></table></figure>
 </code></pre><p>上面每一行都会打印两遍，是因为sed默认会将读到的内容输出，使用<code>-n</code>选项可以禁用默认的输出，如：</p>
-<pre><code>root@a01:~/junk# sed -n &apos;p&apos; annoying.txt
-this is the song that never ends
-yes, it goes on and on, my friend
-some people started singing it
-not knowing what it was
-and they&apos;ll continue singing it forever
-just because...
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed -n 'p' annoying.txt</span></div><div class="line">this is the song that never ends</div><div class="line">yes, it goes on and on, my friend</div><div class="line">some people started singing it</div><div class="line">not knowing what it was</div><div class="line">and they<span class="string">'ll continue singing it forever</span></div><div class="line"><span class="string">just because...</span></div></pre></td></tr></table></figure>
 </code></pre><p>范围限制：可以在p命令前增加范围限制，数字表示具体的行数，+数字表示增量，$表示最后一行，~表示间隔的行数，如：</p>
 <p>打印第1行：</p>
-<pre><code>root@a01:~/junk# sed -n &apos;1p&apos; annoying.txt
-this is the song that never ends
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed -n '1p' annoying.txt</span></div><div class="line">this is the song that never ends</div></pre></td></tr></table></figure>
 </code></pre><p>打印第1行到第2行：</p>
-<pre><code>root@a01:~/junk# sed -n &apos;1,2p&apos; annoying.txt
-this is the song that never ends
-yes, it goes on and on, my friend
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed -n '1,2p' annoying.txt</span></div><div class="line">this is the song that never ends</div><div class="line">yes, it goes on and on, my friend</div></pre></td></tr></table></figure>
 </code></pre><p>打印第3行到最后一行：</p>
-<pre><code>root@a01:~/junk# sed -n &apos;3,$p&apos; annoying.txt
-some people started singing it
-not knowing what it was
-and they&apos;ll continue singing it forever
-just because...
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed -n '3,$p' annoying.txt</span></div><div class="line">some people started singing it</div><div class="line">not knowing what it was</div><div class="line">and they<span class="string">'ll continue singing it forever</span></div><div class="line"><span class="string">just because...</span></div></pre></td></tr></table></figure>
 </code></pre><p>打印第1行到后面的2行，即前3行:</p>
-<pre><code>root@a01:~/junk# sed -n &apos;1,+2p&apos; annoying.txt
-this is the song that never ends
-yes, it goes on and on, my friend
-some people started singing it
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed -n '1,+2p' annoying.txt</span></div><div class="line">this is the song that never ends</div><div class="line">yes, it goes on and on, my friend</div><div class="line">some people started singing it</div></pre></td></tr></table></figure>
 </code></pre><p>每隔2行打印，即打印奇数行：</p>
-<pre><code>root@a01:~/junk# sed -n &apos;1~2p&apos; annoying.txt
-this is the song that never ends
-some people started singing it
-and they&apos;ll continue singing it forever
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed -n '1~2p' annoying.txt</span></div><div class="line">this is the song that never ends</div><div class="line">some people started singing it</div><div class="line">and they<span class="string">'ll continue singing it forever</span></div></pre></td></tr></table></figure>
 </code></pre><p>仅打印pattern匹配到的行：</p>
-<pre><code>root@a01:~/junk# sed -n &apos;/this/p&apos; annoying.txt
-this is the song that never ends
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed -n '/this/p' annoying.txt</span></div><div class="line">this is the song that never ends</div></pre></td></tr></table></figure>
 </code></pre><h2 id="1-3-删除命令d"><a href="#1-3-删除命令d" class="headerlink" title="1.3 删除命令d"></a>1.3 删除命令d</h2><p>删除命令d与打印命令p的用法基本类似，只需要将p换成d即可，如：</p>
-<pre><code>root@a01:~/junk# sed &apos;1~2d&apos; annoying.txt
-yes, it goes on and on, my friend
-not knowing what it was
-just because...
-
-root@a01:~/junk# sed &apos;1,3d&apos; annoying.txt
-not knowing what it was
-and they&apos;ll continue singing it forever
-just because...
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed '1~2d' annoying.txt</span></div><div class="line">yes, it goes on and on, my friend</div><div class="line">not knowing what it was</div><div class="line">just because...</div><div class="line"></div><div class="line">root@a01:~/junk<span class="comment"># sed '1,3d' annoying.txt</span></div><div class="line">not knowing what it was</div><div class="line">and they<span class="string">'ll continue singing it forever</span></div><div class="line"><span class="string">just because...</span></div></pre></td></tr></table></figure>
 </code></pre><p>使用删除命令，没有被删的行会被打印出来，但是原文件是不被影响的。可以使用<code>-i</code>选项，表示在原文件上直接修改，<br>但是这样是比较危险的，最好先备份，而<code>-i</code>选项支持备份，<code>-i</code>后面的参数值表示备份文件的后缀，如：</p>
-<pre><code>root@a01:~/junk# sed -i &apos;1d&apos; annoying.txt
-
-root@a01:~/junk# sed -i.bak &apos;1d&apos; annoying.txt
-root@a01:~/junk# ls
-annoying.txt  annoying.txt.bak
-
-root@a01:~/junk# cat annoying.txt
-some people started singing it
-not knowing what it was
-and they&apos;ll continue singing it forever
-just because...
-
-root@a01:~/junk# cat annoying.txt.bak
-this is the song that never ends
-yes, it goes on and on, my friend
-some people started singing it
-not knowing what it was
-and they&apos;ll continue singing it forever
-just because...
-</code></pre><h2 id="1-4-替换命令s"><a href="#1-4-替换命令s" class="headerlink" title="1.4 替换命令s"></a>1.4 替换命令s</h2><pre><code>&apos;s/old_word/new_word/&apos;
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed -i '1d' annoying.txt</span></div><div class="line"></div><div class="line">root@a01:~/junk<span class="comment"># sed -i.bak '1d' annoying.txt</span></div><div class="line">root@a01:~/junk<span class="comment"># ls</span></div><div class="line">annoying.txt  annoying.txt.bak</div><div class="line"></div><div class="line">root@a01:~/junk<span class="comment"># cat annoying.txt</span></div><div class="line">some people started singing it</div><div class="line">not knowing what it was</div><div class="line">and they<span class="string">'ll continue singing it forever</span></div><div class="line"><span class="string">just because...</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">root@a01:~/junk# cat annoying.txt.bak</span></div><div class="line"><span class="string">this is the song that never ends</span></div><div class="line"><span class="string">yes, it goes on and on, my friend</span></div><div class="line"><span class="string">some people started singing it</span></div><div class="line"><span class="string">not knowing what it was</span></div><div class="line"><span class="string">and they'</span>ll <span class="built_in">continue</span> singing it forever</div><div class="line">just because...</div></pre></td></tr></table></figure>
+</code></pre><h2 id="1-4-替换命令s"><a href="#1-4-替换命令s" class="headerlink" title="1.4 替换命令s"></a>1.4 替换命令s</h2><pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">'s/old_word/new_word/'</span></div></pre></td></tr></table></figure>
 </code></pre><p>s是替换命令，/是默认的分隔符，也可以使用其它字符作为分隔符（紧跟s之后），常见的有：|, :, _等，注意末尾的分隔符不能省略。<br>old_word为正则表达式，用于匹配，new_word是要替换的字符串。如：</p>
-<pre><code>root@a01:~/junk# echo http://www.thegeekstuff.com/2009/09/unix-sed | sed &apos;s_2009/09_2016/07_&apos;
-http://www.thegeekstuff.com/2016/07/unix-sed
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># echo http://www.thegeekstuff.com/2009/09/unix-sed | sed 's_2009/09_2016/07_'</span></div><div class="line">http://www.thegeekstuff.com/2016/07/unix-sed</div></pre></td></tr></table></figure>
 </code></pre><p>s命令默认仅替换每一行出现的第1个匹配，如：</p>
-<pre><code>root@a01:~/junk# sed &apos;s/on/forward/&apos; annoying.txt
-this is the sforwardg that never ends
-yes, it goes forward and on, my friend
-some people started singing it
-not knowing what it was
-and they&apos;ll cforwardtinue singing it forever
-just because...
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed 's/on/forward/' annoying.txt</span></div><div class="line">this is the sforwardg that never ends</div><div class="line">yes, it goes forward and on, my friend</div><div class="line">some people started singing it</div><div class="line">not knowing what it was</div><div class="line">and they<span class="string">'ll cforwardtinue singing it forever</span></div><div class="line"><span class="string">just because...</span></div></pre></td></tr></table></figure>
 </code></pre><p>也可以仅替换每行的第n个匹配，如：</p>
-<pre><code>root@a01:~/junk# sed &apos;s/on/forward/2&apos; annoying.txt
-this is the song that never ends
-yes, it goes on and forward, my friend
-some people started singing it
-not knowing what it was
-and they&apos;ll continue singing it forever
-just because...
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed 's/on/forward/2' annoying.txt</span></div><div class="line">this is the song that never ends</div><div class="line">yes, it goes on and forward, my friend</div><div class="line">some people started singing it</div><div class="line">not knowing what it was</div><div class="line">and they<span class="string">'ll continue singing it forever</span></div><div class="line"><span class="string">just because...</span></div></pre></td></tr></table></figure>
 </code></pre><p>全局替换使用g参数：</p>
-<pre><code>root@a01:~/junk# sed &apos;s/on/forward/g&apos; annoying.txt
-this is the sforwardg that never ends
-yes, it goes forward and forward, my friend
-some people started singing it
-not knowing what it was
-and they&apos;ll cforwardtinue singing it forever
-just because...
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed 's/on/forward/g' annoying.txt</span></div><div class="line">this is the sforwardg that never ends</div><div class="line">yes, it goes forward and forward, my friend</div><div class="line">some people started singing it</div><div class="line">not knowing what it was</div><div class="line">and they<span class="string">'ll cforwardtinue singing it forever</span></div><div class="line"><span class="string">just because...</span></div></pre></td></tr></table></figure>
 </code></pre><p>如果仅替换独立的单词，不替换单词的部分，使用\b限制边界，如：</p>
-<pre><code>root@a01:~/junk# sed &apos;s/\bon\b/forward/g&apos; annoying.txt
-this is the song that never ends
-yes, it goes forward and forward, my friend
-some people started singing it
-not knowing what it was
-and they&apos;ll continue singing it forever
-just because...
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed 's/\bon\b/forward/g' annoying.txt</span></div><div class="line">this is the song that never ends</div><div class="line">yes, it goes forward and forward, my friend</div><div class="line">some people started singing it</div><div class="line">not knowing what it was</div><div class="line">and they<span class="string">'ll continue singing it forever</span></div><div class="line"><span class="string">just because...</span></div></pre></td></tr></table></figure>
 </code></pre><p>限制操作的行数，如仅全局替换前3行（&amp;表示引用匹配到的部分）：</p>
-<pre><code>root@a01:~/junk# sed &apos;1,2s/^.*/  &amp;/&apos; annoying.txt
-  this is the song that never ends
-  yes, it goes on and on, my friend
-some people started singing it
-not knowing what it was
-and they&apos;ll continue singing it forever
-just because...
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk# sed &apos;1,2s/^.*/  &amp;/&apos; annoying.txt</div><div class="line">  this is the song that never ends</div><div class="line">  yes, it goes on and on, my friend</div><div class="line">some people started singing it</div><div class="line">not knowing what it was</div><div class="line">and they&apos;ll continue singing it forever</div><div class="line">just because...</div></pre></td></tr></table></figure>
 </code></pre><p>可以使用-n选项和p参数，打印仅发生替换的内容，如：</p>
-<pre><code>root@a01:~/junk# sed -n &apos;s/on/forward/gp&apos; annoying.txt
-this is the sforwardg that never ends
-yes, it goes forward and forward, my friend
-and they&apos;ll cforwardtinue singing it forever
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed -n 's/on/forward/gp' annoying.txt</span></div><div class="line">this is the sforwardg that never ends</div><div class="line">yes, it goes forward and forward, my friend</div><div class="line">and they<span class="string">'ll cforwardtinue singing it forever</span></div></pre></td></tr></table></figure>
 </code></pre><p>可见，在s命令的最后，可以通过参数影响替换的行为，如i表示忽略大小写：</p>
-<pre><code>root@a01:~/junk# sed -n &apos;s/on/forward/gpi&apos; annoying.txt
-this is the sforwardg that never ends
-yes, it goes forward and forward, my friend
-and they&apos;ll cforwardtinue singing it forever
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed -n 's/on/forward/gpi' annoying.txt</span></div><div class="line">this is the sforwardg that never ends</div><div class="line">yes, it goes forward and forward, my friend</div><div class="line">and they<span class="string">'ll cforwardtinue singing it forever</span></div></pre></td></tr></table></figure>
 </code></pre><p>引用被匹配的部分：如果只有一个分组，则使用&amp;比较方便，表示引用被匹配的部分，如：</p>
-<pre><code>root@a01:~/junk# sed &apos;s/.*/| &amp;/&apos; annoying.txt
-| this is the song that never ends
-| yes, it goes on and on, my friend
-| some people started singing it
-| not knowing what it was
-| and they&apos;ll continue singing it forever
-| just because...
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed 's/.*/| &amp;/' annoying.txt</span></div><div class="line">| this is the song that never ends</div><div class="line">| yes, it goes on and on, my friend</div><div class="line">| some people started singing it</div><div class="line">| not knowing what it was</div><div class="line">| and they<span class="string">'ll continue singing it forever</span></div><div class="line"><span class="string">| just because...</span></div></pre></td></tr></table></figure>
 </code></pre><p>如果有多个分组，首先在<code>old_word</code>里通过括号()分组，然后在<code>new_word</code>里通过数字序号去引用（分组的括号以及引用的数字都需要通过\转义）,<br>数字和前面的分组一一对应，最多可以使用9个数字。比如我们要反转每一行的前两个单词：</p>
-<pre><code>root@a01:~/junk# sed &apos;s/\([0-9a-zA-Z][0-9a-zA-Z]*\) \([0-9a-zA-Z][0-9a-zA-Z]*\)/\2 \1/&apos; annoying.txt
-is this the song that never ends
-yes, goes it on and on, my friend
-people some started singing it
-knowing not what it was
-they and&apos;ll continue singing it forever
-because just...
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed 's/\([0-9a-zA-Z][0-9a-zA-Z]*\) \([0-9a-zA-Z][0-9a-zA-Z]*\)/\2 \1/' annoying.txt</span></div><div class="line">is this the song that never ends</div><div class="line">yes, goes it on and on, my friend</div><div class="line">people some started singing it</div><div class="line">knowing not what it was</div><div class="line">they and<span class="string">'ll continue singing it forever</span></div><div class="line"><span class="string">because just...</span></div></pre></td></tr></table></figure>
 </code></pre><p>\1可以用于用在new_word，也可以用在old_word中，如打印具有连续重复词的行：</p>
-<pre><code>root@a01:~/junk# sed -n &apos;/\([a-z][a-z]*\) \1/p&apos; annoying.txt
-this is the song that never ends
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed -n '/\([a-z][a-z]*\) \1/p' annoying.txt</span></div><div class="line">this is the song that never ends</div></pre></td></tr></table></figure>
 </code></pre><h2 id="1-5-行之前插入命令i"><a href="#1-5-行之前插入命令i" class="headerlink" title="1.5 行之前插入命令i"></a>1.5 行之前插入命令i</h2><p>在文件中插入内容也是sed常见用法之一。i命令表示在匹配的行前插入内容，插入的内容作为一行显示，如：</p>
-<pre><code>root@a01:~/junk# sed &apos;/singing/i before every line&apos; annoying.txt
-this is the song that never ends
-yes, it goes on and on, my friend
-before every line
-some people started singing it
-not knowing what it was
-before every line
-and they&apos;ll continue singing it forever
-just because...
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed '/singing/i before every line' annoying.txt</span></div><div class="line">this is the song that never ends</div><div class="line">yes, it goes on and on, my friend</div><div class="line">before every line</div><div class="line">some people started singing it</div><div class="line">not knowing what it was</div><div class="line">before every line</div><div class="line">and they<span class="string">'ll continue singing it forever</span></div><div class="line"><span class="string">just because...</span></div></pre></td></tr></table></figure>
 </code></pre><h2 id="1-6-行之后插入命令a"><a href="#1-6-行之后插入命令a" class="headerlink" title="1.6 行之后插入命令a"></a>1.6 行之后插入命令a</h2><p>表示在匹配的行之后插入内容：</p>
-<pre><code>root@a01:~/junk# sed &apos;/it/a after it&apos; annoying.txt
-this is the song that never ends
-yes, it goes on and on, my friend
-after it
-some people started singing it
-after it
-not knowing what it was
-after it
-and they&apos;ll continue singing it forever
-after it
-just because...
-</code></pre><h2 id="1-7-行修改（替换）命令c"><a href="#1-7-行修改（替换）命令c" class="headerlink" title="1.7 行修改（替换）命令c"></a>1.7 行修改（替换）命令c</h2><pre><code>root@a01:~/junk# sed &apos;/it/c change it&apos; annoying.txt
-this is the song that never ends
-change it
-change it
-change it
-change it
-just because...
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed '/it/a after it' annoying.txt</span></div><div class="line">this is the song that never ends</div><div class="line">yes, it goes on and on, my friend</div><div class="line">after it</div><div class="line">some people started singing it</div><div class="line">after it</div><div class="line">not knowing what it was</div><div class="line">after it</div><div class="line">and they<span class="string">'ll continue singing it forever</span></div><div class="line"><span class="string">after it</span></div><div class="line"><span class="string">just because...</span></div></pre></td></tr></table></figure>
+</code></pre><h2 id="1-7-行修改（替换）命令c"><a href="#1-7-行修改（替换）命令c" class="headerlink" title="1.7 行修改（替换）命令c"></a>1.7 行修改（替换）命令c</h2><pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed '/it/c change it' annoying.txt</span></div><div class="line">this is the song that never ends</div><div class="line">change it</div><div class="line">change it</div><div class="line">change it</div><div class="line">change it</div><div class="line">just because...</div></pre></td></tr></table></figure>
 </code></pre><h2 id="1-8-执行多条处理命令：-e选项"><a href="#1-8-执行多条处理命令：-e选项" class="headerlink" title="1.8 执行多条处理命令：-e选项"></a>1.8 执行多条处理命令：-e选项</h2><p>可以通过管道|，如：</p>
-<pre><code>root@a01:~/junk# sed &apos;s/and/\&amp;/&apos; annoying.txt | sed &apos;s/people/horses/&apos;
-this is the song that never ends
-yes, it goes on &amp; on, my friend
-some horses started singing it
-not knowing what it was
-&amp; they&apos;ll continue singing it forever
-just because...
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed 's/and/\&amp;/' annoying.txt | sed 's/people/horses/'</span></div><div class="line">this is the song that never ends</div><div class="line">yes, it goes on &amp; on, my friend</div><div class="line">some horses started singing it</div><div class="line">not knowing what it was</div><div class="line">&amp; they<span class="string">'ll continue singing it forever</span></div><div class="line"><span class="string">just because...</span></div></pre></td></tr></table></figure>
 </code></pre><p>但是因为需要多次调用sed命令，因此效率不好。推荐使用sed的<code>-e</code>选项来执行多条命令（只有一条命令时，-e选项不是必须的），如：</p>
-<pre><code>root@a01:~/junk# sed -e &apos;s/and/\&amp;/&apos; -e &apos;s/people/horses/&apos; annoying.txt
-this is the song that never ends
-yes, it goes on &amp; on, my friend
-some horses started singing it
-not knowing what it was
-&amp; they&apos;ll continue singing it forever
-just because...
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed -e 's/and/\&amp;/' -e 's/people/horses/' annoying.txt</span></div><div class="line">this is the song that never ends</div><div class="line">yes, it goes on &amp; on, my friend</div><div class="line">some horses started singing it</div><div class="line">not knowing what it was</div><div class="line">&amp; they<span class="string">'ll continue singing it forever</span></div><div class="line"><span class="string">just because...</span></div></pre></td></tr></table></figure>
 </code></pre><p>还有一种方式，通过分号(;)将命令分割，如：</p>
-<pre><code>root@a01:~/junk# sed &apos;s/and/\&amp;/;s/people/horses/&apos; annoying.txt
-this is the song that never ends
-yes, it goes on &amp; on, my friend
-some horses started singing it
-not knowing what it was
-&amp; they&apos;ll continue singing it forever
-just because...
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed 's/and/\&amp;/;s/people/horses/' annoying.txt</span></div><div class="line">this is the song that never ends</div><div class="line">yes, it goes on &amp; on, my friend</div><div class="line">some horses started singing it</div><div class="line">not knowing what it was</div><div class="line">&amp; they<span class="string">'ll continue singing it forever</span></div><div class="line"><span class="string">just because...</span></div></pre></td></tr></table></figure>
 </code></pre><h2 id="1-9-sed脚本文件：-f选项"><a href="#1-9-sed脚本文件：-f选项" class="headerlink" title="1.9 sed脚本文件：-f选项"></a>1.9 sed脚本文件：-f选项</h2><p>可以将sed命令放到文件里，然后执行这个脚本文件，语法为：</p>
-<pre><code>$ sed -f script-file file-to-edit
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sed -f script-file file-to-edit</div></pre></td></tr></table></figure>
 </code></pre><p>比如：</p>
-<pre><code>root@a01:~/junk# echo &apos;s/and/\&amp;/
-&gt; s/people/horses/&apos; &gt;&gt; sed-demo
-
-root@a01:~/junk# sed -f sed-demo annoying.txt
-this is the song that never ends
-yes, it goes on &amp; on, my friend
-some horses started singing it
-not knowing what it was
-&amp; they&apos;ll continue singing it forever
-just because...
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># echo 's/and/\&amp;/</span></div><div class="line">&gt; s/people/horses/<span class="string">' &gt;&gt; sed-demo</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">root@a01:~/junk# sed -f sed-demo annoying.txt</span></div><div class="line"><span class="string">this is the song that never ends</span></div><div class="line"><span class="string">yes, it goes on &amp; on, my friend</span></div><div class="line"><span class="string">some horses started singing it</span></div><div class="line"><span class="string">not knowing what it was</span></div><div class="line"><span class="string">&amp; they'</span>ll <span class="built_in">continue</span> singing it forever</div><div class="line">just because...</div></pre></td></tr></table></figure>
 </code></pre><h2 id="1-10-pattern"><a href="#1-10-pattern" class="headerlink" title="1.10 pattern"></a>1.10 pattern</h2><p>命令前面都可以通过pattern去匹配，pattern为正则表达式。</p>
 <p>比如仅处理包含singing这个词的行：</p>
-<pre><code>root@a01:~/junk# sed &apos;/singing/s/it/&amp; loudly/&apos; annoying.txt
-this is the song that never ends
-yes, it goes on and on, my friend
-some people started singing it loudly
-not knowing what it was
-and they&apos;ll continue singing it loudly forever
-just because...
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed '/singing/s/it/&amp; loudly/' annoying.txt</span></div><div class="line">this is the song that never ends</div><div class="line">yes, it goes on and on, my friend</div><div class="line">some people started singing it loudly</div><div class="line">not knowing what it was</div><div class="line">and they<span class="string">'ll continue singing it loudly forever</span></div><div class="line"><span class="string">just because...</span></div></pre></td></tr></table></figure>
 </code></pre><p>pattern默认的分隔符也是/，如果第一个字符为\，则使用后面的字符作为分隔符，一般用于匹配本身带有/的值，如：</p>
-<pre><code>root@a01:~/junk# echo http://www.grymoire.com/Unix/sed.html | sed &apos;\_/Unix/sed_s_/sed_/awk_&apos;
-http://www.grymoire.com/Unix/awk.html
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># echo http://www.grymoire.com/Unix/sed.html | sed '\_/Unix/sed_s_/sed_/awk_'</span></div><div class="line">http://www.grymoire.com/Unix/awk.html</div></pre></td></tr></table></figure>
 </code></pre><p>pattern除了直接匹配，还支持范围匹配，语法为：</p>
 <pre><code>sed &apos;/start/,/stop/ s/#.*//&apos;
 </code></pre><p>start表示匹配开始，stop表示匹配结束，可以看作开关；如果是正则表达式，需要使用//，如果只是数字或者^$，则不需要//。</p>
 <p>删除从some开头到not开头的中间所有行：</p>
-<pre><code>root@a01:~/junk# sed &apos;/^some/,/^not/d&apos; annoying.txt
-this is the song that never ends
-yes, it goes on and on, my friend
-and they&apos;ll continue singing it forever
-just because...
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed '/^some/,/^not/d' annoying.txt</span></div><div class="line">this is the song that never ends</div><div class="line">yes, it goes on and on, my friend</div><div class="line">and they<span class="string">'ll continue singing it forever</span></div><div class="line"><span class="string">just because...</span></div></pre></td></tr></table></figure>
 </code></pre><p>删除第1行到包含yes的那一行：</p>
-<pre><code>root@a01:~/junk# sed &apos;1,/yes/d&apos; annoying.txt
-some people started singing it
-not knowing what it was
-and they&apos;ll continue singing it forever
-just because...
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed '1,/yes/d' annoying.txt</span></div><div class="line">some people started singing it</div><div class="line">not knowing what it was</div><div class="line">and they<span class="string">'ll continue singing it forever</span></div><div class="line"><span class="string">just because...</span></div></pre></td></tr></table></figure>
 </code></pre><p>删除包含yes那行到最后一行（命令d前面允许有空格的）：</p>
-<pre><code>root@a01:~/junk# sed &apos;/yes/,$ d&apos; annoying.txt
-this is the song that never ends
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed '/yes/,$ d' annoying.txt</span></div><div class="line">this is the song that never ends</div></pre></td></tr></table></figure>
 </code></pre><p>命令前面使用!表示对命令取反，比如对上一条命令取反：</p>
-<pre><code>root@a01:~/junk# sed &apos;/^some/,/^not/!d&apos; annoying.txt
-some people started singing it
-not knowing what it was
-</code></pre><h1 id="2-应用示例"><a href="#2-应用示例" class="headerlink" title="2. 应用示例"></a>2. 应用示例</h1><h2 id="2-1-保留每一行的第一个单词"><a href="#2-1-保留每一行的第一个单词" class="headerlink" title="2.1 保留每一行的第一个单词"></a>2.1 保留每一行的第一个单词</h2><pre><code>root@a01:~/junk# sed &apos;s/\([a-zA-Z]*\).*/\1/&apos; &lt; annoying.txt &gt; first_word.txt
-root@a01:~/junk# cat first_word.txt
-this
-yes
-some
-not
-and
-just
-</code></pre><h2 id="2-2-Here-is输入"><a href="#2-2-Here-is输入" class="headerlink" title="2.2 Here is输入"></a>2.2 <code>Here is</code>输入</h2><pre><code>root@a01:~/junk# cat sed-here-is.sh
-#!/bin/sh
-echo -n &quot;what is the value?\n&quot;
-read value
-sed &quot;s/XYZ/$value/&quot; &lt;&lt;EOF
-The value is XYZ
-EOF
-root@a01:~/junk# sh sed-here-is.sh
-what is the value?
-test
-The value is test
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed '/^some/,/^not/!d' annoying.txt</span></div><div class="line">some people started singing it</div><div class="line">not knowing what it was</div></pre></td></tr></table></figure>
+</code></pre><h1 id="2-应用示例"><a href="#2-应用示例" class="headerlink" title="2. 应用示例"></a>2. 应用示例</h1><h2 id="2-1-保留每一行的第一个单词"><a href="#2-1-保留每一行的第一个单词" class="headerlink" title="2.1 保留每一行的第一个单词"></a>2.1 保留每一行的第一个单词</h2><pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># sed 's/\([a-zA-Z]*\).*/\1/' &lt; annoying.txt &gt; first_word.txt</span></div><div class="line">root@a01:~/junk<span class="comment"># cat first_word.txt</span></div><div class="line">this</div><div class="line">yes</div><div class="line">some</div><div class="line">not</div><div class="line">and</div><div class="line">just</div></pre></td></tr></table></figure>
+</code></pre><h2 id="2-2-Here-is输入"><a href="#2-2-Here-is输入" class="headerlink" title="2.2 Here is输入"></a>2.2 <code>Here is</code>输入</h2><pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">root@a01:~/junk<span class="comment"># cat sed-here-is.sh</span></div><div class="line"><span class="meta">#!/bin/sh</span></div><div class="line"><span class="built_in">echo</span> -n <span class="string">"what is the value?\n"</span></div><div class="line"><span class="built_in">read</span> value</div><div class="line">sed <span class="string">"s/XYZ/<span class="variable">$value</span>/"</span> &lt;&lt;EOF</div><div class="line">The value is XYZ</div><div class="line">EOF</div><div class="line">root@a01:~/junk<span class="comment"># sh sed-here-is.sh</span></div><div class="line">what is the value?</div><div class="line"><span class="built_in">test</span></div><div class="line">The value is <span class="built_in">test</span></div></pre></td></tr></table></figure>
 </code></pre><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="http://www.grymoire.com/Unix/sed.html" target="_blank" rel="external">Sed - An Introduction and Tutorial by Bruce Barnett</a></li>
 <li><a href="https://www.digitalocean.com/community/tutorials/the-basics-of-using-the-sed-stream-editor-to-manipulate-text-in-linux" target="_blank" rel="external">The Basics of Using the Sed Stream Editor to Manipulate Text in Linux</a></li>
@@ -719,7 +514,7 @@ The value is test
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://nkcoder.github.io/2016/08/06/linux-sed-note/" title="Linux命令之sed">http://nkcoder.github.io/2016/08/06/linux-sed-note/</a>
+    <a href="http://nkcoder.github.io/2016/08/06/linux-sed-note/" title="Sed命令用法简介">http://nkcoder.github.io/2016/08/06/linux-sed-note/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
