@@ -1,10 +1,8 @@
 title: Ehcache以及与MyBatis的集成
 categories: Backend
 date: 2016-04-09 22:23:36
-tags: [Ehcache, MyBatis]
+tags: [缓存, Ehcache, MyBatis]
 ---
-
-> 本文链接为：http://nkcoder.github.io/2016/04/09/ehcache-mybatis/  ，转载请注明出处，谢谢！
 
 Ehcache是目前使用很广泛的Java系的开源cache。可以把它当作通用的cache，或者作为Hibernate/MyBatis等的二级缓存。本文简要介绍在MyBatis中集成Ehcache，其中Ehcache的版本是**2.10.1**。
 
@@ -14,19 +12,21 @@ Ehcache默认使用**CLASSPATH**根目录下的`ehcache.xml`作为配置文件�
 
 <!--more-->
 
-	<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../config/ehcache.xsd">
-		<diskStore path="java.io.tmpdir"/>
-		<defaultCache
-				  maxElementsInMemory="10000"
-				  eternal="false"
-				  timeToIdleSeconds="120"
-				  timeToLiveSeconds="120"
-				  maxElementsOnDisk="10000000"
-				  diskExpiryThreadIntervalSeconds="120"
-				  memoryStoreEvictionPolicy="LRU">
-			  <persistence strategy="localTempSwap"/>
-		</defaultCache>
-	</ehcache>
+		```xml
+		<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../config/ehcache.xsd">
+			<diskStore path="java.io.tmpdir"/>
+			<defaultCache
+						maxElementsInMemory="10000"
+						eternal="false"
+						timeToIdleSeconds="120"
+						timeToLiveSeconds="120"
+						maxElementsOnDisk="10000000"
+						diskExpiryThreadIntervalSeconds="120"
+						memoryStoreEvictionPolicy="LRU">
+					<persistence strategy="localTempSwap"/>
+			</defaultCache>
+		</ehcache>
+		```
 
 `<ehcache>`节点对应一个CacheManager，一个CacheManager可以管理多个cache实例。`ehcache`节点可配置参数主要有：
 
@@ -45,15 +45,15 @@ Ehcache默认使用**CLASSPATH**根目录下的`ehcache.xml`作为配置文件�
 
 `<cache>`节点中的主要参数有：
 
-	- name：唯一标识cache实例；
-	- maxEntriesLocalHeap：Memory中可保存的对象的最大数量，默认为0表示不限；
-	- maxEntriesLocalDisk：Disk中可保存的对象的最大数量，默认为0表示不限；
-	- eternal：表示cache是否过期，如果eternal为true，则对象永不过期；
-	- maxBytesLocalHeap：该实例的最大可用Heap，不能超过`<ehcache>`中配置到CacheManager的最大Heap容量，如果使用了maxBytesLocalHeap，则不能使用maxBytesLocalHeap；
-	- maxBytesLocalDisk：该实例的最大可用磁盘容量；
-	- timeToIdleSeconds：表示对象最后一次访问到过期的时间，默认为0，表示不过期，该参数仅当eternal为false时有效；
-	- timeToLiveSeconds：表示对象从创建到过期的时间，默认为0，表示不过期，该参数仅当eternal为false时有效；
-	- memoryStoreEvictionPolicy：当cache的对象达到maxEntriesLocalHeap限制时使用的剔除策略，默认为`LRU`，可用值有：LRU, FIFO, LFU
+- name：唯一标识cache实例；
+- maxEntriesLocalHeap：Memory中可保存的对象的最大数量，默认为0表示不限；
+- maxEntriesLocalDisk：Disk中可保存的对象的最大数量，默认为0表示不限；
+- eternal：表示cache是否过期，如果eternal为true，则对象永不过期；
+- maxBytesLocalHeap：该实例的最大可用Heap，不能超过`<ehcache>`中配置到CacheManager的最大Heap容量，如果使用了maxBytesLocalHeap，则不能使用maxBytesLocalHeap；
+- maxBytesLocalDisk：该实例的最大可用磁盘容量；
+- timeToIdleSeconds：表示对象最后一次访问到过期的时间，默认为0，表示不过期，该参数仅当eternal为false时有效；
+- timeToLiveSeconds：表示对象从创建到过期的时间，默认为0，表示不过期，该参数仅当eternal为false时有效；
+- memoryStoreEvictionPolicy：当cache的对象达到maxEntriesLocalHeap限制时使用的剔除策略，默认为`LRU`，可用值有：LRU, FIFO, LFU
 
 `<persistence>`节点的参数:
 
@@ -72,13 +72,15 @@ Ehcache默认使用**CLASSPATH**根目录下的`ehcache.xml`作为配置文件�
 
 也可以在`<cache>`节点中配置ecache，就不需要额外的`.ecache.xml`配置了，如：
 
-	<cache type="org.mybatis.caches.ehcache.EhcacheCache">
+		```
+		<cache type="org.mybatis.caches.ehcache.EhcacheCache">
         <property name="timeToIdleSeconds" value="3600"/>
         <property name="timeToLiveSeconds" value="3600"/>
         <property name="maxEntriesLocalHeap" value="1000"/>
         <property name="maxEntriesLocalDisk" value="100000"/>
         <property name="memoryStoreEvictionPolicy" value="LRU"/>
     </cache>
+		```
 
 在`mybatis-ehcache`的1.1.0-SNAPSHOT中，cache的type，除了`EhcacheCache`，还可以是`EhBlockingCache`。`EhBlockingCache`的主要应用场景是要缓存的数据是动态变化的，而并发访问数据的请求非常高，此时使用阻塞cache，让第一个线程去cache，其它等待的限制只需要直接去cache中取数据即可。
 

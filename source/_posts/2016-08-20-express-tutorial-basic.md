@@ -1,22 +1,23 @@
-title: Express框架入门：初级篇
+title: 学习Express框架一：基础
 categories: Backend
 date: 2016-08-20 06:59:43
 tags: [nodejs, express]
 ---
 
-[express](http://expressjs.com/)是nodejs的一个流行的web框架。本文主要介绍将express作为服务端对外提供API接口时，需要了解的入门知识。
+
+[express](http://expressjs.com/)是nodejs的一个流行的web框架。本文主要介绍将express作为服务端对外提供API接口时，需要了解的入门知识。Express版本：`4.x`。
 
 # 1. Hello World
 
 首先安装node（如果已安装，则略过）：
 
-    ```bash
+    ```
     $ brew install node
     ```
 
 创建一个项目，然后安装express：
 
-    ```bash
+    ```
     $ mkdir express-hello-world && cd express-hello-world
     $ npm init
     $ npm install express --save
@@ -43,7 +44,7 @@ tags: [nodejs, express]
 
 运行：
 
-    ```bash
+    ```
     $ node index.js
     ```
 
@@ -118,14 +119,17 @@ router级中间件与app级中间件的用法基本一致，不同的是，它�
 
 express中，路径参数使用命名参数的方式，比如路径是`/user/:id`，则使用`req.params.id`取参数`:id`的值，如：
 
+    ```
     /user/:id
     GET /user/15
     req.params.id  => 15
+    ```
 
 ## 3.2 req.query取查询参数
 
 取查询参数，只需要通过`req.query`根据key取值即可，如：
 
+    ```
     GET /search?name=Ketty&gender=male
     req.query.name => Ketty
     req.query.gender => male
@@ -133,6 +137,7 @@ express中，路径参数使用命名参数的方式，比如路径是`/user/:id
     GET /search?user[name]=Ketty&user[age]=30
     req.query.user.name => Ketty
     req.query.user.age  => 30
+    ```
 
 ## 3.3 req.body 
 

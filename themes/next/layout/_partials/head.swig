@@ -145,3 +145,5 @@
 {% endif %}
 
 {% include 'head/custom-head.swig' %}
+
+{% include '../_custom/google-adsense.swig' %}

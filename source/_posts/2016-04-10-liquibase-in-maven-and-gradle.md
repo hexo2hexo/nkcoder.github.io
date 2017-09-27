@@ -4,8 +4,6 @@ date: 2016-04-10 16:06:32
 tags: [LiquiBase, Maven, Gradle]
 ---
 
-> 本文链接为：http://nkcoder.github.io/2016/04/10/liquibase-in-maven-and-gradle/  ，转载请注明出处，谢谢！
-
 [LiquiBase](http://www.liquibase.org/index.html)是一个用于数据库重构和迁移的开源工具，通过日志文件的形式记录数据库的变更，然后执行日志文件中的修改，将数据库更新或回滚到一致的状态。LiquiBase的主要特点有：
 
 - 支持几乎所有主流的数据库，如MySQL, PostgreSQL, Oracle, Sql Server, DB2等；
@@ -25,6 +23,7 @@ changelog支持多种格式，主要有XML/JSON/YAML/SQL，其中XML/JSON/YAML�
 
 changelog.xml
 
+    ```xml
     <changeSet id="2" author="daniel" runOnChange="true">
         <insert tableName="contest_info">
             <column name="id">3</column>
@@ -32,9 +31,11 @@ changelog.xml
             <column name="content">content 3</column>
         </insert>
     </changeSet>
+    ```
 
 changelog.sql
 
+    ```sql
     --liquibase formatted sql
     --changeset daniel:16040707
     CREATE TABLE `role_authority_sum` (
@@ -44,6 +45,7 @@ changelog.sql
       `data_type_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '关联data_type的id',
       PRIMARY KEY (`row_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色的权限值的和，如角色有RD权限，则和为2+8=10';
+    ```
 
 ## 2. 常用的标签及命令
 
@@ -61,9 +63,10 @@ changelog中的一个changeSet对应一个事务，在changeSet执行完后commi
 
 - runAlways：即使已经执行过，仍然每次都执行；**注意**: 由于`DATABASECHANGELOG`表中还记录了changeSet的MD5校验值MD5SUM，如果changeSet的`id`和`name`没变，而内容变了，则由于MD5值变了，即使runAlways的值为True，执行也是失败的，会报错。这种情况应该使用`runOnChange`属性。
 
-
-        [ERROR] Failed to execute goal org.liquibase:liquibase-maven-plugin:3.4.2:update (default-cli) on project tx_test: Error setting up or running Liquibase: Validation Failed:
-        [ERROR] 1 change sets check sum
+    ```
+    [ERROR] Failed to execute goal org.liquibase:liquibase-maven-plugin:3.4.2:update (default-cli) on project tx_test: Error setting up or running Liquibase: Validation Failed:
+    [ERROR] 1 change sets check sum
+    ```
 
 - runOnChange：第一次的时候执行以及当changeSet的内容发生变化时执行。不受MD5校验值的约束。
 
@@ -75,6 +78,7 @@ changelog中的一个changeSet对应一个事务，在changeSet执行完后commi
 
 当changelog文件越来越多时，可以使用`<include>`将文件管理起来，如：
 
+    ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <databaseChangeLog
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -83,12 +87,15 @@ changelog中的一个changeSet对应一个事务，在changeSet执行完后commi
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
         <include file="logset-20160408/0001_authorization_init.sql" relativeToChangelogFile="true"/>
     </databaseChangeLog>
+    ```
 
 `<include>`的**file**属性表示要包含的changelog文件的路径，这个文件可以是LiquiBase支持的任意格式，**relativeToChangelogFile**如果为true，则表示**file**属性表示的文件路径是相对于根changelog而不是**CLASSPATH**的，默认为false。
 
 `<includeAll>`指定的是changelog的目录，而不是为文件，如：
 
+    ```
     <includeAll path="com/example/changelogs/"/>
+    ```
 
 **注意**: 目前`<include>`没有解决重复引用和循环引用的问题，重复引用还好，LiquiBase在执行的时候可以判断重复，而循环引用会导致无限循环，需要注意！
 
@@ -96,6 +103,7 @@ changelog中的一个changeSet对应一个事务，在changeSet执行完后commi
 
 diff命令用于比较数据库之间的异同。比如通过命令行执行：
 
+    ```
     java -jar liquibase.jar --driver=com.mysql.jdbc.Driver \
         --classpath=./mysql-connector-java-5.1.29.jar \
         --url=jdbc:mysql://127.0.0.1:3306/test \
@@ -103,11 +111,13 @@ diff命令用于比较数据库之间的异同。比如通过命令行执行：
         diff \
         --referenceUrl=jdbc:mysql://127.0.0.1:3306/authorization \
         --referenceUsername=root --referencePassword=passwd
+    ```
 
 ### 2.4 generateChangeLog
 
 在已有的项目上使用LiquiBase，要生成当前数据库的changeset，可以采用两种方式，一种是使用数据库工具导出SQL数据，然后changelog文件以SQL格式记录即可；另一种方式就是用`generateChangeLog`命令，如：
 
+    ```
     liquibase --driver=com.mysql.jdbc.Driver \
           --classpath=./mysql-connector-java-5.1.29.jar \
           --changeLogFile=liquibase/db.changelog.xml \
@@ -115,6 +125,7 @@ diff命令用于比较数据库之间的异同。比如通过命令行执行：
           --username=root \
           --password=yourpass \
           generateChangeLog
+    ```
 
 不过`generateChangeLog`不支持以下功能：存储过程、函数以及触发器；
 
@@ -124,6 +135,7 @@ diff命令用于比较数据库之间的异同。比如通过命令行执行：
 
 Maven中集成LiquiBase，主要是配置`liquibase-maven-plugin`，首先给出一个示例：
 
+    ```
     <plugin>
       <groupId>org.liquibase</groupId>
       <artifactId>liquibase-maven-plugin</artifactId>
@@ -144,11 +156,13 @@ Maven中集成LiquiBase，主要是配置`liquibase-maven-plugin`，首先给出
           </execution>
       </executions>
     </plugin>
+    ```
 
 其中`<configuration>`节点中的配置可以放在单独的配置文件里。
 
 如果需要在父项目中配置子项目共享的LiquiBase配置，而各个子项目可以定义自己的配置，并覆盖父项目中的配置，则只需要在父项目的pom中将`propertyFileWillOverride`设置为true即可，如：
 
+    ```
     <plugin>
         <groupId>org.liquibase</groupId>
         <artifactId>liquibase-maven-plugin</artifactId>
@@ -158,42 +172,53 @@ Maven中集成LiquiBase，主要是配置`liquibase-maven-plugin`，首先给出
             <propertyFile>liquibase/liquibase.properties</propertyFile>
         </configuration>
     </plugin>
-
+    ```
 
 ### 3.2 `liquibase:update`
 
 执行changelog中的变更：
 
+    ```
     $ mvn liquibase:update
+    ```
 
 ### 3.3 `liquibase:rollback`
 
 rollback有3中形式，分别是：
 
-    - rollbackCount: 表示rollback的changeset的个数；
-    - rollbackDate：表示rollback到指定的日期；
-    - rollbackTag：表示rollback到指定的tag，需要使用LiquiBase在具体的时间点打上tag；
+- rollbackCount: 表示rollback的changeset的个数；
+- rollbackDate：表示rollback到指定的日期；
+- rollbackTag：表示rollback到指定的tag，需要使用LiquiBase在具体的时间点打上tag；
 
 `rollbackCount`比较简单，示例如：
 
+    ```bash
     $ mvn liquibase:rollback -Dliquibase.rollbackCount=3
+    ```
 
 `rollbackDate`需要注意日期的格式，必须匹配当前平台上执行`DateFormat.getDateInstance()`得到的格式，比如我的格式为`MMM d, yyyy`，示例如：
 
+    ```
     $ mvn liquibase:rollback -Dliquibase.rollbackDate="Apr 10, 2016"
+    ```
 
 `rollbackTag`使用tag标识，所以需要先打tag，示例如：
 
+    ```
     $ mvn liquibase:tag -Dliquibase.tag=tag20160410
+    ```
 
 然后rollback到tag20160410，如：
 
+    ```
     $ mvn liquibase:rollback -Dliquibase.rollbackTag=tag20160410
+    ```
 
 ## 4. Gradle集成LiquiBase
 
 首先在`build.gradle`中配置`liquibase-gradle-plugin`：
 
+    ```
     buildscript {
         repositories {
             mavenCentral()
@@ -204,10 +229,11 @@ rollback有3中形式，分别是：
         }
     }
     apply plugin: 'org.liquibase.gradle'
+    ```
 
 然后在`build.gradle`中配置该plugin的activities，其中一个activity表示一种运行环境：
 
-
+    ```
     liquibase {
         activities {
             main {
@@ -227,10 +253,13 @@ rollback有3中形式，分别是：
             runList = project.ext.runList
         }
     }
+    ```
 
 比如执行main的命令为：
 
+    ```bash
     $ gradle update -PrunList=main
+    ```
 
 ### 参考
 

@@ -1,4 +1,4 @@
-title: sed命令用法简介
+title: Linux命令系列：sed命令
 categories: Backend
 date: 2016-08-06 14:23:42
 tags: [linux, sed]
@@ -8,7 +8,7 @@ sed是一个面向行的流处理工具，主要用于对文件的增加、删�
 
 sed命令的语法：
 
-    ```bash
+    ```
     sed [options] commands [file-to-edit]
     ```
 
