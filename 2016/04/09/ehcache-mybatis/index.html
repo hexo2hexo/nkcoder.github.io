@@ -91,7 +91,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Ehcache,MyBatis," />
+  <meta name="keywords" content="缓存,Ehcache,MyBatis," />
 
 
 
@@ -109,18 +109,18 @@
 
 
 
-<meta name="description" content="本文链接为：http://nkcoder.github.io/2016/04/09/ehcache-mybatis/  ，转载请注明出处，谢谢！  Ehcache是目前使用很广泛的Java系的开源cache。可以把它当作通用的cache，或者作为Hibernate/MyBatis等的二级缓存。本文简要介绍在MyBatis中集成Ehcache，其中Ehcache的版本是2.10.1。 1. Ehc">
-<meta name="keywords" content="Ehcache,MyBatis">
+<meta name="description" content="Ehcache是目前使用很广泛的Java系的开源cache。可以把它当作通用的cache，或者作为Hibernate/MyBatis等的二级缓存。本文简要介绍在MyBatis中集成Ehcache，其中Ehcache的版本是2.10.1。 1. Ehcache的配置Ehcache默认使用CLASSPATH根目录下的ehcache.xml作为配置文件，如果没找到，则使用Jar包下的ehcache-fa">
+<meta name="keywords" content="缓存,Ehcache,MyBatis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ehcache以及与MyBatis的集成">
 <meta property="og:url" content="http://nkcoder.github.io/2016/04/09/ehcache-mybatis/index.html">
 <meta property="og:site_name" content="Daniel&#39;s Blog">
-<meta property="og:description" content="本文链接为：http://nkcoder.github.io/2016/04/09/ehcache-mybatis/  ，转载请注明出处，谢谢！  Ehcache是目前使用很广泛的Java系的开源cache。可以把它当作通用的cache，或者作为Hibernate/MyBatis等的二级缓存。本文简要介绍在MyBatis中集成Ehcache，其中Ehcache的版本是2.10.1。 1. Ehc">
+<meta property="og:description" content="Ehcache是目前使用很广泛的Java系的开源cache。可以把它当作通用的cache，或者作为Hibernate/MyBatis等的二级缓存。本文简要介绍在MyBatis中集成Ehcache，其中Ehcache的版本是2.10.1。 1. Ehcache的配置Ehcache默认使用CLASSPATH根目录下的ehcache.xml作为配置文件，如果没找到，则使用Jar包下的ehcache-fa">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-17T03:02:20.000Z">
+<meta property="og:updated_time" content="2017-09-27T14:22:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ehcache以及与MyBatis的集成">
-<meta name="twitter:description" content="本文链接为：http://nkcoder.github.io/2016/04/09/ehcache-mybatis/  ，转载请注明出处，谢谢！  Ehcache是目前使用很广泛的Java系的开源cache。可以把它当作通用的cache，或者作为Hibernate/MyBatis等的二级缓存。本文简要介绍在MyBatis中集成Ehcache，其中Ehcache的版本是2.10.1。 1. Ehc">
+<meta name="twitter:description" content="Ehcache是目前使用很广泛的Java系的开源cache。可以把它当作通用的cache，或者作为Hibernate/MyBatis等的二级缓存。本文简要介绍在MyBatis中集成Ehcache，其中Ehcache的版本是2.10.1。 1. Ehcache的配置Ehcache默认使用CLASSPATH根目录下的ehcache.xml作为配置文件，如果没找到，则使用Jar包下的ehcache-fa">
 
 
 
@@ -350,8 +350,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-09-17T11:02:20+08:00">
-                2017-09-17
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-27T22:22:38+08:00">
+                2017-09-27
               </time>
             
           </span>
@@ -411,25 +411,10 @@
       
 
       
-        <blockquote>
-<p>本文链接为：<a href="http://nkcoder.github.io/2016/04/09/ehcache-mybatis/">http://nkcoder.github.io/2016/04/09/ehcache-mybatis/</a>  ，转载请注明出处，谢谢！</p>
-</blockquote>
-<p>Ehcache是目前使用很广泛的Java系的开源cache。可以把它当作通用的cache，或者作为Hibernate/MyBatis等的二级缓存。本文简要介绍在MyBatis中集成Ehcache，其中Ehcache的版本是<strong>2.10.1</strong>。</p>
+        <p>Ehcache是目前使用很广泛的Java系的开源cache。可以把它当作通用的cache，或者作为Hibernate/MyBatis等的二级缓存。本文简要介绍在MyBatis中集成Ehcache，其中Ehcache的版本是<strong>2.10.1</strong>。</p>
 <h2 id="1-Ehcache的配置"><a href="#1-Ehcache的配置" class="headerlink" title="1. Ehcache的配置"></a>1. Ehcache的配置</h2><p>Ehcache默认使用<strong>CLASSPATH</strong>根目录下的<code>ehcache.xml</code>作为配置文件，如果没找到，则使用Jar包下的<code>ehcache-failsafe.xml</code>作为配置文件，该配置文件提供了默认的简单配置：</p>
 <a id="more"></a>
-<pre><code>&lt;ehcache xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:noNamespaceSchemaLocation=&quot;../config/ehcache.xsd&quot;&gt;
-    &lt;diskStore path=&quot;java.io.tmpdir&quot;/&gt;
-    &lt;defaultCache
-              maxElementsInMemory=&quot;10000&quot;
-              eternal=&quot;false&quot;
-              timeToIdleSeconds=&quot;120&quot;
-              timeToLiveSeconds=&quot;120&quot;
-              maxElementsOnDisk=&quot;10000000&quot;
-              diskExpiryThreadIntervalSeconds=&quot;120&quot;
-              memoryStoreEvictionPolicy=&quot;LRU&quot;&gt;
-          &lt;persistence strategy=&quot;localTempSwap&quot;/&gt;
-    &lt;/defaultCache&gt;
-&lt;/ehcache&gt;
+<pre><code><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ehcache</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="attr">xsi:noNamespaceSchemaLocation</span>=<span class="string">"../config/ehcache.xsd"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">diskStore</span> <span class="attr">path</span>=<span class="string">"java.io.tmpdir"</span>/&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">defaultCache</span></span></div><div class="line"><span class="tag">				<span class="attr">maxElementsInMemory</span>=<span class="string">"10000"</span></span></div><div class="line"><span class="tag">				<span class="attr">eternal</span>=<span class="string">"false"</span></span></div><div class="line"><span class="tag">				<span class="attr">timeToIdleSeconds</span>=<span class="string">"120"</span></span></div><div class="line"><span class="tag">				<span class="attr">timeToLiveSeconds</span>=<span class="string">"120"</span></span></div><div class="line"><span class="tag">				<span class="attr">maxElementsOnDisk</span>=<span class="string">"10000000"</span></span></div><div class="line"><span class="tag">				<span class="attr">diskExpiryThreadIntervalSeconds</span>=<span class="string">"120"</span></span></div><div class="line"><span class="tag">				<span class="attr">memoryStoreEvictionPolicy</span>=<span class="string">"LRU"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">persistence</span> <span class="attr">strategy</span>=<span class="string">"localTempSwap"</span>/&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">defaultCache</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ehcache</span>&gt;</span></div></pre></td></tr></table></figure>
 </code></pre><p><code>&lt;ehcache&gt;</code>节点对应一个CacheManager，一个CacheManager可以管理多个cache实例。<code>ehcache</code>节点可配置参数主要有：</p>
 <pre><code>- updateCheck: CacheManager是否自动在线检测Ehcache的新版本，默认为true；
 - dynamicConfig: 是否允许cache动态配置，即运行时动态调整内存、磁盘等的容量，默认为true；
@@ -440,16 +425,18 @@
 </code></pre><p><code>&lt;diskStore&gt;</code>节点表示启用磁盘cache时的文件路径，如果使用了磁盘作为cache，但是没有指定<code>&lt;diskStore&gt;</code>，则Ehcache默认使用<code>java.io.tmpdir</code>作为cache的磁盘路径；</p>
 <p><code>&lt;cache&gt;</code>节点和<code>&lt;defaultCache&gt;</code>都用于表示一个cache实例，不同的是<code>&lt;cache&gt;</code>需要配置<code>name</code>属性，而<code>&lt;defaultCache&gt;</code>不需要，因为它的name默认为<code>default</code>，<code>&lt;defaultCache&gt;</code>用于未显式配置的cache。</p>
 <p><code>&lt;cache&gt;</code>节点中的主要参数有：</p>
-<pre><code>- name：唯一标识cache实例；
-- maxEntriesLocalHeap：Memory中可保存的对象的最大数量，默认为0表示不限；
-- maxEntriesLocalDisk：Disk中可保存的对象的最大数量，默认为0表示不限；
-- eternal：表示cache是否过期，如果eternal为true，则对象永不过期；
-- maxBytesLocalHeap：该实例的最大可用Heap，不能超过`&lt;ehcache&gt;`中配置到CacheManager的最大Heap容量，如果使用了maxBytesLocalHeap，则不能使用maxBytesLocalHeap；
-- maxBytesLocalDisk：该实例的最大可用磁盘容量；
-- timeToIdleSeconds：表示对象最后一次访问到过期的时间，默认为0，表示不过期，该参数仅当eternal为false时有效；
-- timeToLiveSeconds：表示对象从创建到过期的时间，默认为0，表示不过期，该参数仅当eternal为false时有效；
-- memoryStoreEvictionPolicy：当cache的对象达到maxEntriesLocalHeap限制时使用的剔除策略，默认为`LRU`，可用值有：LRU, FIFO, LFU
-</code></pre><p><code>&lt;persistence&gt;</code>节点的参数:</p>
+<ul>
+<li>name：唯一标识cache实例；</li>
+<li>maxEntriesLocalHeap：Memory中可保存的对象的最大数量，默认为0表示不限；</li>
+<li>maxEntriesLocalDisk：Disk中可保存的对象的最大数量，默认为0表示不限；</li>
+<li>eternal：表示cache是否过期，如果eternal为true，则对象永不过期；</li>
+<li>maxBytesLocalHeap：该实例的最大可用Heap，不能超过<code>&lt;ehcache&gt;</code>中配置到CacheManager的最大Heap容量，如果使用了maxBytesLocalHeap，则不能使用maxBytesLocalHeap；</li>
+<li>maxBytesLocalDisk：该实例的最大可用磁盘容量；</li>
+<li>timeToIdleSeconds：表示对象最后一次访问到过期的时间，默认为0，表示不过期，该参数仅当eternal为false时有效；</li>
+<li>timeToLiveSeconds：表示对象从创建到过期的时间，默认为0，表示不过期，该参数仅当eternal为false时有效；</li>
+<li>memoryStoreEvictionPolicy：当cache的对象达到maxEntriesLocalHeap限制时使用的剔除策略，默认为<code>LRU</code>，可用值有：LRU, FIFO, LFU</li>
+</ul>
+<p><code>&lt;persistence&gt;</code>节点的参数:</p>
 <pre><code>- &lt;strategy&gt;表示持久化方式，值为localTempSwap表示当heap/off-heap满的时候，将缓存的对象持久化到disk，none表示不持久化chache；
 </code></pre><h2 id="2-MyBatis中配置Ehcache"><a href="#2-MyBatis中配置Ehcache" class="headerlink" title="2. MyBatis中配置Ehcache"></a>2. MyBatis中配置Ehcache</h2><p>首先添加<code>mybatis-ehcache</code>依赖，当前版本是<strong>1.0.3</strong>，然后配置<code>ehcache.xml</code>并放在CLASSPATH的根目录下，最后在mapper文件中定义<code>&lt;cache&gt;</code>节点，如：</p>
 <pre><code>&lt;mapper namespace=&quot;xxx&quot;&gt;
@@ -459,13 +446,7 @@
     &lt;/select&gt;
 &lt;/mapper&gt;
 </code></pre><p>也可以在<code>&lt;cache&gt;</code>节点中配置ecache，就不需要额外的<code>.ecache.xml</code>配置了，如：</p>
-<pre><code>&lt;cache type=&quot;org.mybatis.caches.ehcache.EhcacheCache&quot;&gt;
-    &lt;property name=&quot;timeToIdleSeconds&quot; value=&quot;3600&quot;/&gt;
-    &lt;property name=&quot;timeToLiveSeconds&quot; value=&quot;3600&quot;/&gt;
-    &lt;property name=&quot;maxEntriesLocalHeap&quot; value=&quot;1000&quot;/&gt;
-    &lt;property name=&quot;maxEntriesLocalDisk&quot; value=&quot;100000&quot;/&gt;
-    &lt;property name=&quot;memoryStoreEvictionPolicy&quot; value=&quot;LRU&quot;/&gt;
-&lt;/cache&gt;
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;cache type=&quot;org.mybatis.caches.ehcache.EhcacheCache&quot;&gt;</div><div class="line">      &lt;property name=&quot;timeToIdleSeconds&quot; value=&quot;3600&quot;/&gt;</div><div class="line">      &lt;property name=&quot;timeToLiveSeconds&quot; value=&quot;3600&quot;/&gt;</div><div class="line">      &lt;property name=&quot;maxEntriesLocalHeap&quot; value=&quot;1000&quot;/&gt;</div><div class="line">      &lt;property name=&quot;maxEntriesLocalDisk&quot; value=&quot;100000&quot;/&gt;</div><div class="line">      &lt;property name=&quot;memoryStoreEvictionPolicy&quot; value=&quot;LRU&quot;/&gt;</div><div class="line">  &lt;/cache&gt;</div></pre></td></tr></table></figure>
 </code></pre><p>在<code>mybatis-ehcache</code>的1.1.0-SNAPSHOT中，cache的type，除了<code>EhcacheCache</code>，还可以是<code>EhBlockingCache</code>。<code>EhBlockingCache</code>的主要应用场景是要缓存的数据是动态变化的，而并发访问数据的请求非常高，此时使用阻塞cache，让第一个线程去cache，其它等待的限制只需要直接去cache中取数据即可。</p>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
 <li><a href="http://www.ehcache.org/generated/2.10.1/html/ehc-all/#page/Ehcache_Documentation_Set%2Fto-cfgbasics_configuring_cache.html%23" target="_blank" rel="external">Configuring Cache</a></li>
@@ -507,6 +488,8 @@
       
         <div class="post-tags">
           
+            <a href="/tags/缓存/" rel="tag"># 缓存</a>
+          
             <a href="/tags/Ehcache/" rel="tag"># Ehcache</a>
           
             <a href="/tags/MyBatis/" rel="tag"># MyBatis</a>
@@ -522,8 +505,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/26/google-python-style-guide/" rel="next" title="Google的Python编码规范">
-                <i class="fa fa-chevron-left"></i> Google的Python编码规范
+              <a href="/2016/02/26/google-python-style-guide/" rel="next" title="学习python：Google的Python编码规范">
+                <i class="fa fa-chevron-left"></i> 学习python：Google的Python编码规范
               </a>
             
           </div>
@@ -633,7 +616,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

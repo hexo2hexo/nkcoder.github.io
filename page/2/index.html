@@ -325,7 +325,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/02/26/google-python-style-guide/" itemprop="url">Google的Python编码规范</a></h2>
+                <a class="post-title-link" href="/2016/02/26/google-python-style-guide/" itemprop="url">学习python：Google的Python编码规范</a></h2>
         
 
         <div class="post-meta">
@@ -353,8 +353,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-09-17T11:02:20+08:00">
-                2017-09-17
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-27T22:36:15+08:00">
+                2017-09-27
               </time>
             
           </span>
@@ -410,10 +410,7 @@
 
       
         
-          <blockquote>
-<p>本文链接为：<a href="http://nkcoder.github.io/2016/02/26/google-python-style-guide/">http://nkcoder.github.io/2016/02/26/google-python-style-guide/</a>  ，转载请注明出处，谢谢！</p>
-</blockquote>
-<h1 id="Python-Style-Rules"><a href="#Python-Style-Rules" class="headerlink" title="Python Style Rules"></a>Python Style Rules</h1><h2 id="Semicolons"><a href="#Semicolons" class="headerlink" title="Semicolons"></a>Semicolons</h2><pre><code>语句结尾不要使用分号，也不要通过分号将两条语句写在同一行上。
+          <h1 id="Python-Style-Rules"><a href="#Python-Style-Rules" class="headerlink" title="Python Style Rules"></a>Python Style Rules</h1><h2 id="Semicolons"><a href="#Semicolons" class="headerlink" title="Semicolons"></a>Semicolons</h2><pre><code>语句结尾不要使用分号，也不要通过分号将两条语句写在同一行上。
 </code></pre><h2 id="Line-length"><a href="#Line-length" class="headerlink" title="Line length"></a>Line length</h2><pre><code>最大行宽为80个字符，除非：1. 很长的import语句；2. 注释中的URL。
 </code></pre><p>不要使用反斜线(<code>\</code>)做行连接。<br>使用<code>()/[]/{}</code>的隐式连接方式，如果有必要，可以将表达式放在额外的括号中：</p>
           <!--noindex-->
@@ -516,8 +513,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-09-17T11:02:20+08:00">
-                2017-09-17
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-27T22:38:44+08:00">
+                2017-09-27
               </time>
             
           </span>
@@ -573,16 +570,8 @@
 
       
         
-          <blockquote>
-<p>本文链接为：<a href="http://nkcoder.github.io/2016/01/31/java-8-date-time-api/">http://nkcoder.github.io/2016/01/31/java-8-date-time-api/</a>  ，转载请注明出处，谢谢！</p>
-</blockquote>
-<h2 id="1-Instant-与-Duration"><a href="#1-Instant-与-Duration" class="headerlink" title="1. Instant 与 Duration"></a>1. Instant 与 Duration</h2><p>1) <code>Instant</code>表示某一个时间点的时间戳，可以类比于<code>java.uti.Date</code>。支持各种运算操作：</p>
-<pre><code>Instant begin = Instant.now();
-begin.plus(5, ChronoUnit.SECONDS);
-begin.minusMillis(50);
-begin.isBefore(Instant.now());
-
-begin.toEpochMilli();
+          <h2 id="1-Instant-与-Duration"><a href="#1-Instant-与-Duration" class="headerlink" title="1. Instant 与 Duration"></a>1. Instant 与 Duration</h2><p>1) <code>Instant</code>表示某一个时间点的时间戳，可以类比于<code>java.uti.Date</code>。支持各种运算操作：</p>
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Instant begin = Instant.now();</div><div class="line">begin.plus(<span class="number">5</span>, ChronoUnit.SECONDS);</div><div class="line">begin.minusMillis(<span class="number">50</span>);</div><div class="line">begin.isBefore(Instant.now());</div><div class="line"></div><div class="line">begin.toEpochMilli();</div></pre></td></tr></table></figure>
 </code></pre>
           <!--noindex-->
           <div class="post-button text-center">
@@ -1205,7 +1194,7 @@ new Thread(w).start();
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

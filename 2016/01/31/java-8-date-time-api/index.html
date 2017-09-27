@@ -109,18 +109,18 @@
 
 
 
-<meta name="description" content="本文链接为：http://nkcoder.github.io/2016/01/31/java-8-date-time-api/  ，转载请注明出处，谢谢！  1. Instant 与 Duration1) Instant表示某一个时间点的时间戳，可以类比于java.uti.Date。支持各种运算操作： Instant begin = Instant.now(); begin.plus(5, Ch">
+<meta name="description" content="1. Instant 与 Duration1) Instant表示某一个时间点的时间戳，可以类比于java.uti.Date。支持各种运算操作： 123456Instant begin = Instant.now();begin.plus(5, ChronoUnit.SECONDS);begin.minusMillis(50);begin.isBefore(Instant.now());begin">
 <meta name="keywords" content="Java 8, Date Time API">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 8新的日期和时间API">
 <meta property="og:url" content="http://nkcoder.github.io/2016/01/31/java-8-date-time-api/index.html">
 <meta property="og:site_name" content="Daniel&#39;s Blog">
-<meta property="og:description" content="本文链接为：http://nkcoder.github.io/2016/01/31/java-8-date-time-api/  ，转载请注明出处，谢谢！  1. Instant 与 Duration1) Instant表示某一个时间点的时间戳，可以类比于java.uti.Date。支持各种运算操作： Instant begin = Instant.now(); begin.plus(5, Ch">
+<meta property="og:description" content="1. Instant 与 Duration1) Instant表示某一个时间点的时间戳，可以类比于java.uti.Date。支持各种运算操作： 123456Instant begin = Instant.now();begin.plus(5, ChronoUnit.SECONDS);begin.minusMillis(50);begin.isBefore(Instant.now());begin">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-17T03:02:20.000Z">
+<meta property="og:updated_time" content="2017-09-27T14:38:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 8新的日期和时间API">
-<meta name="twitter:description" content="本文链接为：http://nkcoder.github.io/2016/01/31/java-8-date-time-api/  ，转载请注明出处，谢谢！  1. Instant 与 Duration1) Instant表示某一个时间点的时间戳，可以类比于java.uti.Date。支持各种运算操作： Instant begin = Instant.now(); begin.plus(5, Ch">
+<meta name="twitter:description" content="1. Instant 与 Duration1) Instant表示某一个时间点的时间戳，可以类比于java.uti.Date。支持各种运算操作： 123456Instant begin = Instant.now();begin.plus(5, ChronoUnit.SECONDS);begin.minusMillis(50);begin.isBefore(Instant.now());begin">
 
 
 
@@ -350,8 +350,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-09-17T11:02:20+08:00">
-                2017-09-17
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-27T22:38:44+08:00">
+                2017-09-27
               </time>
             
           </span>
@@ -411,84 +411,36 @@
       
 
       
-        <blockquote>
-<p>本文链接为：<a href="http://nkcoder.github.io/2016/01/31/java-8-date-time-api/">http://nkcoder.github.io/2016/01/31/java-8-date-time-api/</a>  ，转载请注明出处，谢谢！</p>
-</blockquote>
-<h2 id="1-Instant-与-Duration"><a href="#1-Instant-与-Duration" class="headerlink" title="1. Instant 与 Duration"></a>1. Instant 与 Duration</h2><p>1) <code>Instant</code>表示某一个时间点的时间戳，可以类比于<code>java.uti.Date</code>。支持各种运算操作：</p>
-<pre><code>Instant begin = Instant.now();
-begin.plus(5, ChronoUnit.SECONDS);
-begin.minusMillis(50);
-begin.isBefore(Instant.now());
-
-begin.toEpochMilli();
+        <h2 id="1-Instant-与-Duration"><a href="#1-Instant-与-Duration" class="headerlink" title="1. Instant 与 Duration"></a>1. Instant 与 Duration</h2><p>1) <code>Instant</code>表示某一个时间点的时间戳，可以类比于<code>java.uti.Date</code>。支持各种运算操作：</p>
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Instant begin = Instant.now();</div><div class="line">begin.plus(<span class="number">5</span>, ChronoUnit.SECONDS);</div><div class="line">begin.minusMillis(<span class="number">50</span>);</div><div class="line">begin.isBefore(Instant.now());</div><div class="line"></div><div class="line">begin.toEpochMilli();</div></pre></td></tr></table></figure>
 </code></pre><a id="more"></a>
 <p>2) <code>Duration</code>表示<code>Instant</code>之间的时间差，可以用来统计任务的执行时间，也支持各种运算操作，比如：</p>
-<pre><code>Instant begin = Instant.now();
-// do some work
-Instant end = Instant.now();
-Duration elapsed = Duration.between(begin, end);
-elapsed.toMillis()
-
-elapsed.dividedBy(10).minus(Duration.ofMillis(10)).isNegative();
-elapsed.isZero();
-elapsed.plusHours(3);
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Instant begin = Instant.now();</div><div class="line"><span class="comment">// do some work</span></div><div class="line">Instant end = Instant.now();</div><div class="line">Duration elapsed = Duration.between(begin, end);</div><div class="line">elapsed.toMillis()</div><div class="line"></div><div class="line">elapsed.dividedBy(<span class="number">10</span>).minus(Duration.ofMillis(<span class="number">10</span>)).isNegative();</div><div class="line">elapsed.isZero();</div><div class="line">elapsed.plusHours(<span class="number">3</span>);</div></pre></td></tr></table></figure>
 </code></pre><h2 id="2-LocalDate-与-Period"><a href="#2-LocalDate-与-Period" class="headerlink" title="2. LocalDate 与 Period"></a>2. LocalDate 与 Period</h2><p>1) <code>LocalDate</code>用于表示日期，与时区(TimeZone)无关。</p>
 <p>创建<code>LocalDate</code>：</p>
-<pre><code>LocalDate now = LocalDate.now();
-LocalDate today = LocalDate.of(2016, 1, 31);
-LocalDate today2 = LocalDate.of(2016, Month.JANUARY, 31);   // JANUARY = 1, ..., DECEMBER = 12
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">LocalDate now = LocalDate.now();</div><div class="line">LocalDate today = LocalDate.of(<span class="number">2016</span>, <span class="number">1</span>, <span class="number">31</span>);</div><div class="line">LocalDate today2 = LocalDate.of(<span class="number">2016</span>, Month.JANUARY, <span class="number">31</span>);   <span class="comment">// JANUARY = 1, ..., DECEMBER = 12</span></div></pre></td></tr></table></figure>
 </code></pre><p>支持的操作：</p>
-<pre><code>today2.getDayOfWeek().getValue();   // Monday = 1, ..., Sunday = 7
-LocalDate dayOfYear = Year.now().atDay(220);
-YearMonth april = Year.of(2016).atMonth(Month.APRIL);
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">today2.getDayOfWeek().getValue();   <span class="comment">// Monday = 1, ..., Sunday = 7</span></div><div class="line">LocalDate dayOfYear = Year.now().atDay(<span class="number">220</span>);</div><div class="line">YearMonth april = Year.of(<span class="number">2016</span>).atMonth(Month.APRIL);</div></pre></td></tr></table></figure>
 </code></pre><p>注意，有些操作得到的日期可能是不存在的，比如<code>2016-01-31</code>增加1个月后为<code>2016-02-31</code>，该日期是不存在的，返回值为该月的最后一天，即<code>2016-02-29</code>:</p>
-<pre><code>LocalDate nextMonth = LocalDate.of(2016, 1, 31).plusMonths(1);  // 2016-02-29
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">LocalDate nextMonth = LocalDate.of(<span class="number">2016</span>, <span class="number">1</span>, <span class="number">31</span>).plusMonths(<span class="number">1</span>);  <span class="comment">// 2016-02-29</span></div></pre></td></tr></table></figure>
 </code></pre><p>2) <code>Period</code>用来表示两个<code>LocalDate</code>之间的时间差，支持各种运算操作：</p>
-<pre><code>LocalDate fiveDaysLater = LocalDate.now().plusDays(5);
-Period period = LocalDate.now().until(fiveDaysLater).plusMonths(2);
-period.isNegative();
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">LocalDate fiveDaysLater = LocalDate.now().plusDays(<span class="number">5</span>);</div><div class="line">Period period = LocalDate.now().until(fiveDaysLater).plusMonths(<span class="number">2</span>);</div><div class="line">period.isNegative();</div></pre></td></tr></table></figure>
 </code></pre><p>3) <code>TemporalAdjusters</code>用于表示<strong>某个月第一天、下个周一</strong>等日期：</p>
-<pre><code>LocalDate.now().with(TemporalAdjusters.firstDayOfMonth());
-LocalDate.now().with(TemporalAdjusters.lastInMonth(DayOfWeek.SUNDAY));
-LocalDate.now().with(TemporalAdjusters.nextOrSame(DayOfWeek.MONDAY));
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">LocalDate.now().with(TemporalAdjusters.firstDayOfMonth());</div><div class="line">   LocalDate.now().with(TemporalAdjusters.lastInMonth(DayOfWeek.SUNDAY));</div><div class="line">   LocalDate.now().with(TemporalAdjusters.nextOrSame(DayOfWeek.MONDAY));</div></pre></td></tr></table></figure>
 </code></pre><h2 id="3-LocalTime"><a href="#3-LocalTime" class="headerlink" title="3. LocalTime"></a>3. LocalTime</h2><p>1) <code>LocalTime</code>表示时间，没有日期，与时区(TimeZone)无关：</p>
-<pre><code>LocalTime.now().isBefore(LocalTime.of(16, 2, 1));
-LocalTime.now().plusHours(2).getHour();
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">LocalTime.now().isBefore(LocalTime.of(<span class="number">16</span>, <span class="number">2</span>, <span class="number">1</span>));</div><div class="line">   LocalTime.now().plusHours(<span class="number">2</span>).getHour();</div></pre></td></tr></table></figure>
 </code></pre><p>2) <code>LocalDateTime</code>表示日期和时间，适用于时区固定不变的场合(<code>LocalDateTime</code>使用系统默认的时区)，如果需要根据时区调整日期和时间，应该使用<code>ZonedDateTime</code>:</p>
-<pre><code>LocalDateTime.now().plusDays(3).minusHours(5).isAfter(LocalDateTime.of(2016, 1, 30, 10, 20, 30));
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">LocalDateTime.now().plusDays(<span class="number">3</span>).minusHours(<span class="number">5</span>).isAfter(LocalDateTime.of(<span class="number">2016</span>, <span class="number">1</span>, <span class="number">30</span>, <span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>));</div></pre></td></tr></table></figure>
 </code></pre><h2 id="4-ZonedDateTime"><a href="#4-ZonedDateTime" class="headerlink" title="4. ZonedDateTime"></a>4. ZonedDateTime</h2><p>1) <code>ZonedDateTime</code>表示带时区的日期和时间，支持的操作与<code>LocalDateTime</code>非常类似：</p>
-<pre><code>Set&lt;String&gt; zones = ZoneId.getAvailableZoneIds();
-ZonedDateTime.now(ZoneId.of(&quot;Asia/Shanghai&quot;)).plusMonths(1).minusHours(3)
-    .isBefore(ZonedDateTime.now());
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Set&lt;String&gt; zones = ZoneId.getAvailableZoneIds();</div><div class="line">ZonedDateTime.now(ZoneId.of(<span class="string">"Asia/Shanghai"</span>)).plusMonths(<span class="number">1</span>).minusHours(<span class="number">3</span>)</div><div class="line">       .isBefore(ZonedDateTime.now());</div></pre></td></tr></table></figure>
 </code></pre><p>2) <code>ZonedDateTime</code>与<code>LocalDateTime</code>、<code>Instant</code>之间可以相互转换：</p>
-<pre><code>ZonedDateTime nowOfShanghai = LocalDateTime.now().atZone(ZoneId.of(&quot;Asia/Shanghai&quot;));
-ZonedDateTime.now(ZoneId.of(&quot;UTC&quot;)).toLocalDate();
-ZonedDateTime nowOfShanghai2 = Instant.now().atZone(ZoneId.of(&quot;Asia/Shanghai&quot;));
-ZonedDateTime.of(LocalDate.now(), LocalTime.now(), ZoneId.of(&quot;UTC&quot;)).toInstant();
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ZonedDateTime nowOfShanghai = LocalDateTime.now().atZone(ZoneId.of(<span class="string">"Asia/Shanghai"</span>));</div><div class="line">ZonedDateTime.now(ZoneId.of(<span class="string">"UTC"</span>)).toLocalDate();</div><div class="line">ZonedDateTime nowOfShanghai2 = Instant.now().atZone(ZoneId.of(<span class="string">"Asia/Shanghai"</span>));</div><div class="line">ZonedDateTime.of(LocalDate.now(), LocalTime.now(), ZoneId.of(<span class="string">"UTC"</span>)).toInstant();</div></pre></td></tr></table></figure>
 </code></pre><h2 id="5-Formatting-与-Parsing"><a href="#5-Formatting-与-Parsing" class="headerlink" title="5. Formatting 与 Parsing"></a>5. Formatting 与 Parsing</h2><p>1) 要格式化或者解析日期时，需要使用到<code>DateTimeFormatter</code>，用来定义日期或时间的格式：</p>
-<pre><code>// 2016-01-31T15:39:31.481
-DateTimeFormatter.ISO_LOCAL_DATE_TIME.format(LocalDateTime.now());
-// Jan 31, 2016 3:50:04 PM
-DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).format(LocalDateTime.now());
-// Sun 2016-01-31 15:50:04
-DateTimeFormatter.ofPattern(&quot;E yyyy-MM-dd HH:mm:ss&quot;).format(LocalDateTime.now());
-
-LocalDateTime.parse(&quot;2016-01-31 15:51:00-0400&quot;, 
-    DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd HH:mm:ssxx&quot;));
-LocalDate.parse(&quot;2016-01-31&quot;);
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 2016-01-31T15:39:31.481</span></div><div class="line">DateTimeFormatter.ISO_LOCAL_DATE_TIME.format(LocalDateTime.now());</div><div class="line"><span class="comment">// Jan 31, 2016 3:50:04 PM</span></div><div class="line">DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).format(LocalDateTime.now());</div><div class="line"><span class="comment">// Sun 2016-01-31 15:50:04</span></div><div class="line">DateTimeFormatter.ofPattern(<span class="string">"E yyyy-MM-dd HH:mm:ss"</span>).format(LocalDateTime.now());</div><div class="line"></div><div class="line">LocalDateTime.parse(<span class="string">"2016-01-31 15:51:00-0400"</span>, </div><div class="line">       DateTimeFormatter.ofPattern(<span class="string">"yyyy-MM-dd HH:mm:ssxx"</span>));</div><div class="line">   LocalDate.parse(<span class="string">"2016-01-31"</span>);</div></pre></td></tr></table></figure>
 </code></pre><p>2) 日期和时间格式化的常见格式：</p>
-<pre><code>年       yy: 16      yyyy: 2016
-月       M: 1        MM: 01
-日       d: 3        dd: 03
-周       e: 3        E:    Web
-时       H: 9        HH: 09
-钟       mm: 02
-秒       ss: 00
-纳秒      nnnnnn:000000
-时区偏移    x: -04     xx:-0400
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">年       yy: 16      yyyy: 2016</div><div class="line">月       M: 1        MM: 01</div><div class="line">日       d: 3        dd: 03</div><div class="line">周       e: 3        E:	Web</div><div class="line">时       H: 9        HH: 09</div><div class="line">钟       mm: 02</div><div class="line">秒       ss: 00</div><div class="line">纳秒      nnnnnn:000000</div><div class="line">时区偏移    x: -04     xx:-0400</div></pre></td></tr></table></figure>
 </code></pre><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="http://www.amazon.cn/Java-SE8-for-the-Really-Impatient-A-Short-Course-on-the-Basics-Horstmann-Cay-S/dp/0321927761/ref=sr_1_2" target="_blank" rel="external">Java SE8 for the Really Impatient</a>)</li>
-<li><a href="https://gist.github.com/nkcoder/50c115a96c4e67164580" target="_blank" rel="external">示例代码</a></li>
 </ul>
 
       
@@ -525,7 +477,9 @@ LocalDate.parse(&quot;2016-01-31&quot;);
       
         <div class="post-tags">
           
-            <a href="/tags/java/" rel="tag"># java</a>
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/Java8/" rel="tag"># Java8</a>
           
         </div>
       
@@ -548,8 +502,8 @@ LocalDate.parse(&quot;2016-01-31&quot;);
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/02/26/google-python-style-guide/" rel="prev" title="Google的Python编码规范">
-                Google的Python编码规范 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/02/26/google-python-style-guide/" rel="prev" title="学习python：Google的Python编码规范">
+                学习python：Google的Python编码规范 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -649,7 +603,7 @@ LocalDate.parse(&quot;2016-01-31&quot;);
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
