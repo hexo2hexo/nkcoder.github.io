@@ -81,6 +81,16 @@
   {% include '_third-party/scroll-cookie.swig' %}
   {% include '_third-party/exturl.swig' %}
 
-  {% include '_custom/google-adsense.swig' %}
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- ad-1 -->
+  <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8018308344474460"
+     data-ad-slot="3797250497"
+     data-ad-format="auto"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  
 </body>
 </html>
