@@ -1,8 +1,8 @@
-title: 学习python：Google的Python编码规范
+title: Google编码规范：Python
 categories: Backend
 keywords: python, style guide, google
 date: 2016-02-26 14:05:12
-tags: [python, 编码规范]
+tags: [编码规范, python, Google]
 ---
 
 # Python Style Rules
@@ -16,7 +16,7 @@ tags: [python, 编码规范]
     最大行宽为80个字符，除非：1. 很长的import语句；2. 注释中的URL。
 
 不要使用反斜线(`\`)做行连接。
-使用`()/[]/{}`的隐式连接方式，如果有必要，可以将表达式放在额外的括号中：
+使用`(), [], {}`的隐式连接方式，如果有必要，可以将表达式放在额外的括号中：
 
 <!-- more -->
 
@@ -24,7 +24,7 @@ Yes:
 
     ```python
     foo_bar(self, width, height, color='black', design=None, x='foo',
-             emphasis=None, highlight=0)
+            emphasis=None, highlight=0)
 
      if (width == 0 and height == 0 and
          color == 'red' and emphasis == 'strong'):
@@ -91,19 +91,19 @@ No:
     代码缩进使用4个空格。
 
 不要使用tab或混用tab和空格。
-在隐式连接时，可以两行元素之间垂直对齐，也可以缩进4个空格对齐，两种方式都可以。
+在隐式行连接时，上一行如果没有参数，则两行元素垂直对齐；如果上一行有参数，则下一行缩进4个空格。
 
 Yes:   
 
     ```python
     # Aligned with opening delimiter
     foo = long_function_name(var_one, var_two,
-                                var_three, var_four)
+                             var_three, var_four)
 
     # Aligned with opening delimiter in a dictionary
     foo = {
         long_dictionary_key: value1 +
-                                value2,
+                             value2,
         ...
     }
 
@@ -151,7 +151,7 @@ method之间，以及class与第一个method之间，空一行。
 
     按照标准排印规则使用空格。
 
-`()/[]/{}`里面不要使用空格：
+`(), [], {}`里面不要使用空格：
 
 Yes:
 
@@ -165,7 +165,7 @@ No:
     spam( ham[ 1 ], { eggs: 2 }, [ ] )
     ```
 
-逗号，分号和冒号前面没有空格，除非是在一行的末尾，否则逗号，分号和冒号的后面不要使用空格：
+逗号，分号和冒号前面没有空格。除非是在一行的末尾，否则逗号、分号和冒号的后面需要使用空格：
 
 Yes:
 
@@ -279,7 +279,7 @@ No:
 
 + Modules
 
-每一个文件都应该包含合适的`licence`引用信息。
+每一个文件都应该包含合适的`licence`引用信息（比如Apache 2.0, BSD, LGPL, GPL）。
 
 + Functions and Methods
 
