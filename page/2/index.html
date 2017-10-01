@@ -318,7 +318,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/02/26/google-python-style-guide/" itemprop="url">Google编码规范：Python</a></h2>
+                <a class="post-title-link" href="/2016/02/26/google-python-style-guide/" itemprop="url">未命名</a></h2>
         
 
         <div class="post-meta">
@@ -330,7 +330,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-26T14:05:12+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-26T00:00:00+08:00">
                 2016-02-26
               </time>
             
@@ -346,34 +346,12 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-10-01T09:25:34+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-10-01T10:10:05+08:00">
                 2017-10-01
               </time>
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Backend/" itemprop="url" rel="index">
-                    <span itemprop="name">Backend</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -403,7 +381,70 @@
 
       
         
-          <h1 id="Python-Style-Rules"><a href="#Python-Style-Rules" class="headerlink" title="Python Style Rules"></a>Python Style Rules</h1><h2 id="Semicolons"><a href="#Semicolons" class="headerlink" title="Semicolons"></a>Semicolons</h2><pre><code>语句结尾不要使用分号，也不要通过分号将两条语句写在同一行上。
+          <h1 id="Python-Language-Rules"><a href="#Python-Language-Rules" class="headerlink" title="Python Language Rules"></a>Python Language Rules</h1><h2 id="Lint"><a href="#Lint" class="headerlink" title="Lint"></a>Lint</h2><pre><code>使用`pylint`检查代码的bug和编码规范等问题。
+</code></pre><p><code>pylint</code>可以检测一些常见的错误，比如拼写错误、用<code>var</code>声明变量等，但是<code>pylint</code>并不完全准确，经常会有一些误报的warning，这些warning可以忽略。</p>
+<h2 id="Imports"><a href="#Imports" class="headerlink" title="Imports"></a>Imports</h2><pre><code>`import`仅用于package和module。
+</code></pre><p><code>import x</code>: import一个package或module；<br><code>from x import y</code>: x是package名，y是不带前缀的module名；<br><code>from x import y as z</code>: 如果有两个module的名称都是y，或者y的名字比较长时，使用这种形式；</p>
+<p>在import中不要使用相对名称，应该使用package的全名。例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> sound.effects <span class="keyword">import</span> echo</div><div class="line">...</div><div class="line">echo.EchoFilter(input, output, delay=<span class="number">0.7</span>, atten=<span class="number">4</span>)</div></pre></td></tr></table></figure>
+<h2 id="Packages"><a href="#Packages" class="headerlink" title="Packages"></a>Packages</h2><pre><code>在import一个module的时候，使用module的全路径名。
+</code></pre><p>可以避免module名冲突。方便module的查找。</p>
+<p>例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Reference in code with complete name.</span></div><div class="line"><span class="keyword">import</span> sound.effects.echo</div><div class="line"></div><div class="line"><span class="comment"># Reference in code with just module name (preferred).</span></div><div class="line"><span class="keyword">from</span> sound.effects <span class="keyword">import</span> echo</div></pre></td></tr></table></figure>
+<h2 id="Exceptions"><a href="#Exceptions" class="headerlink" title="Exceptions"></a>Exceptions</h2><pre><code>Exception可以使用，但是必须谨慎。
+</code></pre><p>使用Exception，需遵循以下原则：</p>
+<ul>
+<li><p>使用<code>raise MyException(&#39;Error message&#39;)</code>或<code>raise MyException</code>，不要使用两个参数的形式(<code>raise MyException, &#39;Error message&#39;</code>)，也不要使用过时的String形式(<code>raise &#39;Error message&#39;</code>)。</p>
+</li>
+<li><p>module或package应该定义自己的exception基类，该基类应该继承<code>Exception</code>类。<br>例如：</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Error</span><span class="params">(Exception)</span>:</span></div><div class="line">    <span class="keyword">pass</span>;</div></pre></td></tr></table></figure>
+<ul>
+<li>不要使用捕获所有异常(catch-all)的形式，如<code>except:</code>, 或<code>except Exception:</code>, 以及<code>except StandardError</code>等，除非将异常重新抛出，或者当前处于线程的最外层。否则所有的异常（比如拼写错误、单元测试错误、Ctrl+C中断等）都会被捕获。</li>
+<li>尽量简化<code>try/except</code>中的代码块，代码越多，发生错误的概率就越大，而真正的错误很可能被忽略了。</li>
+<li>无论是否发生Exception，使用<code>finally</code>执行一些代码，比如关闭文件；</li>
+<li>当捕获到Exception时，使用<code>as</code>而不是逗号。</li>
+</ul>
+<p>例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>:</div><div class="line">    <span class="keyword">raise</span> Error</div><div class="line"><span class="keyword">except</span> Error <span class="keyword">as</span> error:</div><div class="line">    <span class="keyword">pass</span></div><div class="line">```    </div><div class="line"></div><div class="line"><span class="comment">## Global Variables</span></div><div class="line"></div><div class="line">    尽量避免使用全局变量。</div><div class="line"></div><div class="line">当moduel被<span class="keyword">import</span>后，module变量（全局变量）可以通过赋值修改。</div><div class="line"></div><div class="line">尽量使用<span class="class"><span class="keyword">class</span>变量，而不是全局变量。以下是例外情况：</span></div><div class="line"><span class="class"></span></div><div class="line"><span class="class">- 脚本的默认选项；</span></div><div class="line">- module的常量，例如：`PI = 3.14159`;</div><div class="line">- 通过全局变量缓存值；</div><div class="line"></div><div class="line"><span class="comment">## Nested/Local/Inner Classes and Functions</span></div><div class="line"></div><div class="line">    嵌套定义<span class="class"><span class="keyword">class</span>和<span class="title">function</span>是允许的</span></div><div class="line"><span class="class"></span></div><div class="line"><span class="class"><span class="title">class</span>可以定义在<span class="title">method</span>/<span class="title">function</span>/<span class="title">class</span>中，<span class="title">function</span>可以定义在<span class="title">method</span>/<span class="title">function</span>中。嵌套的函数对于上层的变量是只读的；适用于在一个作用域内定义工具类和函数。</span></div><div class="line"><span class="class"></span></div><div class="line"><span class="class">## <span class="title">List</span> <span class="title">Comprehensions</span></span></div><div class="line"><span class="class"></span></div><div class="line"><span class="class">    适用于简单的情形</span></div><div class="line"><span class="class"></span></div><div class="line"><span class="class">例如：</span></div><div class="line"><span class="class"></span></div><div class="line"><span class="class"><span class="title">Yes</span>:</span></div><div class="line"></div><div class="line">```python</div><div class="line">result = []</div><div class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>):</div><div class="line">        <span class="keyword">for</span> y <span class="keyword">in</span> range(<span class="number">5</span>):</div><div class="line">            <span class="keyword">if</span> x * y &gt; <span class="number">10</span>:</div><div class="line">                result.append((x, y))</div><div class="line"></div><div class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> xrange(<span class="number">5</span>):</div><div class="line">        <span class="keyword">for</span> y <span class="keyword">in</span> xrange(<span class="number">5</span>):</div><div class="line">            <span class="keyword">if</span> x != y:</div><div class="line">                <span class="keyword">for</span> z <span class="keyword">in</span> xrange(<span class="number">5</span>):</div><div class="line">                    <span class="keyword">if</span> y != z:</div><div class="line">                        <span class="keyword">yield</span> (x, y, z)</div><div class="line"></div><div class="line">    <span class="keyword">return</span> ((x, complicated_transform(x))</div><div class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> long_generator_function(parameter)</div><div class="line">            <span class="keyword">if</span> x <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>)</div><div class="line"></div><div class="line">    squares = [x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)]</div><div class="line"></div><div class="line">    eat(jelly_bean <span class="keyword">for</span> jelly_bean <span class="keyword">in</span> jelly_beans</div><div class="line">        <span class="keyword">if</span> jelly_bean.color == <span class="string">'black'</span>)</div></pre></td></tr></table></figure>
+<p>No:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">result = [(x, y) <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>) <span class="keyword">for</span> y <span class="keyword">in</span> range(<span class="number">5</span>) <span class="keyword">if</span> x * y &gt; <span class="number">10</span>]</div><div class="line"></div><div class="line"><span class="keyword">return</span> ((x, y, z)</div><div class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> xrange(<span class="number">5</span>)</div><div class="line">        <span class="keyword">for</span> y <span class="keyword">in</span> xrange(<span class="number">5</span>)</div><div class="line">        <span class="keyword">if</span> x != y</div><div class="line">        <span class="keyword">for</span> z <span class="keyword">in</span> xrange(<span class="number">5</span>)</div><div class="line">        <span class="keyword">if</span> y != z)</div></pre></td></tr></table></figure>
+<h2 id="Default-Iterators-and-Operators"><a href="#Default-Iterators-and-Operators" class="headerlink" title="Default Iterators and Operators"></a>Default Iterators and Operators</h2><pre><code>如果类型支持（如list/dictionary/file)，使用默认的iterator和operator。
+</code></pre><p>容器类型，如list/dictionary定义了默认的iterator和成员测试操作符(<code>in</code>和<code>not in</code>)，使用这些默认的iterator和operator，简单高效，没有额外的函数调用开销，例如：</p>
+<p>Yes:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> key <span class="keyword">in</span> adict: ...</div><div class="line"><span class="keyword">if</span> key <span class="keyword">not</span> <span class="keyword">in</span> adict: ...</div><div class="line"><span class="keyword">if</span> obj <span class="keyword">in</span> alist: ...</div><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> afile: ...</div><div class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> dict.iteritems(): ...</div></pre></td></tr></table></figure>
+<p>No:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> key <span class="keyword">in</span> adict.keys(): ...</div><div class="line"><span class="keyword">if</span> <span class="keyword">not</span> adict.has_key(key): ...</div><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> afile.readlines(): ...</div></pre></td></tr></table></figure>
+<h2 id="Generators"><a href="#Generators" class="headerlink" title="Generators"></a>Generators</h2><pre><code>在需要的时候使用generator.
+</code></pre><p>代码更简单，相比函数一次创建整个list，generator消耗的内存更少。</p>
+<h2 id="Lambda-Functions"><a href="#Lambda-Functions" class="headerlink" title="Lambda Functions"></a>Lambda Functions</h2><pre><code>适用于`一行代码`的情形。
+</code></pre><p>Lambda表达式就是匿名函数，一般作为<code>map()</code>/<code>filter()</code>等高阶函数的回调或操作符；<br>如果lambda表达式中的代码比较长（超过60-80字符），最好定义成函数；<br>常用的操作，比如乘法运算，推荐使用<code>operator</code>模块(<code>operator.mul</code>)，而不是lambda函数(<code>lambda x, y: x * y</code>)。</p>
+<h2 id="Conditional-Expressions"><a href="#Conditional-Expressions" class="headerlink" title="Conditional Expressions"></a>Conditional Expressions</h2><pre><code>适用于`一行代码`的情形。
+</code></pre><p>条件表达式就是if语句的简写形式，代码更短也更方便，但是如果表达式语句较长，则条件可能不容易定位。<br>适用于只有一行代码的情形，其它情况使用if语句。</p>
+<h2 id="Default-Argument-Values"><a href="#Default-Argument-Values" class="headerlink" title="Default Argument Values"></a>Default Argument Values</h2><pre><code>大部分情况下都是可以的。
+</code></pre><p>函数的参数可以使用默认值，但是不要将可变对象作为函数的默认值：</p>
+<p>Yes:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(a, b=None)</span>:</span></div><div class="line">            <span class="keyword">if</span> b <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">                b = []</div></pre></td></tr></table></figure>
+<p>No:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">No:  <span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(a, b=[])</span>:</span></div><div class="line">            ...</div><div class="line">No:  <span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(a, b=time.time<span class="params">()</span>)</span>:</span>  <span class="comment"># The time the module was loaded???</span></div><div class="line">            ...</div><div class="line">No:  <span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(a, b=FLAGS.my_thing)</span>:</span>  <span class="comment"># sys.argv has not yet been parsed...</span></div><div class="line">            ...</div></pre></td></tr></table></figure>
+<h2 id="True-False-evaluations"><a href="#True-False-evaluations" class="headerlink" title="True/False evaluations"></a>True/False evaluations</h2><pre><code>尽量使用`隐式`的false判断。
+</code></pre><p>所有含义为空的值，如<code>0</code>/<code>None</code>/<code>[]</code>/<code>{}</code>/<code>&#39;&#39;</code>都是false；</p>
+<ul>
+<li>使用<code>if foo:</code>，而不是<code>if foo != []</code>;</li>
+<li>不要使用<code>==</code>或<code>!=</code>去比较<code>None</code>，应该用<code>is</code>或<code>is not</code>；</li>
+<li>不要使用<code>==</code>去比较<code>False</code>，应该使用<code>if not x:</code>; 如果要区分<code>False</code>和<code>None</code>，使用<br><code>if not x and x is not None:</code>；</li>
+<li>对于列表类型(string/list/tuple)，空值表示false，使用<code>if not seq:</code>或<code>if seq:</code>，比使用<code>if len(seq):</code>或<br><code>if not len(seq):</code>更好；</li>
+<li>注意，’0’是true；</li>
+<li>对于整数，必须额外小心，不要将<code>None</code>当作0处理：</li>
+</ul>
+<p>Yes:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="keyword">not</span> users:</div><div class="line">        <span class="keyword">print</span> <span class="string">'no users'</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> foo == <span class="number">0</span>:</div><div class="line">        self.handle_zero()</div><div class="line"></div><div class="line"><span class="keyword">if</span> i % <span class="number">10</span> == <span class="number">0</span>:</div><div class="line">        self.handle_multiple_of_ten()</div></pre></td></tr></table></figure>
+<p>No:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> len(users) == <span class="number">0</span>:</div><div class="line">        <span class="keyword">print</span> <span class="string">'no users'</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> foo <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span> <span class="keyword">and</span> <span class="keyword">not</span> foo:</div><div class="line">        self.handle_zero()</div><div class="line"></div><div class="line"><span class="keyword">if</span> <span class="keyword">not</span> i % <span class="number">10</span>:</div><div class="line">        self.handle_multiple_of_ten()</div></pre></td></tr></table></figure>
+<h2 id="Threading"><a href="#Threading" class="headerlink" title="Threading"></a>Threading</h2><pre><code>不要依赖内置类型的原子行(atomicity)
+</code></pre><p>有一些内置类型(如dictionary)的某些操作看起来是原子性的，但是它们不可靠；<br>使用<strong>Queue</strong>模块中的<code>Queue</code>作为线程间交互的数据结构，或者使用<strong>threading</strong>模块。</p>
+<h1 id="Python-Style-Rules"><a href="#Python-Style-Rules" class="headerlink" title="Python Style Rules"></a>Python Style Rules</h1><h2 id="Semicolons"><a href="#Semicolons" class="headerlink" title="Semicolons"></a>Semicolons</h2><pre><code>语句结尾不要使用分号，也不要通过分号将两条语句写在同一行上。
 </code></pre><h2 id="Line-length"><a href="#Line-length" class="headerlink" title="Line length"></a>Line length</h2><pre><code>最大行宽为80个字符，除非：1. 很长的import语句；2. 注释中的URL。
 </code></pre><p>不要使用反斜线(<code>\</code>)做行连接。<br>使用<code>(), [], {}</code>的隐式连接方式，如果有必要，可以将表达式放在额外的括号中：</p>
           <!--noindex-->
@@ -1187,7 +1228,7 @@ new Thread(w).start();
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
