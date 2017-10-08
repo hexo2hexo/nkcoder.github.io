@@ -1,14 +1,14 @@
-title: 什么是空指针异常，如何避免？
+title: 【问答系列】什么是空指针异常，如何避免？
 categories: Backend
 date: 2017-10-08 14:41:04
 tags: [java, 问答系列]
 ---
 
-**什么是空指针异常？**
+## 什么是空指针异常？
 
 对于引用类型的变量，如果在使用的时候，它的值是空的(null)，就会报空指针异常。当变量的值为null的时候，表示这个引用不指向内存中的任何区域，所以使用（解引用）时就会触发空指针异常。
 
-**常见发生场景**
+## 常见发生场景
 
 - 直接使用值为null的变量，如：
 
@@ -34,7 +34,7 @@ names.forEach(System.out::println);
 names.add("daniel");
 ```
 
-**如何避免**
+## 如何避免
 
 最简单直接的办法就是，如果对象可能为null，使用之前先判断：
 
@@ -94,7 +94,7 @@ if ("name".equals(someName)) {
 }
 ```
 
-**如何修复**
+## 如何修复
 
 空指针异常的修复比较简单，根据异常堆栈定位发生异常的代码行，然后进一步确定可能为null的变量即可。
 
@@ -135,10 +135,13 @@ java.lang.NullPointerException
 
 异常堆栈的重要信息为：
 
-    java.lang.NullPointerException
-      at NullPointerExceptionTest.test_primitive_type(NullPointerExceptionTest.java:12)
+```text
+java.lang.NullPointerException
+	at NullPointerExceptionTest.test_primitive_type(NullPointerExceptionTest.java:12)
+```
 
 表示异常发生在方法`NullPointerExceptionTest`的12行，则可以进一步定位是变量names为null。
+
 
 ## 参考
 
