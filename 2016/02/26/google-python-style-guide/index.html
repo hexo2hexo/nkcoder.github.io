@@ -83,7 +83,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="服务端开发, Java, AKKA, redis, Spring, SpringBoot, 微服务, 并发, 前端开发, 全栈开发, full-stack, 教程, 入门" />
+  <meta name="keywords" content="python,Google编码规范," />
 
 
 
@@ -102,16 +102,16 @@
 
 
 <meta name="description" content="Python Language RulesLint使用`pylint`检查代码的bug和编码规范等问题。 pylint可以检测一些常见的错误，比如拼写错误、用var声明变量等，但是pylint并不完全准确，经常会有一些误报的warning，这些warning可以忽略。 Imports`import`仅用于package和module。 import x: import一个package或modul">
-<meta name="keywords" content="服务端开发, Java, AKKA, redis, Spring, SpringBoot, 微服务, 并发, 前端开发, 全栈开发, full-stack, 教程, 入门">
+<meta name="keywords" content="python,Google编码规范">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Daniel&#39;s Blog">
+<meta property="og:title" content="Google编码规范：python">
 <meta property="og:url" content="http://nkcoder.github.io/2016/02/26/google-python-style-guide/index.html">
 <meta property="og:site_name" content="Daniel&#39;s Blog">
 <meta property="og:description" content="Python Language RulesLint使用`pylint`检查代码的bug和编码规范等问题。 pylint可以检测一些常见的错误，比如拼写错误、用var声明变量等，但是pylint并不完全准确，经常会有一些误报的warning，这些warning可以忽略。 Imports`import`仅用于package和module。 import x: import一个package或modul">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-01T02:10:05.000Z">
+<meta property="og:updated_time" content="2017-10-08T03:20:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Daniel&#39;s Blog">
+<meta name="twitter:title" content="Google编码规范：python">
 <meta name="twitter:description" content="Python Language RulesLint使用`pylint`检查代码的bug和编码规范等问题。 pylint可以检测一些常见的错误，比如拼写错误、用var声明变量等，但是pylint并不完全准确，经常会有一些误报的warning，这些warning可以忽略。 Imports`import`仅用于package和module。 import x: import一个package或modul">
 
 
@@ -147,7 +147,7 @@
 
 
 
-  <title> | Daniel's Blog</title>
+  <title>Google编码规范：python | Daniel's Blog</title>
   
 
 
@@ -315,7 +315,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline"></h2>
+          <h2 class="post-title" itemprop="name headline">Google编码规范：python</h2>
         
 
         <div class="post-meta">
@@ -327,7 +327,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-26T00:00:00+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-26T22:23:36+08:00">
                 2016-02-26
               </time>
             
@@ -343,12 +343,34 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-10-01T10:10:05+08:00">
-                2017-10-01
+              <time title="更新于" itemprop="dateModified" datetime="2017-10-08T11:20:03+08:00">
+                2017-10-08
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Backend/" itemprop="url" rel="index">
+                    <span itemprop="name">Backend</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -400,7 +422,7 @@
 <li><p>module或package应该定义自己的exception基类，该基类应该继承<code>Exception</code>类。<br>例如：</p>
 </li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Error</span><span class="params">(Exception)</span>:</span></div><div class="line">    <span class="keyword">pass</span>;</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Error</span><span class="params">(Exception)</span>:</span></div><div class="line">    <span class="keyword">pass</span></div></pre></td></tr></table></figure>
 <ul>
 <li>不要使用捕获所有异常(catch-all)的形式，如<code>except:</code>, 或<code>except Exception:</code>, 以及<code>except StandardError</code>等，除非将异常重新抛出，或者当前处于线程的最外层。否则所有的异常（比如拼写错误、单元测试错误、Ctrl+C中断等）都会被捕获。</li>
 <li>尽量简化<code>try/except</code>中的代码块，代码越多，发生错误的概率就越大，而真正的错误很可能被忽略了。</li>
@@ -408,7 +430,21 @@
 <li>当捕获到Exception时，使用<code>as</code>而不是逗号。</li>
 </ul>
 <p>例如：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>:</div><div class="line">    <span class="keyword">raise</span> Error</div><div class="line"><span class="keyword">except</span> Error <span class="keyword">as</span> error:</div><div class="line">    <span class="keyword">pass</span></div><div class="line">```    </div><div class="line"></div><div class="line"><span class="comment">## Global Variables</span></div><div class="line"></div><div class="line">    尽量避免使用全局变量。</div><div class="line"></div><div class="line">当moduel被<span class="keyword">import</span>后，module变量（全局变量）可以通过赋值修改。</div><div class="line"></div><div class="line">尽量使用<span class="class"><span class="keyword">class</span>变量，而不是全局变量。以下是例外情况：</span></div><div class="line"><span class="class"></span></div><div class="line"><span class="class">- 脚本的默认选项；</span></div><div class="line">- module的常量，例如：`PI = 3.14159`;</div><div class="line">- 通过全局变量缓存值；</div><div class="line"></div><div class="line"><span class="comment">## Nested/Local/Inner Classes and Functions</span></div><div class="line"></div><div class="line">    嵌套定义<span class="class"><span class="keyword">class</span>和<span class="title">function</span>是允许的</span></div><div class="line"><span class="class"></span></div><div class="line"><span class="class"><span class="title">class</span>可以定义在<span class="title">method</span>/<span class="title">function</span>/<span class="title">class</span>中，<span class="title">function</span>可以定义在<span class="title">method</span>/<span class="title">function</span>中。嵌套的函数对于上层的变量是只读的；适用于在一个作用域内定义工具类和函数。</span></div><div class="line"><span class="class"></span></div><div class="line"><span class="class">## <span class="title">List</span> <span class="title">Comprehensions</span></span></div><div class="line"><span class="class"></span></div><div class="line"><span class="class">    适用于简单的情形</span></div><div class="line"><span class="class"></span></div><div class="line"><span class="class">例如：</span></div><div class="line"><span class="class"></span></div><div class="line"><span class="class"><span class="title">Yes</span>:</span></div><div class="line"></div><div class="line">```python</div><div class="line">result = []</div><div class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>):</div><div class="line">        <span class="keyword">for</span> y <span class="keyword">in</span> range(<span class="number">5</span>):</div><div class="line">            <span class="keyword">if</span> x * y &gt; <span class="number">10</span>:</div><div class="line">                result.append((x, y))</div><div class="line"></div><div class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> xrange(<span class="number">5</span>):</div><div class="line">        <span class="keyword">for</span> y <span class="keyword">in</span> xrange(<span class="number">5</span>):</div><div class="line">            <span class="keyword">if</span> x != y:</div><div class="line">                <span class="keyword">for</span> z <span class="keyword">in</span> xrange(<span class="number">5</span>):</div><div class="line">                    <span class="keyword">if</span> y != z:</div><div class="line">                        <span class="keyword">yield</span> (x, y, z)</div><div class="line"></div><div class="line">    <span class="keyword">return</span> ((x, complicated_transform(x))</div><div class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> long_generator_function(parameter)</div><div class="line">            <span class="keyword">if</span> x <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>)</div><div class="line"></div><div class="line">    squares = [x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)]</div><div class="line"></div><div class="line">    eat(jelly_bean <span class="keyword">for</span> jelly_bean <span class="keyword">in</span> jelly_beans</div><div class="line">        <span class="keyword">if</span> jelly_bean.color == <span class="string">'black'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>:</div><div class="line">    <span class="keyword">raise</span> Error</div><div class="line"><span class="keyword">except</span> Error <span class="keyword">as</span> error:</div><div class="line">    <span class="keyword">pass</span></div></pre></td></tr></table></figure>
+<h2 id="Global-Variables"><a href="#Global-Variables" class="headerlink" title="Global Variables"></a>Global Variables</h2><pre><code>尽量避免使用全局变量。
+</code></pre><p>当moduel被import后，module变量（全局变量）可以通过赋值修改。</p>
+<p>尽量使用class变量，而不是全局变量。以下是例外情况：</p>
+<ul>
+<li>脚本的默认选项；</li>
+<li>module的常量，例如：<code>PI = 3.14159</code>;</li>
+<li>通过全局变量缓存值；</li>
+</ul>
+<h2 id="Nested-Local-Inner-Classes-and-Functions"><a href="#Nested-Local-Inner-Classes-and-Functions" class="headerlink" title="Nested/Local/Inner Classes and Functions"></a>Nested/Local/Inner Classes and Functions</h2><pre><code>嵌套定义class和function是允许的
+</code></pre><p>class可以定义在method/function/class中，function可以定义在method/function中。嵌套的函数对于上层的变量是只读的；适用于在一个作用域内定义工具类和函数。</p>
+<h2 id="List-Comprehensions"><a href="#List-Comprehensions" class="headerlink" title="List Comprehensions"></a>List Comprehensions</h2><pre><code>适用于简单的情形
+</code></pre><p>例如：</p>
+<p>Yes:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">result = []</div><div class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>):</div><div class="line">        <span class="keyword">for</span> y <span class="keyword">in</span> range(<span class="number">5</span>):</div><div class="line">            <span class="keyword">if</span> x * y &gt; <span class="number">10</span>:</div><div class="line">                result.append((x, y))</div><div class="line"></div><div class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> xrange(<span class="number">5</span>):</div><div class="line">        <span class="keyword">for</span> y <span class="keyword">in</span> xrange(<span class="number">5</span>):</div><div class="line">            <span class="keyword">if</span> x != y:</div><div class="line">                <span class="keyword">for</span> z <span class="keyword">in</span> xrange(<span class="number">5</span>):</div><div class="line">                    <span class="keyword">if</span> y != z:</div><div class="line">                        <span class="keyword">yield</span> (x, y, z)</div><div class="line"></div><div class="line">    <span class="keyword">return</span> ((x, complicated_transform(x))</div><div class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> long_generator_function(parameter)</div><div class="line">            <span class="keyword">if</span> x <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>)</div><div class="line"></div><div class="line">    squares = [x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)]</div><div class="line"></div><div class="line">    eat(jelly_bean <span class="keyword">for</span> jelly_bean <span class="keyword">in</span> jelly_beans</div><div class="line">        <span class="keyword">if</span> jelly_bean.color == <span class="string">'black'</span>)</div></pre></td></tr></table></figure>
 <p>No:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">result = [(x, y) <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>) <span class="keyword">for</span> y <span class="keyword">in</span> range(<span class="number">5</span>) <span class="keyword">if</span> x * y &gt; <span class="number">10</span>]</div><div class="line"></div><div class="line"><span class="keyword">return</span> ((x, y, z)</div><div class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> xrange(<span class="number">5</span>)</div><div class="line">        <span class="keyword">for</span> y <span class="keyword">in</span> xrange(<span class="number">5</span>)</div><div class="line">        <span class="keyword">if</span> x != y</div><div class="line">        <span class="keyword">for</span> z <span class="keyword">in</span> xrange(<span class="number">5</span>)</div><div class="line">        <span class="keyword">if</span> y != z)</div></pre></td></tr></table></figure>
 <h2 id="Default-Iterators-and-Operators"><a href="#Default-Iterators-and-Operators" class="headerlink" title="Default Iterators and Operators"></a>Default Iterators and Operators</h2><pre><code>如果类型支持（如list/dictionary/file)，使用默认的iterator和operator。
@@ -712,7 +748,7 @@ function_parameter_name, local_var_name.
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://nkcoder.github.io/2016/02/26/google-python-style-guide/" title="">http://nkcoder.github.io/2016/02/26/google-python-style-guide/</a>
+    <a href="http://nkcoder.github.io/2016/02/26/google-python-style-guide/" title="Google编码规范：python">http://nkcoder.github.io/2016/02/26/google-python-style-guide/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -724,6 +760,14 @@ function_parameter_name, local_var_name.
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/Google编码规范/" rel="tag"># Google编码规范</a>
+          
+        </div>
       
 
       
@@ -845,7 +889,7 @@ function_parameter_name, local_var_name.
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -887,7 +931,7 @@ function_parameter_name, local_var_name.
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-Language-Rules"><span class="nav-number">1.</span> <span class="nav-text">Python Language Rules</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lint"><span class="nav-number">1.1.</span> <span class="nav-text">Lint</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Imports"><span class="nav-number">1.2.</span> <span class="nav-text">Imports</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Packages"><span class="nav-number">1.3.</span> <span class="nav-text">Packages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exceptions"><span class="nav-number">1.4.</span> <span class="nav-text">Exceptions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Default-Iterators-and-Operators"><span class="nav-number">1.5.</span> <span class="nav-text">Default Iterators and Operators</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Generators"><span class="nav-number">1.6.</span> <span class="nav-text">Generators</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lambda-Functions"><span class="nav-number">1.7.</span> <span class="nav-text">Lambda Functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conditional-Expressions"><span class="nav-number">1.8.</span> <span class="nav-text">Conditional Expressions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Default-Argument-Values"><span class="nav-number">1.9.</span> <span class="nav-text">Default Argument Values</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#True-False-evaluations"><span class="nav-number">1.10.</span> <span class="nav-text">True/False evaluations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Threading"><span class="nav-number">1.11.</span> <span class="nav-text">Threading</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-Style-Rules"><span class="nav-number">2.</span> <span class="nav-text">Python Style Rules</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Semicolons"><span class="nav-number">2.1.</span> <span class="nav-text">Semicolons</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Line-length"><span class="nav-number">2.2.</span> <span class="nav-text">Line length</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Parentheses"><span class="nav-number">2.3.</span> <span class="nav-text">Parentheses</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Indentation"><span class="nav-number">2.4.</span> <span class="nav-text">Indentation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Blank-Lines"><span class="nav-number">2.5.</span> <span class="nav-text">Blank Lines</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Whitespace"><span class="nav-number">2.6.</span> <span class="nav-text">Whitespace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shebang-Line"><span class="nav-number">2.7.</span> <span class="nav-text">Shebang Line</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comments"><span class="nav-number">2.8.</span> <span class="nav-text">Comments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Classes"><span class="nav-number">2.9.</span> <span class="nav-text">Classes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Strings"><span class="nav-number">2.10.</span> <span class="nav-text">Strings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Files-and-Sockets"><span class="nav-number">2.11.</span> <span class="nav-text">Files and Sockets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TODO-Comments"><span class="nav-number">2.12.</span> <span class="nav-text">TODO Comments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Imports-formatting"><span class="nav-number">2.13.</span> <span class="nav-text">Imports formatting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Statements"><span class="nav-number">2.14.</span> <span class="nav-text">Statements</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Naming"><span class="nav-number">2.15.</span> <span class="nav-text">Naming</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Main"><span class="nav-number">2.16.</span> <span class="nav-text">Main</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">2.17.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-Language-Rules"><span class="nav-number">1.</span> <span class="nav-text">Python Language Rules</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lint"><span class="nav-number">1.1.</span> <span class="nav-text">Lint</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Imports"><span class="nav-number">1.2.</span> <span class="nav-text">Imports</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Packages"><span class="nav-number">1.3.</span> <span class="nav-text">Packages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exceptions"><span class="nav-number">1.4.</span> <span class="nav-text">Exceptions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Global-Variables"><span class="nav-number">1.5.</span> <span class="nav-text">Global Variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nested-Local-Inner-Classes-and-Functions"><span class="nav-number">1.6.</span> <span class="nav-text">Nested/Local/Inner Classes and Functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List-Comprehensions"><span class="nav-number">1.7.</span> <span class="nav-text">List Comprehensions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Default-Iterators-and-Operators"><span class="nav-number">1.8.</span> <span class="nav-text">Default Iterators and Operators</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Generators"><span class="nav-number">1.9.</span> <span class="nav-text">Generators</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lambda-Functions"><span class="nav-number">1.10.</span> <span class="nav-text">Lambda Functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conditional-Expressions"><span class="nav-number">1.11.</span> <span class="nav-text">Conditional Expressions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Default-Argument-Values"><span class="nav-number">1.12.</span> <span class="nav-text">Default Argument Values</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#True-False-evaluations"><span class="nav-number">1.13.</span> <span class="nav-text">True/False evaluations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Threading"><span class="nav-number">1.14.</span> <span class="nav-text">Threading</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-Style-Rules"><span class="nav-number">2.</span> <span class="nav-text">Python Style Rules</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Semicolons"><span class="nav-number">2.1.</span> <span class="nav-text">Semicolons</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Line-length"><span class="nav-number">2.2.</span> <span class="nav-text">Line length</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Parentheses"><span class="nav-number">2.3.</span> <span class="nav-text">Parentheses</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Indentation"><span class="nav-number">2.4.</span> <span class="nav-text">Indentation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Blank-Lines"><span class="nav-number">2.5.</span> <span class="nav-text">Blank Lines</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Whitespace"><span class="nav-number">2.6.</span> <span class="nav-text">Whitespace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shebang-Line"><span class="nav-number">2.7.</span> <span class="nav-text">Shebang Line</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comments"><span class="nav-number">2.8.</span> <span class="nav-text">Comments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Classes"><span class="nav-number">2.9.</span> <span class="nav-text">Classes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Strings"><span class="nav-number">2.10.</span> <span class="nav-text">Strings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Files-and-Sockets"><span class="nav-number">2.11.</span> <span class="nav-text">Files and Sockets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TODO-Comments"><span class="nav-number">2.12.</span> <span class="nav-text">TODO Comments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Imports-formatting"><span class="nav-number">2.13.</span> <span class="nav-text">Imports formatting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Statements"><span class="nav-number">2.14.</span> <span class="nav-text">Statements</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Naming"><span class="nav-number">2.15.</span> <span class="nav-text">Naming</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Main"><span class="nav-number">2.16.</span> <span class="nav-text">Main</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">2.17.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
             
 
           </div>
