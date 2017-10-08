@@ -1,3 +1,9 @@
+title: Google编码规范：python
+categories: Backend
+date: 2016-02-26 22:23:36
+tags: [python, Google编码规范]
+---
+
 # Python Language Rules
 
 ## Lint
@@ -51,7 +57,7 @@ from sound.effects import echo
 
 ```python
 class Error(Exception):
-    pass;
+    pass
 ```
 
 + 不要使用捕获所有异常(catch-all)的形式，如`except: `, 或`except Exception: `, 以及`except StandardError`等，除非将异常重新抛出，或者当前处于线程的最外层。否则所有的异常（比如拼写错误、单元测试错误、Ctrl+C中断等）都会被捕获。
@@ -66,7 +72,7 @@ try:
     raise Error
 except Error as error:
     pass
-```    
+```
 
 ## Global Variables
 
