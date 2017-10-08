@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://nkcoder.github.io/2017/10/08/what-is-null-pointer-exception/</loc>
+    
+    <lastmod>2017-10-08T06:46:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://nkcoder.github.io/2016/02/26/google-python-style-guide/</loc>
     
     <lastmod>2017-10-08T03:20:03.000Z</lastmod>
@@ -65,20 +72,6 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/03/08/spring-di-xml/</loc>
-    
-    <lastmod>2017-09-17T03:02:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://nkcoder.github.io/2014/03/09/spring-di-annotation/</loc>
-    
-    <lastmod>2017-09-17T03:02:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://nkcoder.github.io/2014/03/10/spring-di-java/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
@@ -87,6 +80,13 @@
   
   <url>
     <loc>http://nkcoder.github.io/2014/03/13/spring-aop-example/</loc>
+    
+    <lastmod>2017-09-17T03:02:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://nkcoder.github.io/2014/03/09/spring-di-annotation/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
@@ -121,6 +121,13 @@
   </url>
   
   <url>
+    <loc>http://nkcoder.github.io/2014/04/11/jetty-as-linux-service/</loc>
+    
+    <lastmod>2017-09-17T03:02:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://nkcoder.github.io/2014/03/23/elasticsearch-match-query/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
@@ -135,13 +142,6 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/04/11/jetty-as-linux-service/</loc>
-    
-    <lastmod>2017-09-17T03:02:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://nkcoder.github.io/2014/05/04/algorithm-practice-addbybit/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
@@ -149,14 +149,14 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/05/05/xshell-select-interrupt-dict/</loc>
+    <loc>http://nkcoder.github.io/2014/05/06/algorithm-calculate-pow/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/05/06/algorithm-calculate-pow/</loc>
+    <loc>http://nkcoder.github.io/2014/05/05/xshell-select-interrupt-dict/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
@@ -177,21 +177,7 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/05/08/algorithm-rotated-array-min/</loc>
-    
-    <lastmod>2017-09-17T03:02:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://nkcoder.github.io/2014/05/09/algorithm-odd-before-even/</loc>
-    
-    <lastmod>2017-09-17T03:02:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://nkcoder.github.io/2014/05/11/algorithm-num-of-one-bit/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
@@ -205,7 +191,14 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/05/14/algorithm-print-num-to-max/</loc>
+    <loc>http://nkcoder.github.io/2014/05/08/algorithm-rotated-array-min/</loc>
+    
+    <lastmod>2017-09-17T03:02:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://nkcoder.github.io/2014/05/11/algorithm-num-of-one-bit/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
@@ -220,6 +213,13 @@
   
   <url>
     <loc>http://nkcoder.github.io/2014/05/16/algorithm-del-one-node-from-linklist/</loc>
+    
+    <lastmod>2017-09-17T03:02:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://nkcoder.github.io/2014/05/14/algorithm-print-num-to-max/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
@@ -254,13 +254,6 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/05/25/algorithm-merge-two-sorted-list/</loc>
-    
-    <lastmod>2017-09-17T03:02:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://nkcoder.github.io/2014/06/04/algorithm-straight-poker/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
@@ -269,6 +262,13 @@
   
   <url>
     <loc>http://nkcoder.github.io/2014/06/18/jetty-deploy-help/</loc>
+    
+    <lastmod>2017-09-17T03:02:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://nkcoder.github.io/2014/05/25/algorithm-merge-two-sorted-list/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
@@ -296,7 +296,7 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/01/05/github-pages-and-octopress-blog-built/</loc>
+    <loc>http://nkcoder.github.io/2014/01/04/java-string-source/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
@@ -338,13 +338,6 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/07/23/quartz-tutorial-05-simple-trigger-intro/</loc>
-    
-    <lastmod>2017-09-17T03:02:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://nkcoder.github.io/2014/07/16/quartz-tutorial-04-trigger/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
@@ -352,7 +345,7 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/07/26/java-pass-by-value/</loc>
+    <loc>http://nkcoder.github.io/2014/07/23/quartz-tutorial-05-simple-trigger-intro/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
@@ -367,6 +360,13 @@
   
   <url>
     <loc>http://nkcoder.github.io/2014/08/17/quartz-tutorial-07-listener/</loc>
+    
+    <lastmod>2017-09-17T03:02:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://nkcoder.github.io/2014/07/26/java-pass-by-value/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
@@ -457,13 +457,6 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2015/12/24/social-app-backend-tech-stack/</loc>
-    
-    <lastmod>2017-09-17T03:02:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://nkcoder.github.io/2015/12/25/python3-learn-note-datatypes/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
@@ -471,7 +464,7 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2016/01/10/python-tips1-loop-and-enumerate/</loc>
+    <loc>http://nkcoder.github.io/2015/12/24/social-app-backend-tech-stack/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
@@ -492,6 +485,13 @@
   </url>
   
   <url>
+    <loc>http://nkcoder.github.io/2016/01/10/python-tips1-loop-and-enumerate/</loc>
+    
+    <lastmod>2017-09-17T03:02:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://nkcoder.github.io/2016/01/24/java-8-stream-api/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
@@ -499,14 +499,7 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/01/04/java-string-source/</loc>
-    
-    <lastmod>2017-09-17T03:02:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://nkcoder.github.io/2014/01/05/vim-basic-usage/</loc>
+    <loc>http://nkcoder.github.io/2014/01/05/github-pages-and-octopress-blog-built/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
@@ -520,7 +513,7 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/01/19/sql-cookbook-reading-note/</loc>
+    <loc>http://nkcoder.github.io/2014/01/05/vim-basic-usage/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
@@ -534,14 +527,28 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/02/15/memcached-usage-parameters-commands/</loc>
+    <loc>http://nkcoder.github.io/2014/02/16/xmemcached-usage-with-spring/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/02/16/xmemcached-usage-with-spring/</loc>
+    <loc>http://nkcoder.github.io/2014/01/19/sql-cookbook-reading-note/</loc>
+    
+    <lastmod>2017-09-17T03:02:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://nkcoder.github.io/2014/02/17/elasticsearch-install-config/</loc>
+    
+    <lastmod>2017-09-17T03:02:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://nkcoder.github.io/2014/02/15/memcached-usage-parameters-commands/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
@@ -555,7 +562,7 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/2014/02/17/elasticsearch-install-config/</loc>
+    <loc>http://nkcoder.github.io/2014/03/08/spring-di-xml/</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
@@ -576,14 +583,14 @@
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/reading/index.html</loc>
+    <loc>http://nkcoder.github.io/tags/index.html</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://nkcoder.github.io/tags/index.html</loc>
+    <loc>http://nkcoder.github.io/reading/index.html</loc>
     
     <lastmod>2017-09-17T03:02:20.000Z</lastmod>
     
