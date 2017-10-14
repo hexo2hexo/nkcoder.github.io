@@ -105,14 +105,14 @@
 <meta name="description" content="今天在执行一个python脚本时，需要使用到一个环境变量，并且需要sudo权限才能执行。设置了环境变量后，在sudo执行脚本时还是找不到该环境变量。 因为sudo是一个新的环境，默认不会使用已有的环境变量。如果要sudo使用环境变量，有以下几种方式可以实现。 1. sudo时指定环境变量12➜  ~ sudo JUST_TEST=&apos;hello, test&apos; bash -c &apos;echo $JUST_">
 <meta name="keywords" content="问答系列,Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Sudo时环境变量让环境变量继续有效">
+<meta property="og:title" content="Sudo时让环境变量继续有效">
 <meta property="og:url" content="http://nkcoder.github.io/2017/10/14/how-to-preserve-env-in-sudo/index.html">
 <meta property="og:site_name" content="Daniel&#39;s Blog">
 <meta property="og:description" content="今天在执行一个python脚本时，需要使用到一个环境变量，并且需要sudo权限才能执行。设置了环境变量后，在sudo执行脚本时还是找不到该环境变量。 因为sudo是一个新的环境，默认不会使用已有的环境变量。如果要sudo使用环境变量，有以下几种方式可以实现。 1. sudo时指定环境变量12➜  ~ sudo JUST_TEST=&apos;hello, test&apos; bash -c &apos;echo $JUST_">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-14T14:22:13.000Z">
+<meta property="og:updated_time" content="2017-10-14T14:24:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sudo时环境变量让环境变量继续有效">
+<meta name="twitter:title" content="Sudo时让环境变量继续有效">
 <meta name="twitter:description" content="今天在执行一个python脚本时，需要使用到一个环境变量，并且需要sudo权限才能执行。设置了环境变量后，在sudo执行脚本时还是找不到该环境变量。 因为sudo是一个新的环境，默认不会使用已有的环境变量。如果要sudo使用环境变量，有以下几种方式可以实现。 1. sudo时指定环境变量12➜  ~ sudo JUST_TEST=&apos;hello, test&apos; bash -c &apos;echo $JUST_">
 
 
@@ -148,7 +148,7 @@
 
 
 
-  <title>Sudo时环境变量让环境变量继续有效 | Daniel's Blog</title>
+  <title>Sudo时让环境变量继续有效 | Daniel's Blog</title>
   
 
 
@@ -316,7 +316,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Sudo时环境变量让环境变量继续有效</h2>
+          <h2 class="post-title" itemprop="name headline">Sudo时让环境变量继续有效</h2>
         
 
         <div class="post-meta">
@@ -344,7 +344,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-10-14T22:22:13+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-10-14T22:24:55+08:00">
                 2017-10-14
               </time>
             
@@ -408,6 +408,7 @@
         <p>今天在执行一个python脚本时，需要使用到一个环境变量，并且需要sudo权限才能执行。设置了环境变量后，在sudo执行脚本时还是找不到该环境变量。</p>
 <p>因为sudo是一个新的环境，默认不会使用已有的环境变量。如果要sudo使用环境变量，有以下几种方式可以实现。</p>
 <h2 id="1-sudo时指定环境变量"><a href="#1-sudo时指定环境变量" class="headerlink" title="1. sudo时指定环境变量"></a>1. <code>sudo</code>时指定环境变量</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">➜  ~ sudo JUST_TEST=<span class="string">'hello, test'</span> bash -c <span class="string">'echo $JUST_TEST'</span></div><div class="line">hello, <span class="built_in">test</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="2-使用sudo的-E选项"><a href="#2-使用sudo的-E选项" class="headerlink" title="2. 使用sudo的-E选项"></a>2. 使用<code>sudo</code>的<code>-E</code>选项</h2><p>通过<code>man sudo</code>查看sudo的用法，有一个<code>-E</code>选项，说明如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">-E, --preserve-env</div><div class="line">            Indicates to the security policy that the user wishes to preserve</div><div class="line">            their existing environment variables.  The security policy may return</div><div class="line">            an error if the user does not have permission to preserve the</div><div class="line">            environment.</div></pre></td></tr></table></figure>
 <p><code>-E</code>选项表示用户希望使用已有的环境变量，如：</p>
@@ -437,7 +438,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://nkcoder.github.io/2017/10/14/how-to-preserve-env-in-sudo/" title="Sudo时环境变量让环境变量继续有效">http://nkcoder.github.io/2017/10/14/how-to-preserve-env-in-sudo/</a>
+    <a href="http://nkcoder.github.io/2017/10/14/how-to-preserve-env-in-sudo/" title="Sudo时让环境变量继续有效">http://nkcoder.github.io/2017/10/14/how-to-preserve-env-in-sudo/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
