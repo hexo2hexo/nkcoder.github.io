@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://nkcoder.github.io/"/>
-  <updated>2017-10-08T10:06:29.000Z</updated>
+  <updated>2017-10-14T14:22:13.000Z</updated>
   <id>http://nkcoder.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Sudo时环境变量让环境变量继续有效</title>
+    <link href="http://nkcoder.github.io/2017/10/14/how-to-preserve-env-in-sudo/"/>
+    <id>http://nkcoder.github.io/2017/10/14/how-to-preserve-env-in-sudo/</id>
+    <published>2017-10-14T13:31:12.000Z</published>
+    <updated>2017-10-14T14:22:13.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天在执行一个python脚本时，需要使用到一个环境变量，并且需要sudo权限才能执行。设置了环境变量后，在sudo执行脚本时还是找不到该环境变量。</p><p>因为sudo是一个新的环境，默认不会使用已有的环境变量。如果要sudo使用环境变量，有以下几种方式可以实现。</p><h2 id="1-sudo时指定环境变量"><a href="#1-sudo时指定环境变量" class="headerlink" title="1. sudo时指定环境变量"></a>1. <code>sudo</code>时指定环境变量</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">➜  ~ sudo JUST_TEST=<span class="string">'hello, test'</span> bash -c <span class="string">'echo $JUST_TEST'</span></div><div class="line">hello, <span class="built_in">test</span></div></pre></td></tr></table></figure><h2 id="2-使用sudo的-E选项"><a href="#2-使用sudo的-E选项" class="headerlink" title="2. 使用sudo的-E选项"></a>2. 使用<code>sudo</code>的<code>-E</code>选项</h2><p>通过<code>man sudo</code>查看sudo的用法，有一个<code>-E</code>选项，说明如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">-E, --preserve-env</div><div class="line">            Indicates to the security policy that the user wishes to preserve</div><div class="line">            their existing environment variables.  The security policy may return</div><div class="line">            an error if the user does not have permission to preserve the</div><div class="line">            environment.</div></pre></td></tr></table></figure><p><code>-E</code>选项表示用户希望使用已有的环境变量，如：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">➜  ~ <span class="built_in">export</span> JUST_TEST2=<span class="string">'hello, test2'</span></div><div class="line">➜  ~ sudo -E bash -c <span class="string">'echo $JUST_TEST2'</span></div><div class="line">hello, test2</div></pre></td></tr></table></figure><h2 id="3-通过visudo在sudoers中设置环境变量"><a href="#3-通过visudo在sudoers中设置环境变量" class="headerlink" title="3. 通过visudo在sudoers中设置环境变量"></a>3. 通过<code>visudo</code>在sudoers中设置环境变量</h2><p>在<code>/etc/sudoers</code>中设置的环境变量，<code>sudo</code>是可以使用的。但为了安全，最好不要直接编辑<code>/etc/sudoers</code>文件，而应该使用<code>visudo</code>命令修改，该命令在修改<code>/etc/sudoers</code>文件之前会进行语法检查。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">➜  ~ <span class="built_in">export</span> JUST_TEST3=<span class="string">'hello, test3'</span></div><div class="line">➜  ~sudo visudo</div><div class="line">  Defaults        env_keep= <span class="string">"JUST_TEST3"</span></div><div class="line">➜  ~ sudo bash -c <span class="string">'echo $JUST_TEST3'</span></div><div class="line">hello, test3</div></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href="https://stackoverflow.com/questions/8633461/how-to-keep-environment-variables-when-using-sudo" target="_blank" rel="external">How to keep Environment Variables when Using SUDO</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;今天在执行一个python脚本时，需要使用到一个环境变量，并且需要sudo权限才能执行。设置了环境变量后，在sudo执行脚本时还是找不到该环境变量。&lt;/p&gt;
+&lt;p&gt;因为sudo是一个新的环境，默认不会使用已有的环境变量。如果要sudo使用环境变量，有以下几种方式可以实现。&lt;
+      
+    
+    </summary>
+    
+      <category term="Backend" scheme="http://nkcoder.github.io/categories/Backend/"/>
+    
+    
+      <category term="问答系列" scheme="http://nkcoder.github.io/tags/%E9%97%AE%E7%AD%94%E7%B3%BB%E5%88%97/"/>
+    
+      <category term="Linux" scheme="http://nkcoder.github.io/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>【问答系列】Redis中如何清空所有数据？</title>
@@ -47,7 +75,7 @@
     <link href="http://nkcoder.github.io/2017/10/08/what-is-null-pointer-exception/"/>
     <id>http://nkcoder.github.io/2017/10/08/what-is-null-pointer-exception/</id>
     <published>2017-10-08T06:41:04.000Z</published>
-    <updated>2017-10-08T10:06:27.000Z</updated>
+    <updated>2017-10-08T15:07:23.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="什么是空指针异常？"><a href="#什么是空指针异常？" class="headerlink" title="什么是空指针异常？"></a>什么是空指针异常？</h2><p>对于引用类型的变量，如果在使用的时候，它的值是空的(null)，就会报空指针异常。当变量的值为null的时候，表示这个引用不指向内存中的任何区域，所以使用（解引用）时就会触发空指针异常。</p><h2 id="常见发生场景"><a href="#常见发生场景" class="headerlink" title="常见发生场景"></a>常见发生场景</h2><ul><li>直接使用值为null的变量，如：</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Integer num = <span class="keyword">null</span>;</div><div class="line">System.out.println(<span class="string">"result: "</span> + (num + <span class="number">10</span>));</div></pre></td></tr></table></figure><a id="more"></a><ul><li>调用值为null的对象的方法：</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SomeClass someObject = <span class="keyword">null</span>;</div><div class="line">someObject.someMethod();</div></pre></td></tr></table></figure><ul><li>值为null的集合类型变量，遍历集合元素或者调用方法：</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; names = <span class="keyword">null</span>;</div><div class="line">names.forEach(System.out::println);</div><div class="line">names.add(<span class="string">"daniel"</span>);</div></pre></td></tr></table></figure><h2 id="如何避免"><a href="#如何避免" class="headerlink" title="如何避免"></a>如何避免</h2><p>最简单直接的办法就是，如果对象可能为null，使用之前先判断：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">String value = <span class="keyword">null</span>;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (value == <span class="keyword">null</span>) &#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (Objects.isNull(value)) &#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (StringUtils.isEmpty(value)) &#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">checkArgument(value != <span class="keyword">null</span>, <span class="string">"invalid value"</span>);</div></pre></td></tr></table></figure><p>另外，可以参考以下建议：</p><ul><li>如果返回的引用类型的变量可能为null，则返回Optional&lt;&gt;，如：</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Optional&lt;String&gt; <span class="title">getResult</span><span class="params">(<span class="keyword">boolean</span> valid)</span> </span>&#123;</div><div class="line">  String result = <span class="keyword">null</span>;</div><div class="line">  <span class="keyword">if</span> (valid) &#123;</div><div class="line">    result = getResultFromRemote();</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> Optional.ofNullable(result);</div><div class="line">&#125;</div></pre></td></tr></table></figure><ul><li>如果返回值是集合类型(List或Map)，如果可以，尽量返回空集合，而不是null，如：</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">getResults</span><span class="params">(<span class="keyword">boolean</span> valid)</span> </span>&#123;</div><div class="line">  List&lt;String&gt; results = getResultsFromRemote();</div><div class="line">  <span class="keyword">if</span> (results != <span class="keyword">null</span>) &#123;</div><div class="line">    <span class="keyword">return</span> results;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">&#125;</div></pre></td></tr></table></figure><ul><li><p>使用注解<code>@Nullable</code>或<code>@NonNull</code></p></li><li><p>使用<code>final</code>修饰变量，提醒自己做合理的初始化</p></li><li><p>对象比较时，将有值的变量放在前面，如：</p></li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="string">"name"</span>.equals(someName)) &#123;</div><div class="line">  <span class="comment">// ... </span></div><div class="line">&#125;</div></pre></td></tr></table></figure><h2 id="如何修复"><a href="#如何修复" class="headerlink" title="如何修复"></a>如何修复</h2><p>空指针异常的修复比较简单，根据异常堆栈定位发生异常的代码行，然后进一步确定可能为null的变量即可。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test_npe</span><span class="params">()</span> </span>&#123;</div><div class="line">  List&lt;String&gt; names = <span class="keyword">null</span>;</div><div class="line">  names.forEach(System.out::println);</div><div class="line">&#125;</div></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">java.lang.NullPointerException</div><div class="line">at NullPointerExceptionTest.test_primitive_type(NullPointerExceptionTest.java:12)</div><div class="line">at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</div><div class="line">at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</div><div class="line">at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</div><div class="line">at java.lang.reflect.Method.invoke(Method.java:498)</div><div class="line">at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)</div><div class="line">at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)</div><div class="line">at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)</div><div class="line">at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)</div><div class="line">at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)</div><div class="line">at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)</div><div class="line">at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)</div><div class="line">at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)</div><div class="line">at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)</div><div class="line">at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)</div><div class="line">at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)</div><div class="line">at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)</div><div class="line">at org.junit.runners.ParentRunner.run(ParentRunner.java:363)</div><div class="line">at org.junit.runner.JUnitCore.run(JUnitCore.java:137)</div><div class="line">at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)</div><div class="line">at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)</div><div class="line">at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)</div><div class="line">at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)</div></pre></td></tr></table></figure><p>异常堆栈的重要信息为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">java.lang.NullPointerException</div><div class="line">at NullPointerExceptionTest.test_primitive_type(NullPointerExceptionTest.java:12)</div></pre></td></tr></table></figure><p>表示异常发生在方法<code>NullPointerExceptionTest</code>的12行，则可以进一步定位是变量names为null。</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/NullPointerException.html" target="_blank" rel="external">NullPointerException</a></li></ul>]]></content>
     
@@ -1370,37 +1398,6 @@ new Thread(w).start();
     
       &lt;h2 id=&quot;1-问题描述：&quot;&gt;&lt;a href=&quot;#1-问题描述：&quot; class=&quot;headerlink&quot; title=&quot;1. 问题描述：&quot;&gt;&lt;/a&gt;1. 问题描述：&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;给定一个链表和其中一个节点，删除该节点；&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="Algorithm" scheme="http://nkcoder.github.io/categories/Algorithm/"/>
-    
-    
-      <category term="algorithm" scheme="http://nkcoder.github.io/tags/algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>算法练习--二维数组中查找元素</title>
-    <link href="http://nkcoder.github.io/2014/05/14/algorithm-search-sort-two-dim-array/"/>
-    <id>http://nkcoder.github.io/2014/05/14/algorithm-search-sort-two-dim-array/</id>
-    <published>2014-05-14T13:57:12.000Z</published>
-    <updated>2017-09-17T03:02:20.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="1-问题描述："><a href="#1-问题描述：" class="headerlink" title="1. 问题描述："></a>1. 问题描述：</h2><blockquote><p>给定一个二维数组：每一行的元素从左到右递增，每一列的元素从上到下递增；输入一个整数，求该整数是否在该二位数组中。比如，输入的二位数组为：</p></blockquote><pre><code>2   5   7   9   103   8   9   11  135   9   12  15  209   11  32  40  50</code></pre><blockquote><p>如果输入的整数为12，则输出true，输入23，则输出false；</p></blockquote><a id="more"></a><h2 id="2-思路："><a href="#2-思路：" class="headerlink" title="2. 思路："></a>2. 思路：</h2><blockquote><p>因为数组的元素从左向右递增，从上到下递增，则以左下角的元素为例（右上角的元素亦可），如果被查找的整数比该元素大，由于该元素所在列的所有元素都比它小，因此该列可以去掉；如果被查找的整数比该元素小，则该元素所在的行可以去掉，这样每次比较都可以去掉一行或者一列。复杂度为O(m+n)（m、n分别为数组的行数和列数），该方法比直接遍历数组（复杂度O(mn)）要好。</p></blockquote><h2 id="3-Java参考代码"><a href="#3-Java参考代码" class="headerlink" title="3. Java参考代码"></a>3. Java参考代码</h2><pre><code>/** * 在二维数组中查找元素 * @param array  二维数组 * @param row    数组的行 * @param col 数组的列 * @param key    待查找的元素 * @return    存在则返回true，否则返回false */private static boolean searchInTwoDimensionArray(int[][] array, int row, int col, int key) {    int i = row - 1, j = 0;    while (i &gt;= 0 &amp;&amp; j &lt;= col - 1) {        if (array[i][j] == key) {            return true;        } else if (array[i][j] &lt; key) {            j++;        } else {            i--;        }    }    return false;}</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;1-问题描述：&quot;&gt;&lt;a href=&quot;#1-问题描述：&quot; class=&quot;headerlink&quot; title=&quot;1. 问题描述：&quot;&gt;&lt;/a&gt;1. 问题描述：&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;给定一个二维数组：每一行的元素从左到右递增，每一列的元素从上到下递增；输入一个整数，求该整数是否在该二位数组中。比如，输入的二位数组为：&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;pre&gt;&lt;code&gt;2   5   7   9   10
-3   8   9   11  13
-5   9   12  15  20
-9   11  32  40  50
-&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
-&lt;p&gt;如果输入的整数为12，则输出true，输入23，则输出false；&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
