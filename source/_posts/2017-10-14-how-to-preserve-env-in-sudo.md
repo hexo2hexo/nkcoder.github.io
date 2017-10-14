@@ -1,4 +1,4 @@
-title: sudo时让环境变量继续有效
+title: 【问答系列】sudo时让环境变量继续有效
 categories: Backend
 date: 2017-10-14 21:31:12
 tags: [Linux, 问答系列]
@@ -43,7 +43,7 @@ hello, test2
 
 ```bash
 ➜  ~ export JUST_TEST3='hello, test3'
-➜  ~sudo visudo
+➜  ~ sudo visudo
   Defaults        env_keep= "JUST_TEST3"
 ➜  ~ sudo bash -c 'echo $JUST_TEST3'
 hello, test3
