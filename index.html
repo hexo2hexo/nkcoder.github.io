@@ -319,7 +319,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/15/how-to-del-all-keys-by-pattern/" itemprop="url">如何根据Pattern删除所有匹配的key？</a></h2>
+                <a class="post-title-link" href="/2017/10/15/how-to-del-all-keys-by-pattern/" itemprop="url">【问答系列】Redis中如何根据pattern删除所有key？</a></h2>
         
 
         <div class="post-meta">
@@ -347,7 +347,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-10-15T22:42:16+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-10-15T22:46:34+08:00">
                 2017-10-15
               </time>
             
@@ -404,11 +404,9 @@
 
       
         
-          
-          有的时候系统上线，某些缓存数据已经失效，需要在上线前清除，比如所有以FD__b9840a37开头的key都需要删除，这个可以怎么做呢？
-比较简单的方式是通过KEYS命令找出所有的匹配pattern的key，然后调用del命令删除，如：
-1➜  ~ redis-cli KEYS FD__b7b127d
-          ...
+          <p>有的时候系统上线，某些缓存数据已经失效，需要在上线前清除，比如所有以<code>FD__b9840a37</code>开头的key都需要删除，这个可以怎么做呢？</p>
+<p>比较简单的方式是通过<code>KEYS</code>命令找出所有的匹配pattern的key，然后调用del命令删除，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">➜  ~ redis-cli KEYS FD__b7b127d0* | xargs -L 1000 redis-cli DEL</div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/10/15/how-to-del-all-keys-by-pattern/#more" rel="contents">

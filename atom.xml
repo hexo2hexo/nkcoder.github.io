@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://nkcoder.github.io/"/>
-  <updated>2017-10-15T14:42:16.000Z</updated>
+  <updated>2017-10-15T14:46:34.000Z</updated>
   <id>http://nkcoder.github.io/</id>
   
   <author>
@@ -17,21 +17,19 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>如何根据Pattern删除所有匹配的key？</title>
+    <title>【问答系列】Redis中如何根据pattern删除所有key？</title>
     <link href="http://nkcoder.github.io/2017/10/15/how-to-del-all-keys-by-pattern/"/>
     <id>http://nkcoder.github.io/2017/10/15/how-to-del-all-keys-by-pattern/</id>
     <published>2017-10-15T12:12:39.000Z</published>
-    <updated>2017-10-15T14:42:16.000Z</updated>
+    <updated>2017-10-15T14:46:34.000Z</updated>
     
-    <content type="html"><![CDATA[<p>有的时候系统上线，某些缓存数据已经失效，需要在上线前清除，比如所有以<code>FD__b9840a37</code>开头的key都需要删除，这个可以怎么做呢？</p><p>比较简单的方式是通过<code>KEYS</code>命令找出所有的匹配pattern的key，然后调用del命令删除，如：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">➜  ~ redis-cli KEYS FD__b7b127d0* | xargs -L 1000 redis-cli DEL</div></pre></td></tr></table></figure><p>redis从2.8.0版本开始，提供了比<code>KEYS</code>更安全的<code>SCAN</code>命令，因为当redis中的数据集较大时，<code>KEYS</code>对性能影响较大，而<code>SCAN</code>相当于分段查询。上述命令用<code>SCAN</code>实现如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">➜  ~ redis-cli --scan --pattern II_03063174* | xargs -L 1000 redis-cli DEL</div></pre></td></tr></table></figure><p>上述两种方式都不是原子的，即<code>KEYS</code>命令和<code>SCAN</code>命令与后面的<code>DEL</code>命令的执行不是原子的。如果要保证原子性，需要使用LUA脚本。这里还是通过<code>KEYS</code>举个例子：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">➜  ~ cat del-keys-by-pattern.lua</div><div class="line"><span class="built_in">local</span> keys = redis.call(<span class="string">'keys'</span>, ARGV[1])</div><div class="line"><span class="keyword">for</span> i=1, <span class="comment">#keys, 1000 do</span></div><div class="line">  redis.call(<span class="string">'del'</span>, unpack(keys, i, math.min(i+999, <span class="comment">#keys)))</span></div><div class="line">end</div><div class="line"><span class="built_in">return</span> keys</div><div class="line"></div><div class="line">➜  ~ redis-cli --<span class="built_in">eval</span> del-keys-by-pattern.lua , UN__539d09a0-cbf7*</div><div class="line"> 1) <span class="string">"UN__539d09a0-cbf7-11e6-b66e-5fa3b1198751_2012-09-10"</span></div><div class="line"> 2) <span class="string">"UN__539d09a0-cbf7-11e6-b66e-5fa3b1198751_2012-09-17"</span></div><div class="line"> 3) <span class="string">"UN__539d09a0-cbf7-11e6-b66e-5fa3b1198751_2012-09-24"</span></div></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href="https://www.redisgreen.net/blog/intro-to-lua-for-redis-programmers/" target="_blank" rel="external">Lua: A Guide for Redis Users</a></li><li><a href="https://www.lua.org/pil/4.3.4.html" target="_blank" rel="external">Programming in Lua</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<p>有的时候系统上线，某些缓存数据已经失效，需要在上线前清除，比如所有以<code>FD__b9840a37</code>开头的key都需要删除，这个可以怎么做呢？</p><p>比较简单的方式是通过<code>KEYS</code>命令找出所有的匹配pattern的key，然后调用del命令删除，如：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">➜  ~ redis-cli KEYS FD__b7b127d0* | xargs -L 1000 redis-cli DEL</div></pre></td></tr></table></figure><a id="more"></a><p>redis从2.8.0版本开始，提供了比<code>KEYS</code>更安全的<code>SCAN</code>命令，因为当redis中的数据集较大时，<code>KEYS</code>对性能影响较大，而<code>SCAN</code>相当于分段查询。上述命令用<code>SCAN</code>实现如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">➜  ~ redis-cli --scan --pattern II_03063174* | xargs -L 1000 redis-cli DEL</div></pre></td></tr></table></figure><p>上述两种方式都不是原子的，即<code>KEYS</code>命令和<code>SCAN</code>命令与后面的<code>DEL</code>命令的执行不是原子的。如果要保证原子性，需要使用LUA脚本。这里还是通过<code>KEYS</code>举个例子：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">➜  ~ cat del-keys-by-pattern.lua</div><div class="line"><span class="built_in">local</span> keys = redis.call(<span class="string">'keys'</span>, ARGV[1])</div><div class="line"><span class="keyword">for</span> i=1, <span class="comment">#keys, 1000 do</span></div><div class="line">  redis.call(<span class="string">'del'</span>, unpack(keys, i, math.min(i+999, <span class="comment">#keys)))</span></div><div class="line">end</div><div class="line"><span class="built_in">return</span> keys</div><div class="line"></div><div class="line">➜  ~ redis-cli --<span class="built_in">eval</span> del-keys-by-pattern.lua , UN__539d09a0-cbf7*</div><div class="line"> 1) <span class="string">"UN__539d09a0-cbf7-11e6-b66e-5fa3b1198751_2012-09-10"</span></div><div class="line"> 2) <span class="string">"UN__539d09a0-cbf7-11e6-b66e-5fa3b1198751_2012-09-17"</span></div><div class="line"> 3) <span class="string">"UN__539d09a0-cbf7-11e6-b66e-5fa3b1198751_2012-09-24"</span></div></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href="https://www.redisgreen.net/blog/intro-to-lua-for-redis-programmers/" target="_blank" rel="external">Lua: A Guide for Redis Users</a></li><li><a href="https://www.lua.org/pil/4.3.4.html" target="_blank" rel="external">Programming in Lua</a></li></ul>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;有的时候系统上线，某些缓存数据已经失效，需要在上线前清除，比如所有以&lt;code&gt;FD__b9840a37&lt;/code&gt;开头的key都需要删除，这个可以怎么做呢？&lt;/p&gt;
-&lt;p&gt;比较简单的方式是通过&lt;code&gt;KEYS&lt;/code&gt;命令找出所有的匹配pattern的key，然
-      
+      &lt;p&gt;有的时候系统上线，某些缓存数据已经失效，需要在上线前清除，比如所有以&lt;code&gt;FD__b9840a37&lt;/code&gt;开头的key都需要删除，这个可以怎么做呢？&lt;/p&gt;
+&lt;p&gt;比较简单的方式是通过&lt;code&gt;KEYS&lt;/code&gt;命令找出所有的匹配pattern的key，然后调用del命令删除，如：&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;➜  ~ redis-cli KEYS FD__b7b127d0* | xargs -L 1000 redis-cli DEL&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
