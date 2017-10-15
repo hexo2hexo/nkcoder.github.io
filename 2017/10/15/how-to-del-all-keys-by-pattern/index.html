@@ -84,7 +84,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="spring," />
+  <meta name="keywords" content="redis,问答系列," />
 
 
 
@@ -102,18 +102,18 @@
 
 
 
-<meta name="description" content="这个小系列介绍Spring的持久化策略，主要关注当前应用最广泛的三种方式：Spring JDBC， MyBatis以及Hibernate。使用JDBC的优劣如下：  优势：相对于持久化框架，使用JDBC，不需要掌握其它框架的查询语言，允许我们在更低的层次上处理数据，能够访问数据库中单独的列，而且能够更好地对数据访问的性能进行调优。 劣势：随着项目的规模和复杂度的提升，使用JDBC会非常繁琐，同时不">
-<meta name="keywords" content="spring">
+<meta name="description" content="有的时候系统上线，某些缓存数据已经失效，需要在上线前清除，比如所有以FD__b9840a37开头的key都需要删除，这个可以怎么做呢？ 比较简单的方式是通过KEYS命令找出所有的匹配pattern的key，然后调用del命令删除，如： 1➜  ~ redis-cli KEYS FD__b7b127d0* | xargs -L 1000 redis-cli DEL redis从2.8.0版本开始，提">
+<meta name="keywords" content="redis,问答系列">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring持久化之JDBC">
-<meta property="og:url" content="http://nkcoder.github.io/2014/03/16/spring-jdbc/index.html">
+<meta property="og:title" content="如何根据Pattern删除所有匹配的key？">
+<meta property="og:url" content="http://nkcoder.github.io/2017/10/15/how-to-del-all-keys-by-pattern/index.html">
 <meta property="og:site_name" content="Daniel&#39;s Blog">
-<meta property="og:description" content="这个小系列介绍Spring的持久化策略，主要关注当前应用最广泛的三种方式：Spring JDBC， MyBatis以及Hibernate。使用JDBC的优劣如下：  优势：相对于持久化框架，使用JDBC，不需要掌握其它框架的查询语言，允许我们在更低的层次上处理数据，能够访问数据库中单独的列，而且能够更好地对数据访问的性能进行调优。 劣势：随着项目的规模和复杂度的提升，使用JDBC会非常繁琐，同时不">
+<meta property="og:description" content="有的时候系统上线，某些缓存数据已经失效，需要在上线前清除，比如所有以FD__b9840a37开头的key都需要删除，这个可以怎么做呢？ 比较简单的方式是通过KEYS命令找出所有的匹配pattern的key，然后调用del命令删除，如： 1➜  ~ redis-cli KEYS FD__b7b127d0* | xargs -L 1000 redis-cli DEL redis从2.8.0版本开始，提">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-17T03:02:20.000Z">
+<meta property="og:updated_time" content="2017-10-15T14:42:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring持久化之JDBC">
-<meta name="twitter:description" content="这个小系列介绍Spring的持久化策略，主要关注当前应用最广泛的三种方式：Spring JDBC， MyBatis以及Hibernate。使用JDBC的优劣如下：  优势：相对于持久化框架，使用JDBC，不需要掌握其它框架的查询语言，允许我们在更低的层次上处理数据，能够访问数据库中单独的列，而且能够更好地对数据访问的性能进行调优。 劣势：随着项目的规模和复杂度的提升，使用JDBC会非常繁琐，同时不">
+<meta name="twitter:title" content="如何根据Pattern删除所有匹配的key？">
+<meta name="twitter:description" content="有的时候系统上线，某些缓存数据已经失效，需要在上线前清除，比如所有以FD__b9840a37开头的key都需要删除，这个可以怎么做呢？ 比较简单的方式是通过KEYS命令找出所有的匹配pattern的key，然后调用del命令删除，如： 1➜  ~ redis-cli KEYS FD__b7b127d0* | xargs -L 1000 redis-cli DEL redis从2.8.0版本开始，提">
 
 
 
@@ -142,13 +142,13 @@
 
 
 
-  <link rel="canonical" href="http://nkcoder.github.io/2014/03/16/spring-jdbc/"/>
+  <link rel="canonical" href="http://nkcoder.github.io/2017/10/15/how-to-del-all-keys-by-pattern/"/>
 
 
 
 
 
-  <title>Spring持久化之JDBC | Daniel's Blog</title>
+  <title>如何根据Pattern删除所有匹配的key？ | Daniel's Blog</title>
   
 
 
@@ -299,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nkcoder.github.io/2014/03/16/spring-jdbc/">
+    <link itemprop="mainEntityOfPage" href="http://nkcoder.github.io/2017/10/15/how-to-del-all-keys-by-pattern/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Daniel">
@@ -316,7 +316,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Spring持久化之JDBC</h2>
+          <h2 class="post-title" itemprop="name headline">如何根据Pattern删除所有匹配的key？</h2>
         
 
         <div class="post-meta">
@@ -328,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-03-16T18:01:26+08:00">
-                2014-03-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-15T20:12:39+08:00">
+                2017-10-15
               </time>
             
 
@@ -344,8 +344,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-09-17T11:02:20+08:00">
-                2017-09-17
+              <time title="更新于" itemprop="dateModified" datetime="2017-10-15T22:42:16+08:00">
+                2017-10-15
               </time>
             
           </span>
@@ -405,111 +405,16 @@
       
 
       
-        <p>这个小系列介绍Spring的持久化策略，主要关注当前应用最广泛的三种方式：Spring JDBC， MyBatis以及Hibernate。<br>使用JDBC的优劣如下：</p>
-<ul>
-<li>优势：相对于持久化框架，使用JDBC，不需要掌握其它框架的查询语言，允许我们在更低的层次上处理数据，能够访问数据库中单独的列，而且能够更好地对数据访问的性能进行调优。</li>
-<li>劣势：随着项目的规模和复杂度的提升，使用JDBC会非常繁琐，同时不易于处理复杂的问题。</li>
-<li>Spring JDBC：提供数据访问模板，简化JDBC编程，同时提供了平台无关的持久化异常体系。</li>
-</ul>
-<a id="more"></a>
-<h2 id="1-配置数据源"><a href="#1-配置数据源" class="headerlink" title="1. 配置数据源"></a>1. 配置数据源</h2><p>在生产环境，考虑到性能，应该使用数据库连接池。以commons dbcp配置为例，配置如下：</p>
-<pre><code>&lt;context:property-placeholder location=&quot;classpath:jdbc.properties&quot;/&gt;
-
-&lt;bean id=&quot;vrsDataSource&quot; class=&quot;org.apache.commons.dbcp.BasicDataSource&quot; destroy-method=&quot;close&quot;&gt;
-    &lt;property name=&quot;driverClassName&quot; value=&quot;${jdbc.drvier}&quot;/&gt;
-    &lt;property name=&quot;url&quot; value=&quot;${jdbc.videodb.url}&quot;/&gt;
-    &lt;property name=&quot;username&quot; value=&quot;${jdbc.videodb.username}&quot;/&gt;
-    &lt;property name=&quot;password&quot; value=&quot;${jdbc.videodb.password}&quot;/&gt;
-    &lt;property name=&quot;maxActive&quot; value=&quot;${jdbc.videodb.maxActive}&quot;/&gt;
-    &lt;property name=&quot;initialSize&quot; value=&quot;${jdbc.videodb.initialSize}&quot;/&gt;
-&lt;/bean&gt;
-</code></pre><blockquote>
-<p>主要属性参数说明：</p>
-</blockquote>
-<ul>
-<li>driverClassName: JDBC驱动的全限定类名，如mysql就是：com.mysql.jdbc.Driver；</li>
-<li>url：JDBC的url，如使用mysql的url：jdbc:mysql://10.11.132.193:3306/vrs；</li>
-<li>username, password: 连接该数据源的用户名和密码；</li>
-<li>initialSize：表示初始大小，即连接池启动时创建的连接数量；</li>
-<li>maxActive：表示同一时间可从池中分配的最大连接数，0表示无限制；</li>
-<li>maxIdle：池里不会被释放的最大连接数，0表示无限制；</li>
-<li>minIdle：在不创建新连接的情况下，池中保持空闲的最小连接数；</li>
-<li>maxWait：没有可用连接时，在抛出异常之前，池等待连接回收的最大时间；-1表示无线等待；</li>
-<li>validationQuery：验证连接的sql查询，至少返回一行；<br>更多属性参考<a href="http://commons.apache.org/proper/commons-dbcp/configuration.html" target="_blank" rel="external">wiki页</a></li>
-</ul>
-<blockquote>
-<p>其它推荐的连接池有：</p>
-</blockquote>
-<ul>
-<li><a href="http://www.mchange.com/projects/c3p0/" target="_blank" rel="external">c3p0</a>: 适合多线程环境；</li>
-<li><a href="https://github.com/alibaba/druid" target="_blank" rel="external">druid</a>：完善的监控功能；</li>
-</ul>
-<h2 id="2-使用JdbcTemplate"><a href="#2-使用JdbcTemplate" class="headerlink" title="2. 使用JdbcTemplate"></a>2. 使用JdbcTemplate</h2><p>使用JdbcTemplate类，在sql语句中，以?作为参数的占位符，传入的参数的顺序与sql语句中?的顺序必须是一一对应的。</p>
-<p>首先在xml配置文件里添加jdbcTemplate的bean，其参数<code>dataSource</code>引用之前定义的数据源：</p>
-<pre><code>&lt;bean id=&quot;jdbcTemplate&quot; class=&quot;org.springframework.jdbc.core.JdbcTemplate&quot;&gt;
-    &lt;property name=&quot;dataSource&quot; ref=&quot;vrsDataSource&quot;/&gt;
-&lt;/bean&gt;
-</code></pre><p>然后，在dao类中引用JdbcTemplate类，并注入：</p>
-<pre><code>@Resource(name = &quot;jdbcTemplate&quot;)
-JdbcTemplate jdbcTemplate;
-</code></pre><p>查询<br>返回基本类型：</p>
-<pre><code>String getUserById = &quot;select name from students where id = ?&quot;;
-String userName = jdbcTemplate.queryForObject(getUserById, new Object[]{3}, String.class);
-</code></pre><p>返回<code>Map&lt;String, Object&gt;</code>，key为列名，value为对应列的值，此时返回值只能有一行，否则报错：</p>
-<pre><code>String getStudentByNumber = &quot;select * from students where number = ?&quot;;
-Map&lt;String, Object&gt; studentMap = jdbcTemplate.queryForMap(getStudentByNumber, 111);
-</code></pre><p>返回<code>List&lt;Map&lt;String, Object&gt;&gt;</code>, 可以返回多列：</p>
-<pre><code>String getStudentsByCity = &quot;select * from students where city = ?&quot;;
-List&lt;Map&lt;String, Object&gt;&gt; studentList = jdbcTemplate.queryForList(getStudentsByCity, &quot;tianjin&quot;);
-</code></pre><p>返回自定义class的对象，需要实现RowMapper接口，定义列名和属性的映射：<br>首先实现RowMapper接口：</p>
-<pre><code>public class StudentRowMapper implements RowMapper&lt;Students&gt; {
-    @Override
-    public Students mapRow(ResultSet rs, int rowNum) throws SQLException {
-        Students students = new Students();
-        students.setId(rs.getInt(&quot;id&quot;));
-        students.setName(rs.getString(&quot;name&quot;));
-        students.setSex(rs.getString(&quot;sex&quot;));
-        students.setNumber(rs.getInt(&quot;number&quot;));
-        students.setEnable(rs.getInt(&quot;enable&quot;));
-        students.setCity(rs.getString(&quot;city&quot;));
-        return students;
-    }
-}
-</code></pre><p>然后，使用query或者queryForObject查询多行或一行：</p>
-<pre><code>String getStudentsByCity = &quot;select * from students where city = ?&quot;;
-List&lt;Students&gt; studentsList = jdbcTemplate.query(getStudentsByCity, new StudentRowMapper(), &quot;tianjin&quot;);
-</code></pre><h2 id="2-使用NamedParameterJdbcTemplate"><a href="#2-使用NamedParameterJdbcTemplate" class="headerlink" title="2. 使用NamedParameterJdbcTemplate"></a>2. 使用NamedParameterJdbcTemplate</h2><p>使用NamedParameterJdbcTemplate类，sql语句中的参数是以命名的变量来表示，传入参数时，只要参数名一致即可，索引位置不必一一对应。<br>首先在xml配置文件里定义NamedParameterJdbcTemplate的bean：</p>
-<pre><code>&lt;bean id=&quot;namedParameterJdbcTemplate&quot; class=&quot;org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate&quot;&gt;
-    &lt;constructor-arg name=&quot;dataSource&quot; ref=&quot;feedbackDataSource&quot;/&gt;
-&lt;/bean&gt;
-</code></pre><p>然后将namedParameterJdbcTemplate bean注入到dao中，</p>
-<pre><code>@Resource(name = &quot;namedParameterJdbcTemplate&quot;)
-NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-</code></pre><p>定义sql，参数以(:变量名)形式给出即可，如：</p>
-<pre><code>String getStudentByNumber = &quot;select * from students where number = (:number) and city = (:city)&quot;;
-NamedParameterJdbcTemplate namedParameterJdbcTemplate = (NamedParameterJdbcTemplate) context.getBean(&quot;namedParameterJdbcTemplate&quot;);
-Map&lt;String, Object&gt; queryMap = new HashMap&lt;String, Object&gt;();
-queryMap.put(&quot;number&quot;, 333);
-queryMap.put(&quot;city&quot;, &quot;tianjin&quot;);
-List&lt;Map&lt;String, Object&gt;&gt; mapList = namedParameterJdbcTemplate.queryForList(getStudentByNumber, queryMap);
-</code></pre><blockquote>
-<p>除了使用命名参数外，NamedParameterJdbcTemplate与JdbcTempate的主要用法都是一致的。</p>
-</blockquote>
-<h2 id="3-使用JdbcDaoSupport"><a href="#3-使用JdbcDaoSupport" class="headerlink" title="3. 使用JdbcDaoSupport"></a>3. 使用JdbcDaoSupport</h2><p>JdbcDaoSupport是一个父类，如果有多个dao类，通过继承JdbcDaoSupport，可以更方便地获取jdbcTemplate。<br>首先让dao类继承JdbcDaoSupport类：</p>
-<pre><code>public class InfoJdbcImpl extends JdbcDaoSupport implements VideoInfoDao {
-</code></pre><p>然后在定义dao类的bean时，注入一个<code>jdbcTemplate</code>属性，或者直接注入一个<code>dataSource</code>属性（这两个属性来自于JdbcDaoSupport）：</p>
-<pre><code>&lt;bean id=&quot;infoJdbcImpl&quot; class=&quot;com.sohu.tv.dao.impl.InfoJdbcImpl&quot;&gt;
-    &lt;property name=&quot;dataSource&quot; ref=&quot;feedbackDataSource&quot;/&gt;
-&lt;/bean&gt;
-</code></pre><p>然后通过getJdbcTemplate()获取jdbcTemplate，实现dao层的逻辑：</p>
-<pre><code>String getStudentByNumber = &quot;select * from students where number = ?&quot;;
-Map&lt;String, Object&gt; studentMap = getJdbcTemplate().queryForMap(getStudentByNumber, 111);
-</code></pre><blockquote>
-<p><code>NamedParameterJdbcDaoSupport</code>与<code>JdbcDaoSupport</code>的用法类似。</p>
-</blockquote>
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
-<li><a href="http://www.amazon.cn/Spring%E5%AE%9E%E6%88%98-%E6%B2%83%E5%B0%94%E6%96%AF/dp/B00CY6UD2I/ref=sr_1_1?ie=UTF8&amp;qid=1394943496&amp;sr=8-1&amp;keywords=spring+in+action" target="_blank" rel="external">Spring实战(第3版)</a></li>
-<li><a href="http://docs.spring.io/spring/docs/3.2.8.RELEASE/javadoc-api/" target="_blank" rel="external">spring-javadoc-api</a></li>
+        <p>有的时候系统上线，某些缓存数据已经失效，需要在上线前清除，比如所有以<code>FD__b9840a37</code>开头的key都需要删除，这个可以怎么做呢？</p>
+<p>比较简单的方式是通过<code>KEYS</code>命令找出所有的匹配pattern的key，然后调用del命令删除，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">➜  ~ redis-cli KEYS FD__b7b127d0* | xargs -L 1000 redis-cli DEL</div></pre></td></tr></table></figure>
+<p>redis从2.8.0版本开始，提供了比<code>KEYS</code>更安全的<code>SCAN</code>命令，因为当redis中的数据集较大时，<code>KEYS</code>对性能影响较大，而<code>SCAN</code>相当于分段查询。上述命令用<code>SCAN</code>实现如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">➜  ~ redis-cli --scan --pattern II_03063174* | xargs -L 1000 redis-cli DEL</div></pre></td></tr></table></figure>
+<p>上述两种方式都不是原子的，即<code>KEYS</code>命令和<code>SCAN</code>命令与后面的<code>DEL</code>命令的执行不是原子的。如果要保证原子性，需要使用LUA脚本。这里还是通过<code>KEYS</code>举个例子：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">➜  ~ cat del-keys-by-pattern.lua</div><div class="line"><span class="built_in">local</span> keys = redis.call(<span class="string">'keys'</span>, ARGV[1])</div><div class="line"><span class="keyword">for</span> i=1, <span class="comment">#keys, 1000 do</span></div><div class="line">  redis.call(<span class="string">'del'</span>, unpack(keys, i, math.min(i+999, <span class="comment">#keys)))</span></div><div class="line">end</div><div class="line"><span class="built_in">return</span> keys</div><div class="line"></div><div class="line">➜  ~ redis-cli --<span class="built_in">eval</span> del-keys-by-pattern.lua , UN__539d09a0-cbf7*</div><div class="line"> 1) <span class="string">"UN__539d09a0-cbf7-11e6-b66e-5fa3b1198751_2012-09-10"</span></div><div class="line"> 2) <span class="string">"UN__539d09a0-cbf7-11e6-b66e-5fa3b1198751_2012-09-17"</span></div><div class="line"> 3) <span class="string">"UN__539d09a0-cbf7-11e6-b66e-5fa3b1198751_2012-09-24"</span></div></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.redisgreen.net/blog/intro-to-lua-for-redis-programmers/" target="_blank" rel="external">Lua: A Guide for Redis Users</a></li>
+<li><a href="https://www.lua.org/pil/4.3.4.html" target="_blank" rel="external">Programming in Lua</a></li>
 </ul>
 
       
@@ -531,7 +436,7 @@ Map&lt;String, Object&gt; studentMap = getJdbcTemplate().queryForMap(getStudentB
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://nkcoder.github.io/2014/03/16/spring-jdbc/" title="Spring持久化之JDBC">http://nkcoder.github.io/2014/03/16/spring-jdbc/</a>
+    <a href="http://nkcoder.github.io/2017/10/15/how-to-del-all-keys-by-pattern/" title="如何根据Pattern删除所有匹配的key？">http://nkcoder.github.io/2017/10/15/how-to-del-all-keys-by-pattern/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -546,7 +451,9 @@ Map&lt;String, Object&gt; studentMap = getJdbcTemplate().queryForMap(getStudentB
       
         <div class="post-tags">
           
-            <a href="/tags/spring/" rel="tag"># spring</a>
+            <a href="/tags/redis/" rel="tag"># redis</a>
+          
+            <a href="/tags/问答系列/" rel="tag"># 问答系列</a>
           
         </div>
       
@@ -559,8 +466,8 @@ Map&lt;String, Object&gt; studentMap = getJdbcTemplate().queryForMap(getStudentB
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/13/spring-aop-example/" rel="next" title="Spring AOP之入门实例">
-                <i class="fa fa-chevron-left"></i> Spring AOP之入门实例
+              <a href="/2017/10/14/how-to-preserve-env-in-sudo/" rel="next" title="【问答系列】Sudo时为什么环境变量不可用？">
+                <i class="fa fa-chevron-left"></i> 【问答系列】Sudo时为什么环境变量不可用？
               </a>
             
           </div>
@@ -568,10 +475,6 @@ Map&lt;String, Object&gt; studentMap = getJdbcTemplate().queryForMap(getStudentB
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2014/03/18/elasticsearch-term-query/" rel="prev" title="Elasticsearch查询api--Term Query">
-                Elasticsearch查询api--Term Query <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -712,7 +615,7 @@ Map&lt;String, Object&gt; studentMap = getJdbcTemplate().queryForMap(getStudentB
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-配置数据源"><span class="nav-number">1.</span> <span class="nav-text">1. 配置数据源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-使用JdbcTemplate"><span class="nav-number">2.</span> <span class="nav-text">2. 使用JdbcTemplate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-使用NamedParameterJdbcTemplate"><span class="nav-number">3.</span> <span class="nav-text">2. 使用NamedParameterJdbcTemplate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-使用JdbcDaoSupport"><span class="nav-number">4.</span> <span class="nav-text">3. 使用JdbcDaoSupport</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">4.1.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
